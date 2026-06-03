@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>TDCSCESEVAI - Full Width Slider | Service Center Selector</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Roboto, 'Noto Sans Tamil', Arial, sans-serif;
+  background: #f4f8fc;
+  overflow-x: hidden;
+}
+
+/* ===== TOP BAR ===== */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 2000;
+  background: #1b5e20;
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  flex-wrap: wrap;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.topbar img {
+  height: 44px;
+  margin-right: 12px;
+  border-radius: 8px;
+}
+
+.menu {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.menu a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  padding: 5px 8px;
+  border-radius: 20px;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+.menu a:hover {
+  background: #2e7d32;
+}
+
+.member-links {
+  display: inline-flex;
+  gap: 8px;
+}
+
+/* ===== TOP TEXT & MARQUEE ===== */
+.top-text {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 12px 10px 6px;
+  color: #1b5e20;
+  background: #e8f5e9;
+  padding: 8px;
+  border-radius: 30px;
+}
+
+.marquee-box {
+  background: #0d47a1;
+  color: white;
+  padding: 8px 12px;
+  margin: 6px 0;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+marquee {
+  white-space: nowrap;
+}
+
+/* ===== FULL WIDTH HERO SLIDER (BETWEEN MARQUEES) ===== */
+.full-width-slider-section {
+  width: 100%;
+  margin: 12px 0 16px 0;
+  position: relative;
+  background: #00000010;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.swiper-full-container {
+  position: relative;
+  width: 100%;
+  background: #1a2a1f;
+}
+
+.hero-slider {
+  width: 100%;
+  position: relative;
+}
+
+.swiper-slide-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  max-height: 85vh;
+  min-height: 280px;
+  background: #2e3b2c;
+  transition: transform 0.3s ease;
+}
+
+/* Navigation Arrows - Modern style */
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(4px);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 20;
+  transition: all 0.2s ease;
+  color: white;
+  font-size: 28px;
+  font-weight: bold;
+  user-select: none;
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+.slider-arrow:hover {
+  background: #ff9800;
+  color: #1b5e20;
+  transform: translateY(-50%) scale(1.05);
+}
+
+.prev-arrow {
+  left: 18px;
+}
+
+.next-arrow {
+  right: 18px;
+}
+
+/* Dots / Indicators */
+.slider-dots {
+  position: absolute;
+  bottom: 15px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  z-index: 20;
+  padding: 8px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  background: rgba(255,255,255,0.6);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.2s;
+  border: none;
+  box-shadow: 0 1px 3px black;
+}
+
+.dot.active {
+  background: #ff9800;
+  width: 28px;
+  border-radius: 20px;
+  background: #ff9800;
+}
+
+/* Caption overlay (optional but neat) */
+.slide-caption {
+  position: absolute;
+  bottom: 20%;
+  left: 5%;
+  background: rgba(0,0,0,0.65);
+  backdrop-filter: blur(8px);
+  color: white;
+  padding: 8px 20px;
+  border-radius: 40px;
+  font-size: 1rem;
+  font-weight: 500;
+  border-left: 5px solid #ff9800;
+  pointer-events: none;
+  z-index: 15;
+  max-width: 80%;
+}
+
+/* ===== MAIN SPLIT LAYOUT ===== */
+.service-showcase {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  width: 94%;
+  max-width: 1400px;
+  margin: 25px auto;
+  align-items: stretch;
+}
+
+/* LEFT: SLIDER CONTAINER (original slider small) we keep but rename to gallery card */
+.slider-container {
+  flex: 2;
+  min-width: 260px;
+  background: #ffffff;
+  border-radius: 28px;
+  box-shadow: 0 20px 35px -12px rgba(0,0,0,0.2);
+  overflow: hidden;
+  padding: 12px;
+}
+
+.slider img {
+  width: 100%;
+  height: auto;
+  max-height: 480px;
+  object-fit: cover;
+  border-radius: 24px;
+}
+
+/* RIGHT: SERVICE PANEL */
+.service-panel {
+  flex: 1.3;
+  min-width: 340px;
+  background: linear-gradient(135deg, #ffffff 0%, #fffaf0 100%);
+  border-radius: 32px;
+  box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.15);
+  padding: 1.5rem;
+  border-left: 6px solid #ff9800;
+}
+
+.service-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 3px dashed #ffb74d;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+}
+
+.service-header span {
+  font-size: 38px;
+}
+
+.service-header h2 {
+  font-size: 1.7rem;
+  color: #bf360c;
+  font-weight: 800;
+}
+
+.service-highlight {
+  background: #fff3e0;
+  padding: 12px;
+  border-radius: 28px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  text-align: center;
+  color: #e65100;
+  font-size: 0.95rem;
+}
+
+/* Service card - clickable */
+.service-card-clickable {
+  background: white;
+  border-radius: 24px;
+  padding: 18px 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid #e0e0e0;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.service-card-clickable:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+  border-color: #ff9800;
+  background: #fffef7;
+}
+
+.service-icon {
+  font-size: 2.2rem;
+}
+
+.service-info {
+  flex: 1;
+}
+
+.service-info h3 {
+  font-size: 1.2rem;
+  color: #1b5e20;
+  margin-bottom: 5px;
+}
+
+.service-info p {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.click-hint {
+  font-size: 0.75rem;
+  color: #ff9800;
+  margin-top: 4px;
+}
+
+/* ===== POPUP MODAL ===== */
+.popup-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  z-index: 10000;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(3px);
+}
+
+.popup-container {
+  background: white;
+  width: 90%;
+  max-width: 500px;
+  max-height: 85vh;
+  border-radius: 36px;
+  overflow: hidden;
+  box-shadow: 0 30px 50px rgba(0,0,0,0.3);
+  animation: popupSlide 0.3s ease;
+}
+
+@keyframes popupSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.popup-header {
+  background: linear-gradient(135deg, #1b5e20, #2e7d32);
+  color: white;
+  padding: 20px 24px;
+  position: relative;
+}
+
+.popup-header h3 {
+  font-size: 1.4rem;
+  margin-bottom: 5px;
+}
+
+.popup-header .service-name-title {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.close-popup {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  background: rgba(255,255,255,0.2);
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s;
+}
+
+.close-popup:hover {
+  background: rgba(255,255,255,0.4);
+}
+
+.popup-body {
+  padding: 24px;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+/* Form fields */
+.form-field {
+  margin-bottom: 20px;
+}
+
+.form-field label {
+  display: block;
+  font-weight: bold;
+  color: #1b5e20;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+
+.form-field select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 2px solid #e0e0e0;
+  border-radius: 28px;
+  font-size: 0.95rem;
+  background: #fff;
+  cursor: pointer;
+  outline: none;
+}
+
+.form-field select:focus {
+  border-color: #ff9800;
+}
+
+.center-result-card {
+  background: #e8f5e9;
+  border-radius: 24px;
+  padding: 18px;
+  margin: 20px 0;
+  border-left: 5px solid #ff9800;
+}
+
+.center-name-large {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #1b5e20;
+  margin-bottom: 10px;
+}
+
+.center-detail-row {
+  font-size: 0.85rem;
+  margin: 6px 0;
+  color: #2c3e2f;
+  line-height: 1.4;
+}
+
+.whatsapp-popup-btn {
+  background: #25D366;
+  color: white;
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 60px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+  margin-top: 15px;
+}
+
+.whatsapp-popup-btn:hover {
+  background: #128C7E;
+  transform: scale(0.98);
+}
+
+.whatsapp-popup-btn:disabled {
+  background: #a5d6a7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Links section */
+.links-section {
+  text-align: center;
+  margin: 20px 0 10px;
+}
+
+.links-section a {
+  color: #1565c0;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 0 12px;
+  cursor: pointer;
+}
+
+/* Member Popup */
+.popup-bg {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.75);
+  z-index: 5000;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup {
+  background: #fff;
+  max-width: 420px;
+  width: 90%;
+  padding: 22px;
+  border-radius: 28px;
+  text-align: center;
+}
+
+.visitor-counter {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #1b5e20;
+}
+
+.footer {
+  background: #1b5e20;
+  color: white;
+  text-align: center;
+  padding: 18px 10px;
+  margin-top: 35px;
+  font-size: 14px;
+}
+
+@media (max-width: 780px) {
+  .service-showcase { flex-direction: column; }
+  .slider-arrow { width: 36px; height: 36px; font-size: 22px; }
+  .slide-caption { font-size: 0.7rem; bottom: 15%; left: 3%; }
+  .hero-slider .swiper-slide-img { min-height: 220px; }
+}
+.marquee-container {
+  width: 100%;
+  overflow: hidden;
+  background-color: #ffeb3b;
+  white-space: nowrap;
+  border: 2px solid #f57f17;
+  border-radius: 10px;
+  padding: 10px 0;
+}
+
+.marquee-content {
+  display: inline-block;
+  padding-left: 100%;
+  animation: marquee-scroll 75s linear infinite;
+  font-size: 18px;
+  font-weight: bold;
+  color: #d32f2f;
+}
+
+.marquee-content a {
+  color: #1565c0;
+  text-decoration: underline;
+  font-weight: bold;
+  background-color: #fff9c4;
+  padding: 5px 10px;
+  border-radius: 20px;
+  margin: 0 5px;
+}
+
+.marquee-content a:hover {
+  background-color: #ffd54f;
+  color: #b71c1c;
+}
+
+/* Animation keyframes */
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Responsive - படத்திற்கு pause செய்ய hover செய்யும் போது */
+.marquee-container:hover .marquee-content {
+  animation-play-state: paused;
+}
+
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <img src="images/logo.png" alt="Logo" onerror="this.src='https://placehold.co/44x44?text=TDC'">
+  <div class="menu">
+    <a href="index.html">Home</a>
+    <a href="board.html">Board Members</a>
+    <a href="executive.html">Executive Members</a>
+    <a href="members.html">Members</a>
+    <a href="services.html">Services</a>
+    <a href="weblink.html">Weblink</a>
+    <a href="Photomaking.html">Photo Maker</a>
+    <a href="Forms.html">Forms</a>
+    <span class="member-links">
+      <a href="#" onclick="openMemberPopup('https://drive.google.com/drive/folders/17aXIEa7m6o7rRw6clCOricOagvweGhoy?usp=drive_link')">Software</a>
+      <a href="#" onclick="openMemberPopup('https://drive.google.com/drive/folders/153R8Hf_EeuLM8k2aMS73pF9dwuynD8tB?usp=drive_link')">WhatsApp Poster</a>
+    </span>
+  </div>
+</div>
+
+<div class="top-text">
+  ✨ பொதுமக்களுக்கு நாங்கள் சேவை அளிப்பதில் பெருமிதம் கொள்கிறோம் | சேவையின் மேல் (Services) கிளிக் செய்து உங்களின் சேவைகளை பெற்றிடுங்கள் ✨
+</div>
+
+<div class="marquee-box">
+  <marquee scrollamount="3">⚡ ஆதாரில் மொபைல் எண் & Mail ID இணைக்க மற்றும் மாற்ற | ஆதாரில் முகவரி மாற்றம் செய்ய அனுகவும்| உங்கள் அருகில் உள்ள ஆதார் சேவை மையத்தைத் தேர்வு செய்ய சேவையின் பெயரை கிளிக் செய்க ⚡</marquee>
+</div>
+
+<!-- ===== FULL WIDTH IMAGE SLIDER (BETWEEN MARQUEES) - LOCAL BANNER IMAGES ===== -->
+<div class="full-width-slider-section">
+  <div class="swiper-full-container" style="position: relative;">
+    <div class="hero-slider" id="fullHeroSlider">
+      <img class="swiper-slide-img" id="fullSliderImg" alt="Event showcase" style="width: 100%; display: block;">
+      <div class="slide-caption" id="sliderCaption">✨ தேனி மாவட்ட பொது இ-சேவை மையங்கள் ✨</div>
+      <!-- Navigation Arrows -->
+      <div class="slider-arrow prev-arrow" id="prevSlideBtn">❮</div>
+      <div class="slider-arrow next-arrow" id="nextSlideBtn">❯</div>
+      <!-- Dots indicator -->
+      <div class="slider-dots" id="sliderDotsContainer"></div>
+    </div>
+  </div>
+</div>
+
+<div class="marquee-container">
+  <div class="marquee-content">
+    🏆 பொது சேவை மற்றும் இ சேவை மைய உரிமையாளர்களே services, Weblink, Photo Maker ஆகிய சேவைகளை பயன்படுத்திக்கொள்ளலாம். பொது சேவை மற்றும் இ - சேவை மைய உரிமையாளர்கள் சங்கத்தில் இணைய விருப்பம் உள்ளவர்கள் 
+    <a href="https://forms.gle/gCwTNQLBPPNfnjqF6" target="_blank">
+      இங்கே கிளிக் செய்க (Google Form)
+    </a>
+    இணையலாம். தேனி மாவட்ட பொது இ-சேவை மைய உரிமையாளர்கள் நலச்சங்கம் 🏆
+  </div>
+</div>
+
+<!-- MAIN SPLIT: EVENT GALLERY + SERVICE LIST -->
+<div class="service-showcase">
+  <div class="slider-container">
+    <div class="slider">
+      <img id="slideImg" src="images/events/1.jpg" alt="Event Gallery" onerror="this.src='https://placehold.co/900x500?text=Event+Photo'">
+    </div>
+    <div style="text-align:center; margin-top:12px; font-size:13px; color:#2e7d32;">📸 எங்கள் சேவை நிகழ்வுகள் </div>
+  </div>
+
+  <!-- RIGHT PANEL: Clickable service cards -->
+  <div class="service-panel">
+    <div class="service-header">
+      <span>🌟</span>
+      <h2>ஆதாரின் சிறப்பு சேவைகள்<br><span style="font-size:0.8rem;">(சேவையின் மேல் கிளிக் செய்க)</span></h2>
+    </div>
+    <div class="service-highlight">
+      💡 கீழே உள்ள சேவையை கிளிக் செய்து, → சேவை மையத்தை தேர்வு செய்யவும்
+    </div>
+    <div id="serviceListContainer"></div>
+    <div style="margin-top: 16px; text-align: center; font-size: 12px; background:#fff1dd; border-radius: 30px; padding: 8px;">
+      📢 சேவை மையத்தைத் தேர்வு செய்து WhatsApp மூலம் உடனே தொடர்பு கொள்ளுங்கள்
+    </div>
+  </div>
+</div>
+
+<div class="links-section">
+  <a onclick="showContactInfo('free')">🔹 இலவச ஆலோசனை: 97863 40963</a>
+  <a onclick="showContactInfo('help')">📞 உதவி மையம்: 82208 18281</a>
+  <a onclick="showContactInfo('suggest')">📧 புகார் / suggestion: tdcscesevai@gmail.com</a>
+</div>
+
+<!-- MEMBER POPUP -->
+<div class="popup-bg" id="memberPopup">
+  <div class="popup">
+    <h3>🔐 Only Registered Members Allowed</h3>
+    <p>பதிவு பெற்ற உறுப்பினர்களுக்கு மட்டும்</p>
+    <div class="org" style="color:#2e7d32;">தேனி மாவட்ட பொது இ-சேவை மைய உரிமையாளர்கள் நலச்சங்கம்</div>
+    <a id="driveLink" class="member-btn" target="_blank" style="background:#2e7d32; display:block; margin:12px 0; padding:12px; border-radius:40px; color:white; text-decoration:none;">📁 Registered Member</a>
+    <a href="https://forms.gle/bYxNLXzJGcHQakBcA" target="_blank" style="background:#1565c0; display:block; margin:12px 0; padding:12px; border-radius:40px; color:white; text-decoration:none;">📝 Register Here</a>
+    <a href="#" onclick="closeMemberPopup()" style="background:#9e9e9e; display:block; padding:12px; border-radius:40px; color:white;">Close</a>
+  </div>
+</div>
+
+<!-- SERVICE SELECTOR POPUP -->
+<div id="servicePopup" class="popup-overlay">
+  <div class="popup-container">
+    <div class="popup-header">
+      <h3 id="popupServiceTitle">🏪 சேவை மையம் தேர்வு</h3>
+      <div id="popupServiceSub" class="service-name-title"></div>
+      <button class="close-popup" onclick="closeServicePopup()">&times;</button>
+    </div>
+    <div class="popup-body" id="popupBody"></div>
+  </div>
+</div>
+<!-- PHOTO MAKER INFO POPUP -->
+<div id="photoMakerPopup" class="popup-overlay" style="display: none;">
+  <div class="popup-container" style="max-width: 550px;">
+    <div class="popup-header" style="background: linear-gradient(135deg, #1b5e20, #2e7d32);">
+      <h3>📸 Photo Maker - பயன்பாட்டு வழிகாட்டி</h3>
+      <button class="close-popup" onclick="closePhotoMakerPopup()">&times;</button>
+    </div>
+    <div class="popup-body" style="text-align: left; font-size: 15px; line-height: 1.6;">
+      <ul style="padding-left: 20px;">
+        <li>✅ 1. Choose File</li>
+        <li>✅ 2. Crop Photo (3.5cm x4.5cm)</li>
+        <li>✅ 3. Apply Crop</li>
+		<li>✅ 4. Margins(mm) Top 1, Bottom 1, Left 1, Right 1 வைக்கவும்</li>
+		<li>✅ 5. Gaps(mm) Horizontal 2.5, Vertical 2.5 வைக்கவும்</li>
+		<li>✅ 6. Paper Select செய்யவும். (6x4 Maxi) 8copy (or) 4 copy க்கு</li>
+		<li>✅ 7. Paper Select செய்யவும். (A4) 16copy (or) 30 copy க்கு</li>
+		<li>✅ 8. Bright, Contrast தேவையெனில் பயன் படுத்திக்கொள்ளலாம்</li>
+		<li>✅ 9. Download PDF (PDF File open செய்து பிரிண்ட் கொடுக்கலாம்</li>
+		<li>✅ 10. Single Photo தேவையெனில் (Save Single Photo) Button click செய்யவும்.</li>
+		<li>✅ 11. Photo வுக்கு கீழ் பெயர், தேதி தேவையெனில் (Text on Photo) பயன்படுத்தவும். விண்ணப்பத்திற்கு பயன்படுத்திக்கொள்ளலாம்.</li>
+		<li>✅ 12. Exam -க்கு தேவைப்படும் signature தேவையான அளவில் crop செய்து jpeg ஆக file save செய்துகொள்ளலாம்.</li>
+        <li>✅ <strong>AI Remove BG</strong> மூலம் பின்னணி நீக்கலாம்</li>
+        <li>✅ <strong>AI Image Enhancer மூலம் Photo Clear செய்துகொள்ளலாம்</li>
+        <li>✅ <strong>AI Image Enhance prompt பயன்படுத்தி Google Gemini மூலம் சிதைந்த, அழுக்கான, BW to Colour போட்டோவை சரிசெய்துகொள்ளலாம்.</li>
+        <li>✅ <strong>PDF Download</strong> - A4 / Maxi சீட்டில் ஒரே நேரத்தில் பல புகைப்படங்கள்</li>
+      </ul>
+      <p style="margin-top: 15px; background: #fff3e0; padding: 10px; border-radius: 20px; text-align: center;">
+        📌 <strong>குறிப்பு:</strong> முதலில் புகைப்படத்தை Upload செய்யவும்.<br>
+        Generate Sheet → PDF அல்லது Print என தேர்வு செய்யவும்.
+      </p>
+    </div>
+    <div style="padding: 15px 24px 24px; text-align: center;">
+      <button onclick="continueToPhotoMaker()" style="background: #ff9800; border: none; padding: 10px 25px; border-radius: 40px; font-weight: bold; cursor: pointer;">✅ OK - தொடரவும்</button>
+      <button onclick="closePhotoMakerPopup()" style="background: #9e9e9e; border: none; padding: 10px 20px; border-radius: 40px; font-weight: bold; margin-left: 10px; cursor: pointer;">❌ Close</button>
+    </div>
+  </div>
+</div>
+
+
+<div class="visitor-counter">
+  👁️ Visitors Count : <span id="visitCount">0</span>
+</div>
+<footer class="footer">
+  © 2026 TDCSCESEVAI | தேனி மாவட்ட பொது இ-சேவை மைய உரிமையாளர்கள் நலச்சங்கம் <br>
+  WhatsApp enquiry மூலம் நேரடித் தொடர்பு
+</footer>
+
+<script>
+// ========== FULL WIDTH HERO SLIDER (BETWEEN MARQUEES) - USING LOCAL BANNER IMAGES FROM SUBFOLDER ==========
+// Banner images from local folder: images/banner/ (banner1.jpg, banner2.jpg, etc.)
+const heroImages = [
+  "images/banner/banner1.jpg",
+  "images/banner/banner2.jpg",
+  "images/banner/banner3.jpg",
+  "images/banner/banner4.jpg",
+  "images/banner/banner5.jpg",
+];
+
+let currentHeroIndex = 0;
+let heroInterval;
+const heroImgElement = document.getElementById("fullSliderImg");
+const captionElement = document.getElementById("sliderCaption");
+
+function updateHeroSlide(index) {
+  if (!heroImgElement) return;
+  const imgUrl = heroImages[index % heroImages.length];
+  heroImgElement.src = imgUrl;
+  // Remove or comment out the caption update line
+  // captionElement.innerText = captions[index % captions.length];
+  // Instead, keep a default static caption or hide it
+  captionElement.style.display = "none"; // This hides the caption completely
+  
+  // Update dots
+  const dots = document.querySelectorAll('.dot');
+  dots.forEach((dot, i) => {
+    if (i === index) dot.classList.add('active');
+    else dot.classList.remove('active');
+  });
+}
+
+function nextHeroSlide() {
+  currentHeroIndex = (currentHeroIndex + 1) % heroImages.length;
+  updateHeroSlide(currentHeroIndex);
+  resetHeroTimer();
+}
+
+function prevHeroSlide() {
+  currentHeroIndex = (currentHeroIndex - 1 + heroImages.length) % heroImages.length;
+  updateHeroSlide(currentHeroIndex);
+  resetHeroTimer();
+}
+
+function resetHeroTimer() {
+  if (heroInterval) clearInterval(heroInterval);
+  heroInterval = setInterval(() => {
+    nextHeroSlide();
+  }, 5000);
+}
+
+function createDots() {
+  const container = document.getElementById("sliderDotsContainer");
+  if (!container) return;
+  container.innerHTML = '';
+  for (let i = 0; i < heroImages.length; i++) {
+    const dot = document.createElement('div');
+    dot.classList.add('dot');
+    if (i === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => {
+      currentHeroIndex = i;
+      updateHeroSlide(currentHeroIndex);
+      resetHeroTimer();
+    });
+    container.appendChild(dot);
+  }
+}
+
+// Initialize full-width slider with local images and fallback handling
+function initHeroSlider() {
+  if (heroImgElement) {
+    // Set fallback handler: if local image fails, try placeholders but keep local path preference
+    heroImgElement.onerror = function() {
+      if (!heroImgElement.hasAttribute('data-fallback-hero')) {
+        heroImgElement.setAttribute('data-fallback-hero', 'true');
+        // Instead of external placeholder, we can use a base64 or local fallback but to ensure visibility
+        // Use a high-quality local colored placeholder with text (data:image not needed, but use a reliable fallback)
+        // We'll use a placeholder image that matches the theme, but keep consistent with local folders.
+        // If a specific banner fails, we try a generic local fallback if exists else friendly placeholder.
+        const failedSrc = heroImgElement.src;
+        // Check if the failing image is from banner folder
+        if (failedSrc.includes('banner')) {
+          // Attempt to load a default local banner (if banner1 fails, we can keep trying, but to avoid infinite loop)
+          // Provide a consistent inline fallback style background color with text
+          heroImgElement.style.objectFit = 'cover';
+          heroImgElement.style.backgroundColor = '#2e5c2e';
+          heroImgElement.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 600'%3E%3Crect width='1200' height='600' fill='%231b5e20'/%3E%3Ctext x='50%25' y='50%25' font-size='28' fill='white' text-anchor='middle' dy='.3em' font-family='Arial'%3E📸 TDC Service Center Banner%3C/text%3E%3C/svg%3E";
+        } else {
+          heroImgElement.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 600'%3E%3Crect width='1200' height='600' fill='%232e7d32'/%3E%3Ctext x='50%25' y='50%25' font-size='26' fill='white' text-anchor='middle' dy='.3em'%3E🏆 தேனி மாவட்ட இ-சேவை மையம்%3C/text%3E%3C/svg%3E";
+        }
+      }
+    };
+    updateHeroSlide(0);
+  }
+  createDots();
+  resetHeroTimer();
+  // arrow listeners
+  const prevBtn = document.getElementById("prevSlideBtn");
+  const nextBtn = document.getElementById("nextSlideBtn");
+  if (prevBtn) prevBtn.addEventListener("click", prevHeroSlide);
+  if (nextBtn) nextBtn.addEventListener("click", nextHeroSlide);
+}
+
+// ========== ORIGINAL GALLERY SLIDER (small right container) ==========
+let totalImages = 7;
+let currentIndex = 1;
+const slideImg = document.getElementById("slideImg");
+function updateSliderImage() {
+  let imgPath = "images/events/" + currentIndex + ".jpg";
+  slideImg.src = imgPath;
+  slideImg.onerror = function() {
+    if(!slideImg.hasAttribute('data-fallback')) {
+      slideImg.setAttribute('data-fallback', 'true');
+      slideImg.src = "https://placehold.co/900x500?text=TDC+Event+" + currentIndex;
+    }
+  };
+}
+setInterval(() => {
+  currentIndex++;
+  if(currentIndex > totalImages) currentIndex = 1;
+  updateSliderImage();
+}, 5000);
+updateSliderImage();
+
+// ========== SERVICE DATA ==========
+const serviceCentersDatabase = {
+  "ஆதாரில் மொபைல் எண் & mail ID இணைக்க மற்றும் மாற்ற": {
+    icon: "📄",
+    districts: {
+      "தேனி": {
+        centers: [
+          { name: "அனுஸ் கம்ப்யூட்டர்ஸ், தேனி", phone: "+919786340963", address: "பழைய பஸ்நிலையம், தேனி - 625531" },
+          { name: "தேவா இ சேவை மையம், தேனி", phone: "+919095254443", address: "பழைய டி வி எஸ் ரோடு,எடமால் தெரு கார்னர், தேனி - 625531" },
+		  { name: "கிருத்திக் இ பொது சேவை மையம், தேனி", phone: "+919944530003", address: "போஸ்ட் ஆபீஸ் ஓடை தெரு,ஆனந்த் மஹால் அருகில், தேனி - 625531" },
+		  { name: "வாஞ்சி இ சேவை மையம், பண்ணைப்புரம்", phone: "+919944530003", address: "பஸ்நிறுத்தம், போடி மெயின் ரோடு,பண்ணைப்புரம், தேனி - 625224" },
+		  { name: "எம் எம் ஆன்லைன் சர்வீசஸ் , உத்தமபாளையம்", phone: "+918220818281", address: "மதினா பள்ளிவாசல் காம்ப்ளக்ஸ், பைபாஸ்,உத்தமபாளையம், தேனி - 625533" },
+		  { name: "சாய் தர்ஷன் இ சேவை மையம் , கம்பம்", phone: "+919788974336", address: "பழைய பஸ்நிலையம் ரோடு,சிக்னல் அருகில், கம்பம் - 625516" },
+		  { name: "இவே கம்ப்யூட்டர்ஸ் , கம்பம்", phone: "+918667702629", address: "வேலப்பர் கோயில் தெரு,ராவுத்தர் ரெடிமேட் எதிர்புறம், கம்பம் - 625516" },
+		  { name: "கார்த்தி இ சேவை மையம்,போடிநாயக்கனூர்", phone: "+919843699681", address: "காமராஜ் பஜார்,ராயல் மென்ஸ்வேர் எதிர்புறம், போடிநாயக்கனூர்- 625513" },
+          { name: "ஸ்ரீ கம்ப்யூட்டர் ஜெராக்ஸ் & இ-சேவை மையம்,போடிநாயக்கனூர்", phone: "+919442388380", address: "RI ஆபிஸ் ரோடு, உதயம் பேட்டரி அருகில், போடிநாயக்கனூர்- 625513" },
+		  { name: "அன்னை ஆன்லைன்ஸ்,போடி தர்மத்துப்பட்டி", phone: "+919042783995", address: "வல்லபாய் படேல் தெரு, போடி தர்மத்துப்பட்டி- 625582" },
+		  { name: "நிஷிதா கம்ப்யூட்டர்ஸ் ஆதன் இ சேவை மையம் ,பெரியகுளம்", phone: "+918344516819", address: "காளத்தீஸ்வரன் கோயில் தெரு,தென்கரை, பெரியகுளம்- 625601" },
+		  { name: "ஐகான் ஸ்டுடியோ“ ,அரண்மனைப்புதூர்", phone: "+919003554368", address: "பஸ் நிறுத்தம் அருகில், அரண்மனைப்புதூர்- 625531" },
+		  { name: "ஈஷா கம்ப்யூட்டர்ஸ் & இ சேவை மையம் “ ,கண்டமனூர்", phone: "+919994864216", address: "ரெங்கநாதர் கோயில் தெரு, மெயின் ரோடு, கண்டமனூர்- 625517" },
+        ]
+      },
+      "  ": {
+        centers: [
+          { name: "திண்டுக்கல் ஈ-சேவை மையம்", phone: "+919487033446", address: "பேருந்து நிலையம் எதிரில், திண்டுக்கல் - 624001" }
+        ]
+      },
+      "   ": {
+        centers: [
+          { name: "மதுரை மத்திய சேவை மையம்", phone: "+919345678901", address: "அண்ணா நகர், மதுரை - 625001" }
+        ]
+      }
+    }
+  },
+  "ஆதாரில் முகவரி மாற்றம் செய்ய": {
+    icon: "📄",
+    districts: {
+      "தேனி": {
+        centers: [
+          { name: "அனுஸ் கம்ப்யூட்டர்ஸ், தேனி", phone: "+919786340963", address: "பழைய பஸ்நிலையம், தேனி - 625531" },
+          { name: "தேவா இ சேவை மையம், தேனி", phone: "+919095254443", address: "பழைய டி வி எஸ் ரோடு,எடமால் தெரு கார்னர், தேனி - 625531" },
+		  { name: "கிருத்திக் இ பொது சேவை மையம், தேனி", phone: "+919944530003", address: "போஸ்ட் ஆபீஸ் ஓடை தெரு,ஆனந்த் மஹால் அருகில், தேனி - 625531" },
+		  { name: "வாஞ்சி இ சேவை மையம், பண்ணைப்புரம்", phone: "+919944530003", address: "பஸ்நிறுத்தம், போடி மெயின் ரோடு,பண்ணைப்புரம், தேனி - 625224" },
+		  { name: "எம் எம் ஆன்லைன் சர்வீசஸ் , உத்தமபாளையம்", phone: "+918220818281", address: "மதினா பள்ளிவாசல் காம்ப்ளக்ஸ், பைபாஸ்,உத்தமபாளையம், தேனி - 625533" },
+		  { name: "சாய் தர்ஷன் இ சேவை மையம் , கம்பம்", phone: "+919788974336", address: "பழைய பஸ்நிலையம் ரோடு,சிக்னல் அருகில், கம்பம் - 625516" },
+		  { name: "இவே கம்ப்யூட்டர்ஸ் , கம்பம்", phone: "+918667702629", address: "வேலப்பர் கோயில் தெரு,ராவுத்தர் ரெடிமேட் எதிர்புறம், கம்பம் - 625516" },
+		  { name: "கார்த்தி இ சேவை மையம்,போடிநாயக்கனூர்", phone: "+919843699681", address: "காமராஜ் பஜார்,ராயல் மென்ஸ்வேர் எதிர்புறம், போடிநாயக்கனூர்- 625513" },
+          { name: "ஸ்ரீ கம்ப்யூட்டர் ஜெராக்ஸ் & இ-சேவை மையம்,போடிநாயக்கனூர்", phone: "+919442388380", address: "RI ஆபிஸ் ரோடு, உதயம் பேட்டரி அருகில், போடிநாயக்கனூர்- 625513" },
+		  { name: "அன்னை ஆன்லைன்ஸ்,போடி தர்மத்துப்பட்டி", phone: "+919042783995", address: "வல்லபாய் படேல் தெரு, போடி தர்மத்துப்பட்டி- 625582" },
+		  { name: "நிஷிதா கம்ப்யூட்டர்ஸ் ஆதன் இ சேவை மையம் ,பெரியகுளம்", phone: "+918344516819", address: "காளத்தீஸ்வரன் கோயில் தெரு,தென்கரை, பெரியகுளம்- 625601" },
+		  { name: "ஐகான் ஸ்டுடியோ“ ,அரண்மனைப்புதூர்", phone: "+919003554368", address: "பஸ் நிறுத்தம் அருகில், அரண்மனைப்புதூர்- 625531" },
+		  { name: "ஈஷா கம்ப்யூட்டர்ஸ் & இ சேவை மையம் “ ,கண்டமனூர்", phone: "+919994864216", address: "ரெங்கநாதர் கோயில் தெரு, மெயின் ரோடு, கண்டமனூர்- 625517" },
+        ]
+      },
+      "   ": {
+        centers: [
+          { name: "மதுரை சான்றிதழ் சேவை மையம்", phone: "+919487033447", address: "தளவாய் தெரு, மதுரை - 625001" }
+        ]
+      }
+    }
+  },
+  "புதிய ஆதார் பதிவு செய்ய |  கைரேகை, கருவிழி, போட்டோ update செய்ய": {
+    icon: "📄",
+    districts: {
+      "தேனி": {
+        centers: [
+          { name: "ஆதார் சேவை மையம்", phone: "+918608225339", address: "இயற்கை மெஸ் தெரு,அரசு ஐ டி ஐ அருகில்,மதுரை மெயின் ரோடு, தேனி - 625531" }
+		  
+        ]
+      }
+    }
+  }
+};
+
+const serviceList = Object.keys(serviceCentersDatabase).map(name => ({
+  name: name,
+  icon: serviceCentersDatabase[name].icon
+}));
+
+function renderServiceCards() {
+  const container = document.getElementById("serviceListContainer");
+  container.innerHTML = "";
+  serviceList.forEach(service => {
+    const card = document.createElement("div");
+    card.className = "service-card-clickable";
+    card.onclick = () => openServicePopup(service.name);
+    card.innerHTML = `
+      <div class="service-icon">${service.icon}</div>
+      <div class="service-info">
+        <h3>${escapeHtml(service.name)}</h3>
+        <p>🔽 சேவை மையம் தேர்வு செய்ய கிளிக் செய்யவும்</p>
+        <div class="click-hint">✨ Click to select service center</div>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+let currentSelectedService = null;
+let selectedCenterObj = null;
+
+function openServicePopup(serviceName) {
+  currentSelectedService = serviceName;
+  const serviceData = serviceCentersDatabase[serviceName];
+  if (!serviceData) return;
+  document.getElementById("popupServiceTitle").innerHTML = "🏪 சேவை மையம் தேர்வு";
+  document.getElementById("popupServiceSub").innerHTML = `${serviceData.icon} ${escapeHtml(serviceName)}`;
+  const districts = Object.keys(serviceData.districts);
+  let popupHTML = `
+    <div class="form-field">
+      <label>📍 மாவட்டம் / District:</label>
+      <select id="popupDistrict" onchange="loadCentersByDistrict()">
+        <option value="">-- தேர்வு செய்யவும் --</option>
+        ${districts.map(d => `<option value="${escapeHtml(d)}">${escapeHtml(d)}</option>`).join('')}
+      </select>
+    </div>
+    <div class="form-field">
+      <label>🏢 சேவை மையம் / Service Center:</label>
+      <select id="popupCenter" disabled onchange="displaySelectedCenter()">
+        <option value="">-- முதலில் மாவட்டம் தேர்வு செய்க --</option>
+      </select>
+    </div>
+    <div id="popupSelectedCenterInfo"></div>
+    <button id="popupWhatsappBtn" class="whatsapp-popup-btn" disabled onclick="sendWhatsappFromPopup()">
+      💬 WhatsApp enquiry / விசாரிக்க
+    </button>
+  `;
+  document.getElementById("popupBody").innerHTML = popupHTML;
+  window._currentServiceData = serviceData;
+  selectedCenterObj = null;
+  document.getElementById("servicePopup").style.display = "flex";
+}
+
+function loadCentersByDistrict() {
+  const district = document.getElementById("popupDistrict").value;
+  const serviceData = window._currentServiceData;
+  if (!district || !serviceData || !serviceData.districts[district]) {
+    const centerSelect = document.getElementById("popupCenter");
+    centerSelect.innerHTML = '<option value="">-- மாவட்டம் தேர்வு செய்க --</option>';
+    centerSelect.disabled = true;
+    document.getElementById("popupSelectedCenterInfo").innerHTML = "";
+    document.getElementById("popupWhatsappBtn").disabled = true;
+    return;
+  }
+  const centers = serviceData.districts[district].centers;
+  let centerHtml = '<option value="">-- சேவை மையம் தேர்வு செய்க --</option>';
+  centers.forEach((center, idx) => {
+    centerHtml += `<option value="${idx}">${escapeHtml(center.name)}</option>`;
+  });
+  const centerSelect = document.getElementById("popupCenter");
+  centerSelect.innerHTML = centerHtml;
+  centerSelect.disabled = false;
+  document.getElementById("popupSelectedCenterInfo").innerHTML = "";
+  document.getElementById("popupWhatsappBtn").disabled = true;
+  selectedCenterObj = null;
+}
+
+function displaySelectedCenter() {
+  const district = document.getElementById("popupDistrict").value;
+  const centerIdx = document.getElementById("popupCenter").value;
+  const serviceData = window._currentServiceData;
+  if (!district || centerIdx === "" || !serviceData || !serviceData.districts[district]) return;
+  const centers = serviceData.districts[district].centers;
+  if (!centers[centerIdx]) return;
+  const center = centers[centerIdx];
+  selectedCenterObj = { ...center, district: district };
+  const infoHtml = `
+    <div class="center-result-card">
+      <div class="center-name-large">🏪 ${escapeHtml(center.name)}</div>
+      <div class="center-detail-row">📍 மாவட்டம்: ${escapeHtml(district)}</div>
+      <div class="center-detail-row">📞 ${center.phone}</div>
+      <div class="center-detail-row">🏢 முகவரி: ${escapeHtml(center.address)}</div>
+    </div>
+  `;
+  document.getElementById("popupSelectedCenterInfo").innerHTML = infoHtml;
+  document.getElementById("popupWhatsappBtn").disabled = false;
+}
+// Photo Maker Popup Functions
+function showPhotoMakerPopup() {
+  document.getElementById('photoMakerPopup').style.display = 'flex';
+}
+
+function closePhotoMakerPopup() {
+  document.getElementById('photoMakerPopup').style.display = 'none';
+}
+
+function continueToPhotoMaker() {
+  closePhotoMakerPopup();
+  window.location.href = 'Photomaking.html';
+}
+
+// Override the existing Photo Maker menu click (if using menu link)
+// Method 1: Change the href dynamically
+document.addEventListener('DOMContentLoaded', function() {
+  let photoMakerLink = document.querySelector('a[href="Photomaking.html"]');
+  if (photoMakerLink) {
+    photoMakerLink.addEventListener('click', function(e) {
+      e.preventDefault();
+      showPhotoMakerPopup();
+    });
+  }
+});
+
+function sendWhatsappFromPopup() {
+  if (!selectedCenterObj) {
+    alert("தயவுசெய்து சேவை மையத்தை தேர்வு செய்யவும்");
+    return;
+  }
+  let rawPhone = selectedCenterObj.phone.replace(/\s/g, '');
+  if (!rawPhone.startsWith('+')) {
+    if (rawPhone.length === 10) rawPhone = '+91' + rawPhone;
+    else if (rawPhone.startsWith('0')) rawPhone = '+91' + rawPhone.substring(1);
+    else if (!rawPhone.startsWith('+')) rawPhone = '+91' + rawPhone;
+  }
+  const msg = `🙏 *வணக்கம்*, 
+நான் *தேனி மாவட்ட பொது இ-சேவை மைய உரிமையாளர்கள் நலச்சங்கம்* வலைத்தளத்திலிருந்து தொடர்பு கொள்கிறேன்.
+
+📌 *சேவை:* ${currentSelectedService}
+
+
+🔍 *எனது விசாரணை:* 
+: இந்த சேவைக்கான கட்டணம், நேரம், ஆவணங்கள் குறித்து தெரிவிக்கவும்.
+
+🙏 நன்றி!`;
+  const waUrl = `https://wa.me/${rawPhone}?text=${encodeURIComponent(msg)}`;
+  window.open(waUrl, '_blank');
+}
+
+function closeServicePopup() { document.getElementById("servicePopup").style.display = "none"; selectedCenterObj = null; }
+function escapeHtml(str) { if (!str) return ''; return str.replace(/[&<>]/g, function(m) { if (m === '&') return '&amp;'; if (m === '<') return '&lt;'; if (m === '>') return '&gt;'; return m; }); }
+function showContactInfo(type) { if (type === 'free') alert("📞 இலவச ஆலோசனை எண்: 9786340963 (காலை 10 மணி முதல் மாலை 6 மணி வரை)"); else if (type === 'help') alert("📞 உதவி மையம்: +91 9786340963 | WhatsApp உதவி"); else if (type === 'suggest') alert("📧 புகார் / suggestion: tdcscesevai@gmail.com"); }
+function openMemberPopup(link) { const popup = document.getElementById("memberPopup"); document.getElementById("driveLink").href = link; popup.style.display = "flex"; }
+function closeMemberPopup() { document.getElementById("memberPopup").style.display = "none"; }
+window.openMemberPopup = openMemberPopup; window.closeMemberPopup = closeMemberPopup;
+window.loadCentersByDistrict = loadCentersByDistrict; window.displaySelectedCenter = displaySelectedCenter; window.sendWhatsappFromPopup = sendWhatsappFromPopup; window.closeServicePopup = closeServicePopup; window.showContactInfo = showContactInfo;
+
+// Visitor counter
+let count = localStorage.getItem("page_view"); count = count ? Number(count) + 1 : 1; localStorage.setItem("page_view", count); document.getElementById("visitCount").innerText = count;
+document.addEventListener("DOMContentLoaded", () => { renderServiceCards(); initHeroSlider(); });
+</script>
+</body>
+</html>

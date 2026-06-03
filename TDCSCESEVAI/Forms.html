@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>தேனி மாவட்ட ஈ-சேவை - படிவங்கள் (Dynamic)</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: system-ui, 'Segoe UI', sans-serif; }
+        body { background: #eef2f7; padding: 2rem; }
+        .container { max-width: 1400px; margin: auto; background: white; border-radius: 2rem; overflow: hidden; box-shadow: 0 20px 35px -12px rgba(0,0,0,0.2); }
+        .header { background: linear-gradient(135deg, #0b3b5f, #1b5a7a); color: white; padding: 2rem; }
+        .header h1 { font-size: 1.8rem; }
+		.header-top{ display: flex; align-items: center; gap: 20px; flex-wrap: wrap;}
+		.site-logo{ width: 90px; height: 90px; border-radius: 50%; background: white; padding: 5px;object-fit: cover;box-shadow: 0 4px 10px rgba(0,0,0,0.2);}
+        .flex { display: flex; flex-wrap: wrap; }
+        .sidebar { width: 280px; background: #f9fbfd; border-right: 1px solid #ddd; padding: 1rem 0; }
+        .sidebar h3 { padding: 0 1.2rem 1rem; border-bottom: 1px solid #ccc; }
+        .form-list { max-height: 70vh; overflow-y: auto; }
+        .form-item { padding: 0.6rem 1rem; margin: 0.3rem 0.8rem; background: white; border-radius: 12px; cursor: pointer; border: 1px solid #e0e7ef; transition: 0.2s; }
+        .form-item:hover { background: #e6f0ff; transform: translateX(4px); border-color: #2c7cb6; }
+        .content { flex: 1; padding: 1.8rem; }
+        .search-bar { display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; }
+        .search-bar input { flex: 1; padding: 10px 16px; border-radius: 40px; border: 1px solid #ccc; }
+        .search-bar button { background: #1f6392; color: white; border: none; padding: 10px 20px; border-radius: 40px; cursor: pointer; }
+        .forms-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 1.2rem; }
+        .form-card { background: linear-gradient(135deg, #1e3c72, #2a5298); border-radius: 1.2rem; padding: 1.2rem; border: 1px solid #5d8ed6; box-shadow: 0 4px 10px rgba(0,0,0,0.08); cursor: pointer; transition: 0.3s; }
+        .form-card strong{color: white;}
+		.form-card div{color: #e8f4ff !important;}
+		.drive-note{color: black !important; font-weight: bold; background: #eef2ff; padding: 3px 8px; border-radius: 20px; display: inline-block;}
+        .form-card:hover { transform: translateY(-4px); box-shadow: 0 12px 20px -8px rgba(0,0,0,0.15); border-color: #8bb9d6; }
+        .modal-overlay { position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.7); backdrop-filter: blur(4px); display: flex; align-items: center; justify-content: center; visibility: hidden; opacity: 0; transition: 0.2s; z-index: 1000; }
+        .modal-overlay.active { visibility: visible; opacity: 1; }
+        .modal-card { background: white; max-width: 480px; width: 90%; border-radius: 2rem; overflow: hidden; }
+        .modal-header { background: #0b3b5f; color: white; padding: 1.5rem; text-align: center; }
+        .modal-body { padding: 2rem; }
+        .mail-input { width: 100%; padding: 12px; border-radius: 60px; border: 1px solid #ccc; margin: 0.5rem 0 1rem; }
+        .btn-group { display: flex; gap: 12px; margin-top: 1rem; flex-wrap: wrap; }
+        .btn-primary { background: #1f6392; color: white; border: none; padding: 10px 18px; border-radius: 40px; font-weight: bold; cursor: pointer; flex:1; }
+        .btn-register { background: #f4a261; border: none; padding: 10px 18px; border-radius: 40px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 1rem; }
+        .btn-close { background: #e2e8f0; border: none; padding: 10px 18px; border-radius: 40px; cursor: pointer; }
+        .alert-msg { background: #fff0db; padding: 0.7rem; border-radius: 1rem; margin-bottom: 1rem; color: #a86400; display: none; }
+        footer { text-align: center; padding: 1rem; background: #f1f5f9; font-size: 0.75rem; }
+        @media (max-width: 700px) { .sidebar { width: 100%; } .form-list { display: flex; flex-wrap: wrap; } .form-item { width: auto; } .header-top{ flex-direction: column; text-align: center; } .site-logo{width: 60px; height: 60px; } }
+		.topbar{ position:sticky; top:0; z-index:2000; background:#0d6efd; display:flex; align-items:center; padding:8px 12px; }
+        .topbar img{ height:42px; margin-right:12px; }
+        .menu{ flex:1; text-align:center; }
+        .menu a{ color:#fff; text-decoration:none; margin:0 10px; font-size:14px; white-space:nowrap; }
+        .menu a:hover{ text-decoration:underline; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <div class="header-top">
+            <img src="images/logo.png" class="site-logo" alt="Logo" onerror="this.src='https://via.placeholder.com/90?text=LOGO'">
+            <div>
+                <h1>📄 தேனி மாவட்ட பொது இ-சேவை மைய உரிமையாளர்கள் நலச்சங்கம்</h1>
+                <p>⭐ பதிவு பெற்ற உறுப்பினர்களுக்கு மட்டும் | அதிகாரப்பூர்வ படிவங்கள் ⭐</p>
+                <div class="menu">
+                    <a href="index.html">Home</a>
+                    <a href="board.html">Board Members</a>
+                    <a href="executive.html">Executive Members</a>
+                    <a href="members.html">Members</a>
+                    <a href="services.html">Services</a>
+                    <a href="weblink.html">Weblink</a>
+                    <a href="Photomaking.html">Photo Maker</a>
+                    <a href="Forms.html">Forms</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex">
+        <div class="sidebar">
+            <h3>📋 அனைத்து படிவங்கள் (<span id="formCountSidebar">0</span>)</h3>
+            <div class="form-list" id="sidebarList"></div>
+        </div>
+        <div class="content">
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="🔍 படிவத்தை தேடுக... (PAN, Medical, Income...)" autocomplete="off">
+                <button id="searchBtn">தேடு</button>
+            </div>
+            <div id="resultCount" style="margin-bottom: 1rem; font-size: 0.85rem; color: #2c6e9e;">படிவங்கள் கிடைக்கும்</div>
+            <div id="cardsContainer" class="forms-grid"></div>
+        </div>
+    </div>
+    <footer>© தேனி மாவட்ட பொது இ-சேவை மையம் | ஒவ்வொரு படிவமும் Google Drive மூலம் பதிவிறக்கம் ஆகும்</footer>
+</div>
+
+<!-- Member access popup -->
+<div id="accessModal" class="modal-overlay">
+    <div class="modal-card">
+        <div class="modal-header">
+            <h2>🔐 Only Registered Members Allowed</h2>
+            <p>பதிவு பெற்ற உறுப்பினர்களுக்கு மட்டும்</p>
+        </div>
+        <div class="modal-body">
+            <div id="modalAlert" class="alert-msg"></div>
+            <label>📧 பதிவு செய்த மின்னஞ்சல் (Registered Email):</label>
+            <input type="email" id="memberEmail" class="mail-input" placeholder="your@email.com">
+            <div class="btn-group">
+                <button id="verifyBtn" class="btn-primary">அணுகல் & பதிவிறக்கம்</button>
+                <button id="closeModalBtn" class="btn-close">மூடு</button>
+            </div>
+            <button id="registerRedirectBtn" class="btn-register">📝 Not a Member – Register Here</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // --------------------------------------------------------------
+    // ✅ DYNAMIC FORMS REGISTRY - இங்கு நீங்கள் விரும்பும் படிவங்களை சேர்க்கலாம் / நீக்கலாம்.
+    //    formsMasterList[]  ஒவ்வொரு object-ம் { name: "படிவத்தின் பெயர்", driveLink: "Google Drive link" }
+    //    driveLink:  Google Drive கோப்பு / கோப்புறை link (shareable). 
+    //    ஒரு படிவத்தை சேர்க்க new entry copy செய்யவும். நீக்க வரியை நீக்கவும்.
+    //    எண்ணிக்கை தானாகவே கணக்கிடப்படும். 94 என்ற கட்டாயம் இல்லை.
+    // --------------------------------------------------------------
+    const formsMasterList = [
+        { name: "AADHAAR", driveLink: "https://drive.google.com/drive/folders/1eqVIsUIiVLJRkAkeWjZQVXDu7CJiXxNR?usp=sharing" },
+        { name: "Adangal - Natham", driveLink: "https://drive.google.com/file/d/18kK5NoqTytK-fYCanaAVR2nAmlfGNHuU/view?usp=sharing" },
+        { name: "ADANGAL SHEET", driveLink: "https://drive.google.com/file/d/1bDAxCQKBXM8mGPoM4kTmVFSrl4G4sqel/view?usp=sharing" },
+        { name: "Adangal", driveLink: "https://drive.google.com/file/d/13kxBkaPmZXIlk5DDrzClVZknShoBAHmt/view?usp=sharing" },
+        { name: "AGE CETIFICATE", driveLink: "https://docs.google.com/document/d/1Cvbhay5QmzxycRRpiyytYUqzgEC5cseA/edit?usp=sharing&ouid=116161362803705979312&rtpof=true&sd=true" },
+        { name: "Agnipath Affidavit", driveLink: "https://drive.google.com/file/d/1bS0fyygsm2P8IL4q67R99o_sKBeypP7C/view?usp=sharing" },
+        { name: "APPLICATIOI{ FOR CAS{JAL LE,AVE", driveLink: "https://drive.google.com/file/d/1Tetdt3h32NvLV48e_zG_7dLIU9pNyZxh/view?usp=sharing" },
+        { name: "Arasu Cable TV Declaration Form", driveLink: "https://docs.google.com/document/d/1G5GWLkhIVnsf_p8h8nfXDRHB_5aSMY3y/edit?usp=sharing&ouid=116161362803705979312&rtpof=true&sd=true" },
+        { name: "Bank KYC Form", driveLink: "https://drive.google.com/file/d/1Obgy_2Y3x-Ko0ApHmBSsvVwA4BJI8VjV/view?usp=sharing" },
+        { name: "Bonafide certificate - Paramedical", driveLink: "https://drive.google.com/file/d/15uSA7UvXy9MfamgOp9cTKigq--yzp492/view?usp=sharing" },
+        { name: "CCTV Camer Project Modal", driveLink: "https://docs.google.com/document/d/1CvmglK9UKMh479WCbCp_srSSogYqn4Kn/edit?usp=sharing&ouid=116161362803705979312&rtpof=true&sd=true" },
+        { name: "CERTIFICATE OF FITNESS TO RETURN TO DUTY - 21.03.2018", driveLink: "https://docs.google.com/document/d/1_BrWyCJkLUQLsJenLP2thZrcB8x8r9sB/edit?usp=sharing&ouid=116161362803705979312&rtpof=true&sd=true" },
+        { name: "CERTIFICATE OF PHYSICAL FITNESS BY", driveLink: "https://drive.google.com/file/d/1HwONnQSA-_GT9sQGkUc2qXTkuNckgVfd/view?usp=sharing" },
+        { name: "Certificate of Physical Standards (1)", driveLink: "https://drive.google.com/file/d/1tulxthFfeMb4sGO6x7NUq-PU0bEt-QCR/view?usp=sharing" },
+        { name: "Certificate of Physical Standards", driveLink: "https://drive.google.com/file/d/1BfonqiejY79zloMzJoskVEDwLFgNsHh9/view?usp=sharing" },
+        { name: "CERTIFICATION OF PHYSICAL FITNESS BY A SINGLE MEDICAL OFFICER", driveLink: "https://docs.google.com/document/d/1l_3vH8Aw7QIwyIRPrtWCOpfE5TIOUgxw/edit?usp=sharing&ouid=116161362803705979312&rtpof=true&sd=true" },
+        { name: "CHARACTER AND CONDUCT CERTIFICATE", driveLink: "https://drive.google.com/file/d/19XuR_LWSljKvKMBqn2bNRMWSdqDwGUhx/view?usp=sharing" },
+        { name: "CIVIL SUPPLY MOBILE NO", driveLink: "https://drive.google.com/file/d/1aqVZyk1AtvCx8qDnZMcTT3r3TH-sDKwi/view?usp=sharing" },
+        { name: "CM Insurance Form", driveLink: "https://drive.google.com/file/d/1Xqd2VcGVU85sL8nkaBGqSqoKdsOjXGIR/view?usp=sharing" },
+        { name: "Community - Self Declaration", driveLink: "https://docs.google.com/document/d/1lsA0DsFbdXgJlq8KYQ8sOcSDYogK87gi/edit?usp=sharing&ouid=116161362803705979312&rtpof=true&sd=true" },
+        { name: "Community Self Declaration", driveLink: "https://drive.google.com/file/d/1fONuopHEsP1jhYyB5vhjWNeO7ffKhH99/view?usp=sharing" },
+        { name: "Death Report Form", driveLink: "https://drive.google.com/file/d/1GtnPfBE1WEkEpmzJCoQ9lKLic2kVxTs0/view?usp=sharing" },
+        { name: "Dic -Loan Details", driveLink: "https://drive.google.com/file/d/1x7z-z9d-4qqNG3qVcZ9eOOE4Iwd7BHKF/view?usp=sharing" },
+        { name: "Domicile Certificate", driveLink: "https://drive.google.com/file/d/1kWNkrXKAMXq2Fh_kBZAqD8XJkl_y0c7M/view?usp=sharing" },
+        { name: "E STAMP", driveLink: "https://drive.google.com/drive/folders/1Yp8m-N5kor1FvR23PddTnBkKNoMe2Wla?usp=sharing" },
+        { name: "EWS Affidavit", driveLink: "https://drive.google.com/file/d/1Sh5yIJMxNgX-3UpVqsRrp5U31D22YoX8/view?usp=sharing" },
+        { name: "EB Form", driveLink: "https://drive.google.com/drive/folders/12eL727J4BrucWFpblUOSpg1OmRxzZc53?usp=sharing" },
+        { name: "EB வாரிசு வேலைக்கான விண்ணப்பம்", driveLink: "https://drive.google.com/file/d/1BQhoH0nTsMyErd7v2Z9iCup0m1KuJr_l/view?usp=sharing" },
+        { name: "EEMACHADANGU CLAIM FORM", driveLink: "https://drive.google.com/file/d/1U87_CmGaMnoGnnERT0UXHYOGI3NhmUyM/view?usp=sharing" },
+        { name: "Experience Certificate", driveLink: "https://drive.google.com/file/d/1NU8cK1FlecuStdaTQHQJBm8v9JMSaL8T/view?usp=sharing" },
+        { name: "EYE FITNESS CERTIFICATE", driveLink: "https://drive.google.com/file/d/1dov_fEQeJ9NpRPliJWzoqY8cBTTpZjPG/view?usp=sharing" },
+        { name: "First Graduate Self Declaration form", driveLink: "https://drive.google.com/file/d/1mPzl19mMSkI-soVd8N7BO08L3vgJM0Ji/view?usp=sharing" },
+        { name: "First Marriage Certificate Manual", driveLink: "https://drive.google.com/file/d/1DsuCEFKHhkdSjfN8ndc2-ArDBcD-Le4G/view?usp=sharing" },
+        { name: "Form 10C Form 19 Form 31", driveLink: "https://docs.google.com/document/d/1B7rKiHDw7dsai54CZSYY75FceHgtn66c/edit?usp=sharing&ouid=116161362803705979312&rtpof=true&sd=true" },
+        { name: "Form 121 Filled Form Modal", driveLink: "https://drive.google.com/file/d/1gPkg-6Xm8t_fEhzkX_urSsUcGD8-a538/view?usp=sharing" },
+		{ name: "Form121", driveLink: "https://drive.google.com/file/d/1JAfLfVh0pwmYTSDZnL5_kZHCJrwehBB1/view?usp=sharing" },
+		{ name: "Home Guards Application - Natham", driveLink: "https://drive.google.com/file/d/101Xe03tMZ_YEXiU3TbO20FNtvXrUVazi/view?usp=sharing" },
+        { name: "IDENTIFICATION  MARK CERTITICATE", driveLink: "https://docs.google.com/document/d/1zJ4fuAp0jSIXgvo4wEcmA1MtyYuShEyP/edit?usp=sharing&ouid=116161362803705979312&rtpof=true&sd=true" },
+        { name: "Jamin Form", driveLink: "https://drive.google.com/file/d/1n1uUd9YyReYdae_nuhVwFL4kkIYH8zTa/view?usp=sharing" },
+        { name: "Legal", driveLink: "https://drive.google.com/file/d/1-Oc9oE31GD4J6okOvPC1N188K7vP62io/view?usp=sharing" },
+        { name: "LIFE CERTIFICATE FOR THE PURPOSE OF REGISTRATION OF", driveLink: "https://drive.google.com/file/d/1Pxbz6CmL6wKwpH0mgGWCXveNY-MpxMc2/view?usp=sharing" },
+        { name: "Muthulakshmi Reddy Pregnant scheme Form", driveLink: "https://drive.google.com/file/d/1SPQX5ooiqECugRp3weAVCcQFQiL33_Yy/view?usp=sharing" },
+        { name: "Medical and Fitness Certificate", driveLink: "https://drive.google.com/file/d/1CL-H_dgJ3iBTQ9lnNbPJJvkiAXN4PLA-/view?usp=sharing" },
+        { name: "Medical Certificate for Conductor", driveLink: "https://drive.google.com/file/d/1wEo6JQRQB9XFZVwOgFXH73bcwv61jv3g/view?usp=sharing" },
+        { name: "MEDICAL CERTIFICATE FOR LEAVE OR EXTENTION OF LEAVE OR", driveLink: "https://drive.google.com/file/d/1wO3MsoksPC5ZkvCzjTVpszNThzUkor0A/view?usp=sharing" },
+        { name: "MEDICAL FITNESS CERTIFICATE", driveLink: "https://docs.google.com/document/d/1vjDnFBtcKX_-JAqYBIqHDcn69Gs5uI1q/edit?usp=sharing&ouid=116161362803705979312&rtpof=true&sd=true" },
+        { name: "Medical-Fitness", driveLink: "https://drive.google.com/file/d/1RwmcXx3UXYL7Y_2g3nfOMh3ElibiTg9D/view?usp=sharing" },
+        { name: "நலவாரியம்", driveLink: "https://drive.google.com/drive/folders/1Icfwfalo6kMqfFUfogQn0Zu503e4yCMu?usp=sharing" },
+        { name: "Nantham Chitta", driveLink: "https://drive.google.com/file/d/1jphUCsUY_0WHQmSJW8rq8kCY-DFq0OQf/view?usp=sharing" },
+        { name: "PAN CARD", driveLink: "https://drive.google.com/drive/folders/1LCr_YMoS_iKiMpNrDboEUCYoIMP771iH?usp=sharing" },
+        { name: "PAN Card SHG agreement", driveLink: "https://docs.google.com/document/d/1OhR8IJbzYWs9-TTJ7VsRosrMWbqRQ-WF/edit?usp=sharing&ouid=116161362803705979312&rtpof=true&sd=true" },
+        { name: "PMEGP PROJECT REPORT MODAL", driveLink: "https://drive.google.com/file/d/1-oFS1M1AF-P07A7MzITkCovBnGP5KKUp/view?usp=sharing" },
+        { name: "PMEGP Project Report", driveLink: "https://docs.google.com/document/d/1Ry77nmk17_6J2IiUWvcTOkg9xzagm9eT/edit?usp=sharing&ouid=116161362803705979312&rtpof=true&sd=true" },
+        { name: "PROPOSED FORMAT FOR AFFIDAVIT FOR DATE OF BIRTH", driveLink: "https://docs.google.com/document/d/1_rzJbEtkyrWUcDl3xhtJ9FLBg6UFQ4DQ/edit?usp=sharing&ouid=116161362803705979312&rtpof=true&sd=true" },
+        { name: "Railway Identity Card For Physically Challenged Person For Ticket", driveLink: "https://drive.google.com/file/d/1R-PG2QOSCb9UKtjWSt_TNzkCZvAnj4p_/view?usp=sharing" },
+        { name: "Religion Certificate Agnipath", driveLink: "https://docs.google.com/document/d/1Iwk3mesc4wdprAyAYck34uFxDqWInAEu/edit?usp=sharing&ouid=116161362803705979312&rtpof=true&sd=true" },
+        { name: "Rural_Area. Certificate", driveLink: "https://drive.google.com/file/d/1t7Y8lhY9J3MPqqD1azk-tRrloB7vS6O_/view?usp=sharing" },
+        { name: "Rental (1)", driveLink: "https://docs.google.com/document/d/1xpK2F9esBCJ3s-TLeQeISHz3jQqL2pPq/edit?usp=sharing&ouid=116161362803705979312&rtpof=true&sd=true" },
+        { name: "Rental", driveLink: "https://docs.google.com/document/d/1RxOB5OZzHuBpb9UUuUt-dklnqiIrge03/edit?usp=sharing&ouid=116161362803705979312&rtpof=true&sd=true" },
+        { name: "RTO DR Licence Missing Affidavit", driveLink: "https://docs.google.com/document/d/14UApV8VMcPIh5ULvx3Agi8CjXkOll3m6/edit?usp=sharing&ouid=116161362803705979312&rtpof=true&sd=true" },
+        { name: "Tamilnilam F-Line (How to Apply)", driveLink: "https://drive.google.com/file/d/1pvKMSYM6_FJD6IHItCZc5optvOTbBuxB/view?usp=sharing" },
+        { name: "TNEB Name Transfer Form", driveLink: "https://drive.google.com/file/d/1vagUs1FPKRvTOylDRiElOvntoJVlkYJ_/view?usp=sharing" },
+        { name: "Transfer of Ownership of a Motor Vehicle FORM 29", driveLink: "https://drive.google.com/file/d/11nqVJsMQfqMKz4_AQJMnSewv4mEJX053/view?usp=sharing" },
+        { name: "Un Married Certificate - Appendix-F", driveLink: "https://docs.google.com/document/d/1jdPHnnMqZkAlVGgQVHqCOh9GMahZf5k4/edit?usp=sharing&ouid=116161362803705979312&rtpof=true&sd=true" },
+        { name: "UNDERTAKING FORMAT - EB", driveLink: "https://drive.google.com/file/d/1DlFwDzz0nvxNU7TPnLLfKT84hgVFJh5X/view?usp=sharing" },
+        { name: "Unmarried Agnipath Form", driveLink: "https://docs.google.com/document/d/1VhZmaj7JHPl28__8CG-WBhBcD3Y_ccUb/edit?usp=sharing&ouid=116161362803705979312&rtpof=true&sd=true" },
+        { name: "Unmarried", driveLink: "https://drive.google.com/file/d/1bCV0XEsoPb-v0JnfWWPpsSae_I90lAm1/view?usp=sharing" },
+        { name: "VAO Certificate for Community", driveLink: "https://drive.google.com/file/d/1rEtmodWJIWQnRXQcyvI6eY1R_jfcevwC/view?usp=sharing" },
+        { name: "ஆளறிச்சான்றிதழ்", driveLink: "https://docs.google.com/document/d/1tddTiW_6QxicTtlSRRAKDuQlWqQxcBKa/edit?usp=sharing&ouid=116161362803705979312&rtpof=true&sd=true" },
+        { name: "ஆளறிச்சான்றிதழ் (duplicate)", driveLink: "https://drive.google.com/file/d/15iJLDJQMlZvbZNEWfkJxdu6x70zMVmXe/view?usp=sharing" },
+        { name: "கருணை அடிப்படையில் வேலைக்கான விண்ணப்பம்", driveLink: "https://docs.google.com/document/d/17WFEmQ6CHhhwMPua5B6RYMV-6-AHxWLb/edit?usp=sharing&ouid=116161362803705979312&rtpof=true&sd=true" },
+        { name: "கலைஞர் கைவினைத் திட்டம்  திட்ட அறிக்கை", driveLink: "https://drive.google.com/file/d/17lp2vbwWtbFQOsFDHv32AI1Z7LoGHPrU/view?usp=sharing" },
+        { name: "கலைஞர் கைவினைத் திட்டம் சுய சான்று", driveLink: "https://drive.google.com/file/d/19AwTIm4OIaQIYU_UG_bryn7qDYzmdVhF/view?usp=sharing" },
+        { name: "கலைஞர் கைவினைத் திட்டம் திட்ட அறிக்கை மாதிரி படிவம்", driveLink: "https://drive.google.com/file/d/1e1rKO0d7ruc0rOQN4vgZahtsYYmDJdJ4/view?usp=sharing" },
+        { name: "சாதிக்கான சுயஉறுதி மொழி சான்று", driveLink: "https://drive.google.com/file/d/13yIlgwmQXAfJT471Gplfno5CkmPfBqoT/view?usp=sharing" },
+        { name: "தமிழக அரசின் சிறப்பு திட்டத்தில் வீட்டுமனை பட்டா விண்ணப்பம்", driveLink: "https://drive.google.com/file/d/1LzXI2bMI9g7EhdCAhkRPeIYEVbyfeGaJ/view?usp=sharing" },
+        { name: "மிஷன் வத்சல்யா", driveLink: "https://drive.google.com/file/d/1DV3LepYWsMsANwwekGZWMqXwMM6Au5si/view?usp=sharing" },
+        { name: "வேலைவாய்ப்பு அலுவலக - மாற்று திறனாளி உதவி தொகை விண்ணப்பம்", driveLink: "https://drive.google.com/file/d/1Qtqn0cQTCxwJlojQ1XS9tAKKxH-wsOeH/view?usp=sharing" },
+        { name: "வேலைவாய்ப்பு அலுவலகம் உதவி தொகை விண்ணப்பம் - புதிய விண்ணப்பதாரர்", driveLink: "https://drive.google.com/file/d/1obV9PYzhcDc6X2318tjUkNsrsApbXLN3/view?usp=sharing" },
+        { name: "வேலைவாய்ப்பு அலுவலகம் உதவி தொகை விண்ணப்பம் - புதுப்பித்தல்", driveLink: "https://drive.google.com/file/d/1TlyUVWaRWw4S3emEiZWem0hlrXSFSdIp/view?usp=sharing" },
+        
+        // 🔽🔽🔽 இங்கு உங்களுக்கு தேவையான புதிய படிவங்களை சேர்க்கலாம் (எத்தனை வேண்டுமானாலும்) 🔽🔽🔽
+        // Example format: 
+        // { name: "Income Tax Return", driveLink: "https://drive.google.com/file/d/YOUR_FILE_ID/view" },
+        // { name: "GST Registration", driveLink: "https://drive.google.com/drive/folders/YOUR_FOLDER_ID" },
+        
+       
+        // NOTE: மேலே உள்ள dummy links - உங்கள் actual Google Drive links ஆக மாற்றவும்.
+        // எத்தனை படிவங்கள் வேண்டுமானாலும் சேர்க்கலாம். count தானாக adjust ஆகும்.
+    ];
+
+    // --------------------------------------------------------------
+    // Registered members (demo emails) - இதையும் நீங்கள் விரும்பியபடி விரிவாக்கலாம்
+    const registeredEmails = [
+        "anuscomputers@gmail.com", "anusesevaitheni@gmail.com", "hydera4@gmail.com", "subiraj7489@gmail.com", 
+        "rameshks193@gmail.com", "annakamueseva@gmail.com", "vedacommunication@gmail.com", "sk.csctvm@gmail.com", 
+        "kannanseva7@gmail.com", "ngsenthilkumar78@gmail.com", "sricomputer360@gmail.com", "ssgraphicsupm@gmail.com", 
+        "tncltu@gmail.com", "yuvasys2016@gmail.com", "ishacomputersesevai@gmail.com", "ISHACOMPUTERS4216@gmail.com", 
+        "nishithacomputers@gmail.com", "ponmanjal@gmail.com", "mmosupm@gmail.com", "anandhan.37@gmail.com", 
+        "shivamnetspot@gmail.com", "winmarutinet@gmail.com", "cscrajcomputers@gmail.com", "thamaraionlineservices@gmail.com", 
+        "udaiyalimaharajan@gmail.com", "R.V.A.NALLATHAMBI@gmail.com", "rojacomputers@gmail.com", "yuvacomputercare@gmail.com", 
+        "mdxeroxa4@gmail.com", "cybereway1@gmail.com", "iconstudiotheni@gmail.com", "sureshpradeep89@gmail.com", 
+        "csctheni17@gmail.com", "mahendrancivil87@gmail.com", "tharadigital@gmail.com", "sivamahe1975@gmail.com", 
+        "anusesevaitheni@gmail.com", "karthimobilesbodi@gmail.com", "ishaxerox4216@gmail.com", "mrajtheni@gmail.com", 
+        "karthikeyan7626@gmail.com", "lvanchinathan@gmail.com", "ssabarithanush@gmail.com", "deva.xerox2019@gmail.com"
+    ];
+    const GOOGLE_FORM_REGISTRATION_URL = "https://forms.gle/bccj8RaUy854NLdr6";
+
+    // Helper: convert any google drive link to direct downloadable/openable URL (supports file/d/ or folders)
+    function getUsableDriveLink(link) {
+        if (!link) return "#";
+        // If already a folder or normal link, just return as is (will open in new tab)
+        const fileMatch = link.match(/\/d\/([a-zA-Z0-9_-]+)/);
+        if (fileMatch && fileMatch[1]) {
+            return `https://drive.google.com/uc?export=download&id=${fileMatch[1]}`;
+        }
+        return link;
+    }
+
+    let selectedFormLink = null;
+    let selectedFormName = null;
+
+    // Render Sidebar (dynamic count)
+    function renderSidebar() {
+        const sidebarDiv = document.getElementById('sidebarList');
+        const total = formsMasterList.length;
+        document.getElementById('formCountSidebar').innerText = total;
+        sidebarDiv.innerHTML = formsMasterList.map((item, idx) => 
+            `<div class="form-item" data-form="${item.name.replace(/"/g, '&quot;')}" data-link="${item.driveLink.replace(/"/g, '&quot;')}">${idx+1}. ${item.name}</div>`
+        ).join('');
+        
+        document.querySelectorAll('.form-item').forEach(el => {
+            el.addEventListener('click', (e) => {
+                const name = el.getAttribute('data-form');
+                const link = el.getAttribute('data-link');
+                openAccessModal(name, link);
+            });
+        });
+    }
+
+    function renderCards(filter = "") {
+        const filtered = formsMasterList.filter(item => item.name.toLowerCase().includes(filter.toLowerCase()));
+        const countSpan = document.getElementById('resultCount');
+        countSpan.innerHTML = `${filtered.length} / ${formsMasterList.length} படிவங்கள் கிடைக்கின்றன`;
+        const container = document.getElementById('cardsContainer');
+        if(filtered.length === 0) {
+            container.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:3rem;">⚠️ படிவம் எதுவும் பொருந்தவில்லை</div>';
+            return;
+        }
+        container.innerHTML = filtered.map(item => `
+            <div class="form-card" data-form="${item.name.replace(/"/g, '&quot;')}" data-link="${item.driveLink.replace(/"/g, '&quot;')}">
+                <strong>📄 ${item.name}</strong>
+                <div style="margin-top:10px; font-size:0.7rem; color:#c3e0ff;"> </div>
+                <div style="margin-top:8px;"><span class="drive-note">⬇️ உறுப்பினர் மட்டும்</span></div>
+            </div>
+        `).join('');
+        
+        document.querySelectorAll('.form-card').forEach(card => {
+            card.addEventListener('click', (e) => {
+                const name = card.getAttribute('data-form');
+                const link = card.getAttribute('data-link');
+                openAccessModal(name, link);
+            });
+        });
+    }
+
+    function openAccessModal(formName, driveLink) {
+        selectedFormName = formName;
+        selectedFormLink = driveLink;
+        document.getElementById('memberEmail').value = '';
+        document.getElementById('modalAlert').style.display = 'none';
+        document.getElementById('accessModal').classList.add('active');
+    }
+
+    function verifyAndDownload() {
+        const email = document.getElementById('memberEmail').value.trim();
+        const alertBox = document.getElementById('modalAlert');
+        if(!email) {
+            alertBox.innerText = "⚠️ மின்னஞ்சலை உள்ளிடவும் (Registered email required)";
+            alertBox.style.display = 'block';
+            return;
+        }
+        if(registeredEmails.includes(email)) {
+            alertBox.style.display = 'none';
+            document.getElementById('accessModal').classList.remove('active');
+            if(selectedFormName && selectedFormLink) {
+                const downloadUrl = getUsableDriveLink(selectedFormLink);
+                window.open(downloadUrl, '_blank');
+                alert(`✅ ${selectedFormName} - பதிவிறக்கம் தொடங்குகிறது.\nGoogle Drive இலிருந்து திறக்கப்படும்.`);
+            } else {
+                alert("⚠️ படிவத்தின் Google Drive link கிடைக்கவில்லை. நிர்வாகியை தொடர்பு கொள்க.");
+            }
+        } else {
+            alertBox.innerText = "❌ பதிவு செய்யப்படாத மின்னஞ்சல்! 'Register Here' மூலம் பதிவு செய்யவும்.\nNot a registered member.";
+            alertBox.style.display = 'block';
+        }
+    }
+
+    function openGoogleFormRegistration() {
+        window.open(GOOGLE_FORM_REGISTRATION_URL, '_blank');
+        document.getElementById('accessModal').classList.remove('active');
+    }
+
+    // Event Listeners
+    document.getElementById('verifyBtn').addEventListener('click', verifyAndDownload);
+    document.getElementById('closeModalBtn').addEventListener('click', () => document.getElementById('accessModal').classList.remove('active'));
+    document.getElementById('registerRedirectBtn').addEventListener('click', openGoogleFormRegistration);
+    document.getElementById('searchBtn').addEventListener('click', () => renderCards(document.getElementById('searchInput').value));
+    document.getElementById('searchInput').addEventListener('keyup', (e) => { if(e.key === 'Enter') renderCards(e.target.value); });
+    document.getElementById('accessModal').addEventListener('click', (e) => { if(e.target === document.getElementById('accessModal')) document.getElementById('accessModal').classList.remove('active'); });
+
+    // Initial Render
+    renderSidebar();
+    renderCards("");
+</script>
+</body>
+</html>

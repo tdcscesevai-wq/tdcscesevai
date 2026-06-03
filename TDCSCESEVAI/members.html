@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+<meta charset="UTF-8">
+<title>Board Members</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#f4f6f8;
+}
+
+/* ===== STICKY MENU ===== */
+.menu{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:#1b5e20;
+  padding:10px;
+  text-align:center;
+}
+
+.menu a{
+  color:#fff;
+  text-decoration:none;
+  margin:0 10px;
+  font-size:25px;
+}
+
+/* ===== PAGE TITLE ===== */
+.page-title{
+  text-align:center;
+  color:#1b5e20;
+  margin:25px 0 10px;
+}
+
+/* ===== GRID (4 COLUMN CENTER) ===== */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4, minmax(0, 280px));
+  gap:25px;
+  justify-content:center;
+  padding:20px;
+}
+
+/* ===== CARD ===== */
+.card{
+  background:#fff;
+  padding:15px;
+  border-radius:12px;
+  text-align:center;
+  box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+.profile-img{
+  width:90px;
+  height:90px;
+  border-radius:50%;
+  object-fit:cover;
+  cursor:pointer;
+  transition:transform 0.3s;
+}
+
+/* HOVER PREVIEW */
+.profile-img:hover{
+  transform:scale(1.05);
+}
+
+.profile-img:hover::after{
+  content:'';
+}
+
+.card img{
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  object-fit:cover;
+}
+
+.card h3{
+  margin:8px 0 4px;
+}
+
+.card p{
+  font-size:13px;
+  margin:3px;
+}
+
+/* ===== ACTION BUTTONS ===== */
+.actions{
+  margin-top:10px;
+  display:flex;
+  justify-content:center;
+  gap:12px;
+}
+
+.action-btn{
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  color:#fff;
+  font-size:18px;
+}
+
+/* Call */
+.call{
+  background:#e91e63;
+}
+
+/* WhatsApp */
+.whatsapp{
+  background:#25d366;
+}
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+  .grid{ grid-template-columns:repeat(2, minmax(0, 260px)); }
+}
+@media(max-width:600px){
+  .grid{ grid-template-columns:repeat(1, minmax(0, 260px)); }
+}
+</style>
+</head>
+
+<body>
+
+<style>
+/* ===== TOP BAR ===== */
+.topbar{
+  position:sticky;
+  top:0;
+  z-index:2000;
+  background:#1b5e20;
+  display:flex;
+  align-items:center;
+  padding:8px 12px;
+}
+
+/* LOGO */
+.topbar img{
+  height:42px;
+  margin-right:12px;
+}
+
+/* MENU */
+.menu{
+  flex:1;
+  text-align:center;
+}
+
+.menu a{
+  color:#fff;
+  text-decoration:none;
+  margin:0 10px;
+  font-size:20px;
+  white-space:nowrap;
+}
+
+.menu a:hover{
+  text-decoration:underline;
+}
+/* ===== IMAGE POPUP ===== */
+.img-popup{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.8);
+  z-index:5000;
+  text-align:center;
+}
+.img-popup img{
+  max-width:90%;
+  max-height:85%;
+  margin-top:5%;
+  border-radius:10px;
+}
+.img-popup span{
+  position:absolute;
+  top:15px;
+  right:25px;
+  font-size:34px;
+  color:#fff;
+  cursor:pointer;
+}
+.wa-img-btn img{
+  width:32px;
+  height:32px;
+  border-radius:50%;
+}
+</style>
+
+<div class="topbar">
+  <!-- LOGO -->
+  <img src="images/logo.png" alt="Association Logo">
+
+  <!-- MENU -->
+  <div class="menu">
+    <a href="index.html">Home</a>
+    <a href="board.html" target="_blank">Board Members</a>
+    <a href="executive.html" target="_blank">Executive Members</a>
+    <a href="members.html" target="_blank">Members</a>
+    <a href="services.html" target="_blank">Services</a>
+    <a href="weblink.html" target="_blank">Weblink</a>
+  </div>
+</div>
+
+<!-- ===== ASSOCIATION MARQUEE ===== -->
+<style>
+.association-marquee{
+  background:#0d47a1;   /* Blue */
+  color:#ffffff;
+  padding:6px 0;
+  font-size:20px;
+  font-weight:bold;
+  text-align:center;
+}
+.association-marquee marquee{
+  white-space:nowrap;
+}
+</style>
+
+<div class="association-marquee">
+  <marquee scrollamount="5">
+    தேனி மாவட்ட பொது இ-சேவை மைய உரிமையாளர்கள் நலச்சங்கம்
+  </marquee>
+</div>
+
+
+<h2 class="page-title">சங்கத்தின் உறுப்பினர்கள்</h2>
+
+<div class="grid">
+
+  <div class="card">
+    <img src="images/members/Senthil.jpg"
+         class="profile-img"
+         onclick="showImg(this.src)">
+   <h3>திரு.N G செந்தில்குமார்</h3>
+    <p>கூடலூர்</p>
+    <p>உறுப்பினர்</p>
+    <a href="tel:9942299449">📞 9942299449</a>
+	<a href="https://wa.me/9942299449"
+   target="_blank"
+   class="wa-img-btn">
+   <img src="icons/whatsapp.jpg" alt="WhatsApp">
+</a>
+  </div>
+ <div class="card">
+    <img src="images/members/udyali.jpg"
+         class="profile-img"
+         onclick="showImg(this.src)">
+   <h3>திரு.M உடையாளி</h3>
+    <p>கூடலூர்</p>
+    <p>உறுப்பினர்</p>
+    <a href="tel:9442388380">📞 9442388380</a>
+	<a href="https://wa.me/9442388380"
+   target="_blank"
+   class="wa-img-btn">
+   <img src="icons/whatsapp.jpg" alt="WhatsApp">
+</a>
+  </div>
+  <div class="card">
+    <img src="images/members/rajesh.jpg"
+         class="profile-img"
+         onclick="showImg(this.src)">
+   <h3>திரு.ஜெ.ராஜேஸ்வரன்</h3>
+    <p>கம்பம்</p>
+    <p>உறுப்பினர்</p>
+    <a href="tel:9092522741">📞 9092522741</a>
+	<a href="https://wa.me/9092522741"
+   target="_blank"
+   class="wa-img-btn">
+   <img src="icons/whatsapp.jpg" alt="WhatsApp">
+</a>
+  </div>
+  <div class="card">
+    <img src="images/members/mahcumbum.jpg"
+         class="profile-img"
+         onclick="showImg(this.src)">
+   <h3>திரு.கு.மகேந்திரன்</h3>
+    <p>கம்பம்</p>
+    <p>உறுப்பினர்</p>
+    <a href="tel:9788974336">📞 9788974336</a>
+	<a href="https://wa.me/9788974336"
+   target="_blank"
+   class="wa-img-btn">
+   <img src="icons/whatsapp.jpg" alt="WhatsApp">
+</a>
+  </div>
+  <div class="card">
+    <img src="images/members/Chandrasekar.jpg"
+         class="profile-img"
+         onclick="showImg(this.src)">
+   <h3>திரு.ச.சந்திரசேகர்</h3>
+    <p>உத்தமபாளையம்</p>
+	<p>உறுப்பினர்</p>
+	<a href="tel:9788677915">📞 9788677915</a>
+    <a href="https://wa.me/9788677915"
+   target="_blank"
+   class="wa-img-btn">
+   <img src="icons/whatsapp.jpg" alt="WhatsApp">
+</a>
+  </div>
+<div class="card">
+    <img src="images/members/sudhkar.jpg"
+         class="profile-img"
+         onclick="showImg(this.src)">
+   <h3>திரு.V சுதாகர்</h3>
+    <p>உத்தமபாளையம்</p>
+    <p>உறுப்பினர்</p>
+    <a href="tel:9976907650">📞 9976907650</a>
+	<a href="https://wa.me/9976907650"
+   target="_blank"
+   class="wa-img-btn">
+   <img src="icons/whatsapp.jpg" alt="WhatsApp">
+</a>
+  </div>
+ <div class="card">
+    <img src="images/members/suruli.jpg"
+         class="profile-img"
+         onclick="showImg(this.src)">
+   <h3>திரு.பா.சுருளிராஜ்</h3>
+    <p>சின்னமனூர்</p>
+    <p>உறுப்பினர்</p>
+    <a href="tel:7708581083">📞 7708581083</a>
+	<a href="https://wa.me/7708581083"
+   target="_blank"
+   class="wa-img-btn">
+   <img src="icons/whatsapp.jpg" alt="WhatsApp">
+</a>
+  </div>
+   <div class="card">
+    <img src="images/members/sathcmr.jpg"
+         class="profile-img"
+         onclick="showImg(this.src)">
+   <h3>திரு.அ.சதீஸ்குமார்</h3>
+    <p>சின்னமனூர்</p>
+    <p>உறுப்பினர்</p>
+    <a href="tel:8668199508">📞 8668199508</a>
+	<a href="https://wa.me/8122993539"
+   target="_blank"
+   class="wa-img-btn">
+   <img src="icons/whatsapp.jpg" alt="WhatsApp">
+</a>
+  </div>
+   <div class="card">
+    <img src="images/members/yuvarani.jpg"
+         class="profile-img"
+         onclick="showImg(this.src)">
+   <h3>திருமதி.கா.யுவராணி</h3>
+    <p>ஓடைப்பட்டி</p>
+    <p>உறுப்பினர்</p>
+    <a href="tel:8248122980">📞 8248122980</a>
+	<a href="https://wa.me/8248122980"
+   target="_blank"
+   class="wa-img-btn">
+   <img src="icons/whatsapp.jpg" alt="WhatsApp">
+</a>
+  </div>
+  <div class="card">
+    <img src="images/members/muthu.jpg"
+         class="profile-img"
+         onclick="showImg(this.src)">
+   <h3>திருமதி.சே முத்துலட்சுமி</h3>
+    <p>தேவாரம்</p>
+    <p>உறுப்பினர்</p>
+    <a href="tel:9942368258">📞 9942368258</a>
+	<a href="https://wa.me/9942368258"
+   target="_blank"
+   class="wa-img-btn">
+   <img src="icons/whatsapp.jpg" alt="WhatsApp">
+</a>
+  </div>
+  <div class="card">
+    <img src="images/members/vanji.jpg"
+         class="profile-img"
+         onclick="showImg(this.src)">
+   <h3>திரு.லோ.வாஞ்சிநாதன்</h3>
+    <p>பண்ணைப்புரம்</p>
+    <p>உறுப்பினர்</p>
+    <a href="tel:9688243736">📞 9688243736</a>
+	<a href="https://wa.me/9688243736"
+   target="_blank"
+   class="wa-img-btn">
+   <img src="icons/whatsapp.jpg" alt="WhatsApp">
+</a>
+  </div>
+ <div class="card">
+    <img src="images/members/.jpg"
+         class="profile-img"
+         onclick="showImg(this.src)">
+   <h3>திரு.சு.கார்த்திக்</h3>
+    <p>கோம்பை</p>
+    <p>உறுப்பினர்</p>
+    <a href="tel:9789756511">📞 9789756511</a>
+	<a href="https://wa.me/9789756511"
+   target="_blank"
+   class="wa-img-btn">
+   <img src="icons/whatsapp.jpg" alt="WhatsApp">
+</a>
+  </div>
+  <div class="card">
+    <img src="images/members/karthi.jpg"
+         class="profile-img"
+         onclick="showImg(this.src)">
+   <h3>திரு.கோ.செல்வபாண்டி</h3>
+    <p>போடிநாயக்கனூர்</p>
+    <p>உறுப்பினர்</p>
+    <a href="tel:9843699681">📞 9843699681</a>
+	<a href="https://wa.me/9843699681"
+   target="_blank"
+   class="wa-img-btn">
+   <img src="icons/whatsapp.jpg" alt="WhatsApp">
+</a>
+  </div>
+  <div class="card">
+    <img src="images/members/suba.jpg"
+         class="profile-img"
+         onclick="showImg(this.src)">
+   <h3>திருமதி.பி.சுபத்ரா</h3>
+    <p>போடிநாயக்கனூர்</p>
+    <p>உறுப்பினர்</p>
+    <a href="tel:8248734773">📞 8248734773</a>
+	<a href="https://wa.me/8248734773"
+   target="_blank"
+   class="wa-img-btn">
+   <img src="icons/whatsapp.jpg" alt="WhatsApp">
+</a>
+  </div>
+  <div class="card">
+    <img src="images/members/hithar.jpg"
+         class="profile-img"
+         onclick="showImg(this.src)">
+   <h3>திரு.ஹ.ஹைதர்அலி</h3>
+    <p>போடிநாயக்கனூர்</p>
+    <p>உறுப்பினர்</p>
+    <a href="tel:9677952870">📞 9677952870</a>
+	<a href="https://wa.me/9677923235"
+   target="_blank"
+   class="wa-img-btn">
+   <img src="icons/whatsapp.jpg" alt="WhatsApp">
+</a>
+  </div>
+  <div class="card">
+    <img src="images/members/Karthick.jpg"
+         class="profile-img"
+         onclick="showImg(this.src)">
+   <h3>திரு.பா.கார்த்திக்</h3>
+    <p>போடிநாயக்கனூர்</p>
+    <p>உறுப்பினர்</p>
+    <a href="tel:8148890699">📞 8148890699</a>
+	<a href="https://wa.me/8148890699"
+   target="_blank"
+   class="wa-img-btn">
+   <img src="icons/whatsapp.jpg" alt="WhatsApp">
+</a>
+  </div>
+  <div class="card">
+    <img src="images/members/mahesillai.jpg"
+         class="profile-img"
+         onclick="showImg(this.src)">
+   <h3>திரு.S.R.மகேந்திரன்</h3>
+    <p>சில்லமரத்துப்பட்டி</p>
+    <p>உறுப்பினர்</p>
+    <a href="tel:9894863735">📞 9894863735</a>
+	<a href="https://wa.me/9894863735"
+   target="_blank"
+   class="wa-img-btn">
+   <img src="icons/whatsapp.jpg" alt="WhatsApp">
+</a>
+  </div>
+ <div class="card">
+    <img src="images/members/rameshk.jpg"
+         class="profile-img"
+         onclick="showImg(this.src)">
+   <h3>திரு.கு.ரமேஷ்</h3>
+    <p>பூதிப்புரம்</p>
+    <p>உறுப்பினர்</p>
+    <a href="tel:9042947748">📞 9042947748</a>
+	<a href="https://wa.me/9042947748"
+   target="_blank"
+   class="wa-img-btn">
+   <img src="icons/whatsapp.jpg" alt="WhatsApp">
+</a>
+  </div>
+  <div class="card">
+    <img src="images/members/prthap.jpg"
+         class="profile-img"
+         onclick="showImg(this.src)">
+   <h3>திரு.செ.பிரதாப்</h3>
+    <p>தேனி</p>
+    <p>உறுப்பினர்</p>
+    <a href="tel:7010324190">📞 7010324190</a>
+	<a href="https://wa.me/7010324190"
+   target="_blank"
+   class="wa-img-btn">
+   <img src="icons/whatsapp.jpg" alt="WhatsApp">
+</a>
+  </div>
+  <div class="card">
+    <img src="images/members/devi.jpg"
+         class="profile-img"
+         onclick="showImg(this.src)">
+   <h3>திருமதி.கமலா சரவணக்குமார் </h3>
+    <p>தேனி</p>
+    <p>உறுப்பினர்</p>
+    <a href="tel:9443164562">📞 9443164562</a>
+	<a href="https://wa.me/9443164562"
+   target="_blank"
+   class="wa-img-btn">
+   <img src="icons/whatsapp.jpg" alt="WhatsApp">
+</a>
+  </div>
+  <div class="card">
+    <img src="images/members/deva.jpg"
+         class="profile-img"
+         onclick="showImg(this.src)">
+   <h3>திரு.ரா.பாண்டிக்கண்ணன்</h3>
+    <p>தேனி்</p>
+    <p>உறுப்பினர்</p>
+    <a href="tel:9095254443">📞 9095254443</a>
+	<a href="https://wa.me/9095254443"
+   target="_blank"
+   class="wa-img-btn">
+   <img src="icons/whatsapp.jpg" alt="WhatsApp">
+</a>
+  </div>
+  <div class="card">
+    <img src="images/members/anand.jpg"
+         class="profile-img"
+         onclick="showImg(this.src)">
+   <h3>திரு.க.ஆனந்தன்</h3>
+    <p>சீலையம்பட்டி</p>
+    <p>உறுப்பினர்</p>
+    <a href="tel:9043579288">📞 9043579288</a>
+	<a href="https://wa.me/9043579288"
+   target="_blank"
+   class="wa-img-btn">
+   <img src="icons/whatsapp.jpg" alt="WhatsApp">
+</a>
+  </div>
+ <div class="card">
+    <img src="images/members/Kumaresan.jpg"
+         class="profile-img"
+         onclick="showImg(this.src)">
+   <h3>திரு.த.குமரேசன்</h3>
+    <p>கோவிந்தநகரம்</p>
+    <p>உறுப்பினர்</p>
+    <a href="tel:8608944627">📞 8608944627</a>
+	<a href="https://wa.me/8608944627"
+   target="_blank"
+   class="wa-img-btn">
+   <img src="icons/whatsapp.jpg" alt="WhatsApp">
+</a>
+  </div>
+  <div class="card">
+    <img src="images/members/clas.jpg"
+         class="profile-img"
+         onclick="showImg(this.src)">
+   <h3>திரு.மு.நாகராஜ்</h3>
+    <p>தேனி</p>
+    <p>உறுப்பினர்</p>
+    <a href="tel:9443839428">📞 9443839428</a>
+	<a href="https://wa.me/9443839428"
+   target="_blank"
+   class="wa-img-btn">
+   <img src="icons/whatsapp.jpg" alt="WhatsApp">
+</a>
+  </div>
+  <div class="card">
+    <img src="images/members/josap.jpg"
+         class="profile-img"
+         onclick="showImg(this.src)">
+   <h3>திரு.ஜெ.ஆரோக்கிய ஜோசப்</h3>
+    <p>பெரியகுளம்</p>
+    <p>உறுப்பினர்</p>
+    <a href="tel:9366708352">📞 9366708352</a>
+	<a href="https://wa.me/9366708352"
+   target="_blank"
+   class="wa-img-btn">
+   <img src="icons/whatsapp.jpg" alt="WhatsApp">
+</a>
+  </div>
+  <div class="card">
+    <img src="images/members/suthar.jpg"
+         class="profile-img"
+         onclick="showImg(this.src)">
+   <h3>திரு.சு.சுதர்சன்</h3>
+    <p>பெரியகுளம்</p>
+    <p>உறுப்பினர்</p>
+    <a href="tel:8344516819">📞 8344516819</a>
+	<a href="https://wa.me/8344516819"
+   target="_blank"
+   class="wa-img-btn">
+   <img src="icons/whatsapp.jpg" alt="WhatsApp">
+</a>
+  </div>
+  <div class="card">
+    <img src="images/members/nalla.jpg"
+         class="profile-img"
+         onclick="showImg(this.src)">
+   <h3>திரு.நல்லதம்பி</h3>
+    <p>பெரியகுளம்</p>
+    <p>உறுப்பினர்</p>
+    <a href="tel:9865951561">📞 9865951561</a>
+	<a href="https://wa.me/8667785192"
+   target="_blank"
+   class="wa-img-btn">
+   <img src="icons/whatsapp.jpg" alt="WhatsApp">
+</a>
+  </div>
+  </div>
+
+<!-- IMAGE POPUP -->
+<div id="imgPopup" class="img-popup">
+  <span onclick="closeImg()">×</span>
+  <img id="popupImg">
+</div>
+
+<script>
+function showImg(src){
+  document.getElementById("popupImg").src = src;
+  document.getElementById("imgPopup").style.display="block";
+}
+function closeImg(){
+  document.getElementById("imgPopup").style.display="none";
+}
+</script>
+
+</body>
+</html>
