@@ -2712,7 +2712,7 @@ document.getElementById("pincode").addEventListener("input", updateMembers);
 function sendWhatsApp() {
   const phone = document.getElementById("member").value;
   if (!phone) { alert("உறுப்பினரை தேர்வு செய்யவும்"); return; }
-  const message = encodeURIComponent(`🙏 *வணக்கம்*, ${selectedService} விண்ணப்பிக்க, நான் *தேனி மாவட்ட பொது இ-சேவை மைய உரிமையாளர்கள் நலச்சங்கம்* வலைத்தளத்திலிருந்து தொடர்பு கொள்கிறேன்.இந்த சேவைக்கான கட்டணம், மற்றும் ஆவணங்கள் குறித்து தெரிவிக்கவும்.🙏 நன்றி!.`);
+  const message = encodeURIComponent(`🙏 *வணக்கம்*, ${selectedService} விண்ணப்பிக்க, நான் *தேனி மாவட்ட பொது இ-சேவை மைய உரிமையாளர்கள் நலச்சங்கம்* வலைத்தளத்திலிருந்து தொடர்பு கொள்கிறேன்.இந்த சேவைக்கான கட்டணம் மற்றும் ஆவணங்கள் குறித்து தெரிவிக்கவும்.🙏 நன்றி!.`);
   window.open(`https://wa.me/${phone}?text=${message}`, "_blank");
   
   }
