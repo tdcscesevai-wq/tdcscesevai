@@ -90,7 +90,7 @@ marquee {
   white-space: nowrap;
 }
 
-/* ===== FULL WIDTH HERO SLIDER (BETWEEN MARQUEES) ===== */
+/* ===== FULL WIDTH HERO SLIDER ===== */
 .full-width-slider-section {
   width: 100%;
   margin: 12px 0 16px 0;
@@ -122,7 +122,6 @@ marquee {
   transition: transform 0.3s ease;
 }
 
-/* Navigation Arrows - Modern style */
 .slider-arrow {
   position: absolute;
   top: 50%;
@@ -159,7 +158,6 @@ marquee {
   right: 18px;
 }
 
-/* Dots / Indicators */
 .slider-dots {
   position: absolute;
   bottom: 15px;
@@ -187,10 +185,8 @@ marquee {
   background: #ff9800;
   width: 28px;
   border-radius: 20px;
-  background: #ff9800;
 }
 
-/* Caption overlay (optional but neat) */
 .slide-caption {
   position: absolute;
   bottom: 20%;
@@ -219,7 +215,6 @@ marquee {
   align-items: stretch;
 }
 
-/* LEFT: SLIDER CONTAINER (original slider small) we keep but rename to gallery card */
 .slider-container {
   flex: 2;
   min-width: 260px;
@@ -238,7 +233,6 @@ marquee {
   border-radius: 24px;
 }
 
-/* RIGHT: SERVICE PANEL */
 .service-panel {
   flex: 1.3;
   min-width: 340px;
@@ -279,7 +273,6 @@ marquee {
   font-size: 0.95rem;
 }
 
-/* Service card - clickable */
 .service-card-clickable {
   background: white;
   border-radius: 24px;
@@ -344,7 +337,7 @@ marquee {
 .popup-container {
   background: white;
   width: 90%;
-  max-width: 500px;
+  max-width: 550px;
   max-height: 85vh;
   border-radius: 36px;
   overflow: hidden;
@@ -408,7 +401,6 @@ marquee {
   overflow-y: auto;
 }
 
-/* Form fields */
 .form-field {
   margin-bottom: 20px;
 }
@@ -487,7 +479,6 @@ marquee {
   transform: none;
 }
 
-/* Links section */
 .links-section {
   text-align: center;
   margin: 20px 0 10px;
@@ -501,7 +492,6 @@ marquee {
   cursor: pointer;
 }
 
-/* Member Popup */
 .popup-bg {
   display: none;
   position: fixed;
@@ -523,12 +513,25 @@ marquee {
   text-align: center;
 }
 
+/* Visitor Counter Styles */
 .visitor-counter {
   text-align: center;
-  margin-top: 30px;
+  margin: 25px auto 15px;
+  padding: 10px 20px;
+  background: #e8f5e9;
+  border-radius: 50px;
   font-size: 18px;
   font-weight: bold;
   color: #1b5e20;
+  max-width: 400px;
+}
+
+/* Hide Common Ninja watermark text */
+.commonninja-component-attribution,
+.commonninja-attribution,
+[class*="attribution"],
+iframe + div {
+  display: none !important;
 }
 
 .footer {
@@ -546,6 +549,7 @@ marquee {
   .slide-caption { font-size: 0.7rem; bottom: 15%; left: 3%; }
   .hero-slider .swiper-slide-img { min-height: 220px; }
 }
+
 .marquee-container {
   width: 100%;
   overflow: hidden;
@@ -580,7 +584,6 @@ marquee {
   color: #b71c1c;
 }
 
-/* Animation keyframes */
 @keyframes marquee-scroll {
   0% {
     transform: translateX(0);
@@ -590,11 +593,9 @@ marquee {
   }
 }
 
-/* Responsive - படத்திற்கு pause செய்ய hover செய்யும் போது */
 .marquee-container:hover .marquee-content {
   animation-play-state: paused;
 }
-
 </style>
 </head>
 <body>
@@ -626,16 +627,14 @@ marquee {
   <marquee scrollamount="3">⚡ ஆதாரில் மொபைல் எண் & Mail ID இணைக்க மற்றும் மாற்ற | ஆதாரில் முகவரி மாற்றம் செய்ய அனுகவும்| உங்கள் அருகில் உள்ள ஆதார் சேவை மையத்தைத் தேர்வு செய்ய சேவையின் பெயரை கிளிக் செய்க ⚡</marquee>
 </div>
 
-<!-- ===== FULL WIDTH IMAGE SLIDER (BETWEEN MARQUEES) - LOCAL BANNER IMAGES ===== -->
+<!-- FULL WIDTH IMAGE SLIDER -->
 <div class="full-width-slider-section">
   <div class="swiper-full-container" style="position: relative;">
     <div class="hero-slider" id="fullHeroSlider">
       <img class="swiper-slide-img" id="fullSliderImg" alt="Event showcase" style="width: 100%; display: block;">
       <div class="slide-caption" id="sliderCaption">✨ தேனி மாவட்ட பொது இ-சேவை மையங்கள் ✨</div>
-      <!-- Navigation Arrows -->
       <div class="slider-arrow prev-arrow" id="prevSlideBtn">❮</div>
       <div class="slider-arrow next-arrow" id="nextSlideBtn">❯</div>
-      <!-- Dots indicator -->
       <div class="slider-dots" id="sliderDotsContainer"></div>
     </div>
   </div>
@@ -657,10 +656,9 @@ marquee {
     <div class="slider">
       <img id="slideImg" src="images/events/1.jpg" alt="Event Gallery" onerror="this.src='https://placehold.co/900x500?text=Event+Photo'">
     </div>
-    <div style="text-align:center; margin-top:12px; font-size:13px; color:#2e7d32;">📸 எங்கள் சேவை நிகழ்வுகள் </div>
+    <div style="text-align:center; margin-top:12px; font-size:13px; color:#2e7d32;">📸 எங்கள் சேவை நிகழ்வுகள்</div>
   </div>
 
-  <!-- RIGHT PANEL: Clickable service cards -->
   <div class="service-panel">
     <div class="service-header">
       <span>🌟</span>
@@ -705,6 +703,7 @@ marquee {
     <div class="popup-body" id="popupBody"></div>
   </div>
 </div>
+
 <!-- PHOTO MAKER INFO POPUP -->
 <div id="photoMakerPopup" class="popup-overlay" style="display: none;">
   <div class="popup-container" style="max-width: 550px;">
@@ -714,22 +713,21 @@ marquee {
     </div>
     <div class="popup-body" style="text-align: left; font-size: 15px; line-height: 1.6;">
       <ul style="padding-left: 20px;">
-        <li>✅ Choose File</li>
-        <li>✅ Crop Photo (3.5cm x4.5cm)</li>
-        <li>✅ Apply Crop</li>
-		<li>✅ Margins(mm) Top 1, Bottom 1, Left 1, Right 1 வைக்கவும்</li>
-		<li>✅ Gaps(mm) Horizontal 2.5, Vertical 2.5 வைக்கவும்</li>
-		<li>✅ Paper Select செய்யவும். (6x4 Maxi) 8copy (or) 4 copy க்கு</li>
-		<li>✅ Paper Select செய்யவும். (A4) 16copy (or) 30 copy க்கு</li>
-		<li>✅ Bright, Contrast தேவையெனில் பயன் படுத்திக்கொள்ளலாம்</li>
-		<li>✅ Download PDF (PDF File open செய்து பிரிண்ட் கொடுக்கலாம்</li>
-		<li>✅ Single Photo தேவையெனில் (Save Single Photo) Button click செய்யவும்.</li>
-		<li>✅ Photo வுக்கு கீழ் பெயர், தேதி தேவையெனில் (Text on Photo) பயன்படுத்தவும். விண்ணப்பத்திற்கு பயன்படுத்திக்கொள்ளலாம்.</li>
-		<li>✅ Exam -க்கு தேவைப்படும் signature தேவையான அளவில் crop செய்து jpeg ஆக file save செய்துகொள்ளலாம்.</li>
-        <li>✅ <strong>AI Remove BG</strong> மூலம் பின்னணி நீக்கலாம்</li>
-        <li>✅ <strong>AI Image Enhancer மூலம் Photo Clear செய்துகொள்ளலாம்</li>
-        <li>✅ <strong>AI Image Enhance prompt பயன்படுத்தி Google Gemini மூலம் சிதைந்த, அழுக்கான, BW to Colour போட்டோவை சரிசெய்துகொள்ளலாம்.</li>
-        <li>✅ <strong>PDF Download</strong> - A4 / Maxi சீட்டில் ஒரே நேரத்தில் பல புகைப்படங்கள்</li>
+        <li>✅ Choose File - புகைப்படத்தை தேர்வு செய்க</li>
+        <li>✅ Crop Photo (3.5cm x 4.5cm) - புகைப்படத்தை கிராப் செய்க</li>
+        <li>✅ Apply Crop - கிராப்பை உறுதி செய்க</li>
+        <li>✅ Margins(mm) Top 1, Bottom 1, Left 1, Right 1 வைக்கவும்</li>
+        <li>✅ Gaps(mm) Horizontal 2.5, Vertical 2.5 வைக்கவும்</li>
+        <li>✅ Paper Select (6x4 Maxi) - 8 copy அல்லது 4 copy க்கு</li>
+        <li>✅ Paper Select (A4) - 16 copy அல்லது 30 copy க்கு</li>
+        <li>✅ Brightness, Contrast தேவையெனில் பயன்படுத்தவும்</li>
+        <li>✅ Download PDF - PDF ஐ பதிவிறக்கம் செய்து Print எடுக்கவும்</li>
+        <li>✅ Save Single Photo - ஒற்றை புகைப்படம் தேவைப்பட்டால்</li>
+        <li>✅ Text on Photo - பெயர், தேதி சேர்க்க Enable Text பயன்படுத்தவும்</li>
+        <li>✅ Signature - தேவையான அளவில் crop செய்து JPEG ஆக save செய்யவும்</li>
+        <li>✅ AI Remove BG - பின்னணி நீக்க</li>
+        <li>✅ AI Image Enhancer - புகைப்படத்தை Clear செய்ய</li>
+        <li>✅ PDF Download - A4 / Maxi சீட்டில் ஒரே நேரத்தில் பல புகைப்படங்கள்</li>
       </ul>
       <p style="margin-top: 15px; background: #fff3e0; padding: 10px; border-radius: 20px; text-align: center;">
         📌 <strong>குறிப்பு:</strong> முதலில் புகைப்படத்தை Upload செய்யவும்.<br>
@@ -743,18 +741,23 @@ marquee {
   </div>
 </div>
 
-
+<!-- GLOBAL VISITOR COUNTER (Total Unique Visitors) -->
 <div class="visitor-counter">
-  👁️ Visitors Count : <span id="visitCount">0</span>
+  🌍 மொத்த பார்வையாளர்கள் / Total Visitors: 
+  <div id="sfcl1sf6qddg1n2neh63zwmxmdsx247ulp6"></div>
+  <script type="text/javascript" src="https://counter11.optistats.ovh/private/counter.js?c=l1sf6qddg1n2neh63zwmxmdsx247ulp6&down=async" async></script>
+  <noscript>
+    <img src="https://counter11.optistats.ovh/private/freecounterstat.php?c=l1sf6qddg1n2neh63zwmxmdsx247ulp6" border="0" alt="visitor counter">
+  </noscript>
 </div>
+
 <footer class="footer">
   © 2026 TDCSCESEVAI | தேனி மாவட்ட பொது இ-சேவை மைய உரிமையாளர்கள் நலச்சங்கம் <br>
-  WhatsApp enquiry மூலம் நேரடித் தொடர்பு
+  WhatsApp enquiry மூலம் தொடர்பு கொள்ளலாம்.
 </footer>
 
 <script>
-// ========== FULL WIDTH HERO SLIDER (BETWEEN MARQUEES) - USING LOCAL BANNER IMAGES FROM SUBFOLDER ==========
-// Banner images from local folder: images/banner/ (banner1.jpg, banner2.jpg, etc.)
+// ========== FULL WIDTH HERO SLIDER ==========
 const heroImages = [
   "images/banner/banner1.jpg",
   "images/banner/banner2.jpg",
@@ -772,12 +775,8 @@ function updateHeroSlide(index) {
   if (!heroImgElement) return;
   const imgUrl = heroImages[index % heroImages.length];
   heroImgElement.src = imgUrl;
-  // Remove or comment out the caption update line
-  // captionElement.innerText = captions[index % captions.length];
-  // Instead, keep a default static caption or hide it
-  captionElement.style.display = "none"; // This hides the caption completely
+  captionElement.style.display = "none";
   
-  // Update dots
   const dots = document.querySelectorAll('.dot');
   dots.forEach((dot, i) => {
     if (i === index) dot.classList.add('active');
@@ -821,42 +820,27 @@ function createDots() {
   }
 }
 
-// Initialize full-width slider with local images and fallback handling
 function initHeroSlider() {
   if (heroImgElement) {
-    // Set fallback handler: if local image fails, try placeholders but keep local path preference
     heroImgElement.onerror = function() {
       if (!heroImgElement.hasAttribute('data-fallback-hero')) {
         heroImgElement.setAttribute('data-fallback-hero', 'true');
-        // Instead of external placeholder, we can use a base64 or local fallback but to ensure visibility
-        // Use a high-quality local colored placeholder with text (data:image not needed, but use a reliable fallback)
-        // We'll use a placeholder image that matches the theme, but keep consistent with local folders.
-        // If a specific banner fails, we try a generic local fallback if exists else friendly placeholder.
-        const failedSrc = heroImgElement.src;
-        // Check if the failing image is from banner folder
-        if (failedSrc.includes('banner')) {
-          // Attempt to load a default local banner (if banner1 fails, we can keep trying, but to avoid infinite loop)
-          // Provide a consistent inline fallback style background color with text
-          heroImgElement.style.objectFit = 'cover';
-          heroImgElement.style.backgroundColor = '#2e5c2e';
-          heroImgElement.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 600'%3E%3Crect width='1200' height='600' fill='%231b5e20'/%3E%3Ctext x='50%25' y='50%25' font-size='28' fill='white' text-anchor='middle' dy='.3em' font-family='Arial'%3E📸 TDC Service Center Banner%3C/text%3E%3C/svg%3E";
-        } else {
-          heroImgElement.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 600'%3E%3Crect width='1200' height='600' fill='%232e7d32'/%3E%3Ctext x='50%25' y='50%25' font-size='26' fill='white' text-anchor='middle' dy='.3em'%3E🏆 தேனி மாவட்ட இ-சேவை மையம்%3C/text%3E%3C/svg%3E";
-        }
+        heroImgElement.style.objectFit = 'cover';
+        heroImgElement.style.backgroundColor = '#2e5c2e';
+        heroImgElement.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 600'%3E%3Crect width='1200' height='600' fill='%231b5e20'/%3E%3Ctext x='50%25' y='50%25' font-size='28' fill='white' text-anchor='middle' dy='.3em' font-family='Arial'%3E📸 TDC Service Center Banner%3C/text%3E%3C/svg%3E";
       }
     };
     updateHeroSlide(0);
   }
   createDots();
   resetHeroTimer();
-  // arrow listeners
   const prevBtn = document.getElementById("prevSlideBtn");
   const nextBtn = document.getElementById("nextSlideBtn");
   if (prevBtn) prevBtn.addEventListener("click", prevHeroSlide);
   if (nextBtn) nextBtn.addEventListener("click", nextHeroSlide);
 }
 
-// ========== ORIGINAL GALLERY SLIDER (small right container) ==========
+// ========== ORIGINAL GALLERY SLIDER ==========
 let totalImages = 7;
 let currentIndex = 1;
 const slideImg = document.getElementById("slideImg");
@@ -879,34 +863,24 @@ updateSliderImage();
 
 // ========== SERVICE DATA ==========
 const serviceCentersDatabase = {
-  "ஆதாரில் மொபைல் எண் & mail ID இணைக்க மற்றும் மாற்ற": {
+  "ஆதாரில் மொபைல் எண் இணைக்க": {
     icon: "📄",
     districts: {
       "தேனி": {
         centers: [
           { name: "அனுஸ் கம்ப்யூட்டர்ஸ், தேனி", phone: "+919786340963", address: "பழைய பஸ்நிலையம், தேனி - 625531" },
           { name: "தேவா இ சேவை மையம், தேனி", phone: "+919095254443", address: "பழைய டி வி எஸ் ரோடு,எடமால் தெரு கார்னர், தேனி - 625531" },
-		  { name: "கிருத்திக் இ பொது சேவை மையம், தேனி", phone: "+919944530003", address: "போஸ்ட் ஆபீஸ் ஓடை தெரு,ஆனந்த் மஹால் அருகில், தேனி - 625531" },
-		  { name: "வாஞ்சி இ சேவை மையம், பண்ணைப்புரம்", phone: "+919944530003", address: "பஸ்நிறுத்தம், போடி மெயின் ரோடு,பண்ணைப்புரம், தேனி - 625224" },
-		  { name: "எம் எம் ஆன்லைன் சர்வீசஸ் , உத்தமபாளையம்", phone: "+918220818281", address: "மதினா பள்ளிவாசல் காம்ப்ளக்ஸ், பைபாஸ்,உத்தமபாளையம், தேனி - 625533" },
-		  { name: "சாய் தர்ஷன் இ சேவை மையம் , கம்பம்", phone: "+919788974336", address: "பழைய பஸ்நிலையம் ரோடு,சிக்னல் அருகில், கம்பம் - 625516" },
-		  { name: "இவே கம்ப்யூட்டர்ஸ் , கம்பம்", phone: "+918667702629", address: "வேலப்பர் கோயில் தெரு,ராவுத்தர் ரெடிமேட் எதிர்புறம், கம்பம் - 625516" },
-		  { name: "கார்த்தி இ சேவை மையம்,போடிநாயக்கனூர்", phone: "+919843699681", address: "காமராஜ் பஜார்,ராயல் மென்ஸ்வேர் எதிர்புறம், போடிநாயக்கனூர்- 625513" },
+          { name: "கிருத்திக் இ பொது சேவை மையம், தேனி", phone: "+919944530003", address: "போஸ்ட் ஆபீஸ் ஓடை தெரு,ஆனந்த் மஹால் அருகில், தேனி - 625531" },
+          { name: "வாஞ்சி இ சேவை மையம், பண்ணைப்புரம்", phone: "+919688243736", address: "பஸ்நிறுத்தம், போடி மெயின் ரோடு,பண்ணைப்புரம், தேனி - 625224" },
+          { name: "எம் எம் ஆன்லைன் சர்வீசஸ் , உத்தமபாளையம்", phone: "+918220818281", address: "மதினா பள்ளிவாசல் காம்ப்ளக்ஸ், பைபாஸ்,உத்தமபாளையம், தேனி - 625533" },
+          { name: "சாய் தர்ஷன் இ சேவை மையம் , கம்பம்", phone: "+919788974336", address: "பழைய பஸ்நிலையம் ரோடு,சிக்னல் அருகில், கம்பம் - 625516" },
+          { name: "இவே கம்ப்யூட்டர்ஸ் , கம்பம்", phone: "+918667702629", address: "வேலப்பர் கோயில் தெரு,ராவுத்தர் ரெடிமேட் எதிர்புறம், கம்பம் - 625516" },
+          { name: "கார்த்தி இ சேவை மையம்,போடிநாயக்கனூர்", phone: "+919843699681", address: "காமராஜ் பஜார்,ராயல் மென்ஸ்வேர் எதிர்புறம், போடிநாயக்கனூர்- 625513" },
           { name: "ஸ்ரீ கம்ப்யூட்டர் ஜெராக்ஸ் & இ-சேவை மையம்,போடிநாயக்கனூர்", phone: "+919442388380", address: "RI ஆபிஸ் ரோடு, உதயம் பேட்டரி அருகில், போடிநாயக்கனூர்- 625513" },
-		  { name: "அன்னை ஆன்லைன்ஸ்,போடி தர்மத்துப்பட்டி", phone: "+919042783995", address: "வல்லபாய் படேல் தெரு, போடி தர்மத்துப்பட்டி- 625582" },
-		  { name: "நிஷிதா கம்ப்யூட்டர்ஸ் ஆதன் இ சேவை மையம் ,பெரியகுளம்", phone: "+918344516819", address: "காளத்தீஸ்வரன் கோயில் தெரு,தென்கரை, பெரியகுளம்- 625601" },
-		  { name: "ஐகான் ஸ்டுடியோ“ ,அரண்மனைப்புதூர்", phone: "+919003554368", address: "பஸ் நிறுத்தம் அருகில், அரண்மனைப்புதூர்- 625531" },
-		  { name: "ஈஷா கம்ப்யூட்டர்ஸ் & இ சேவை மையம் “ ,கண்டமனூர்", phone: "+919994864216", address: "ரெங்கநாதர் கோயில் தெரு, மெயின் ரோடு, கண்டமனூர்- 625517" },
-        ]
-      },
-      "  ": {
-        centers: [
-          { name: "திண்டுக்கல் ஈ-சேவை மையம்", phone: "+919487033446", address: "பேருந்து நிலையம் எதிரில், திண்டுக்கல் - 624001" }
-        ]
-      },
-      "   ": {
-        centers: [
-          { name: "மதுரை மத்திய சேவை மையம்", phone: "+919345678901", address: "அண்ணா நகர், மதுரை - 625001" }
+          { name: "அன்னை ஆன்லைன்ஸ்,போடி தர்மத்துப்பட்டி", phone: "+919042783995", address: "வல்லபாய் படேல் தெரு, போடி தர்மத்துப்பட்டி- 625582" },
+          { name: "நிஷிதா கம்ப்யூட்டர்ஸ் ஆதன் இ சேவை மையம் ,பெரியகுளம்", phone: "+918344516819", address: "காளத்தீஸ்வரன் கோயில் தெரு,தென்கரை, பெரியகுளம்- 625601" },
+          { name: "ஐகான் ஸ்டுடியோ ,அரண்மனைப்புதூர்", phone: "+919003554368", address: "பஸ் நிறுத்தம் அருகில், அரண்மனைப்புதூர்- 625531" },
+          { name: "ஈஷா கம்ப்யூட்டர்ஸ் & இ சேவை மையம் ,கண்டமனூர்", phone: "+919994864216", address: "ரெங்கநாதர் கோயில் தெரு, மெயின் ரோடு, கண்டமனூர்- 625517" }
         ]
       }
     }
@@ -918,33 +892,27 @@ const serviceCentersDatabase = {
         centers: [
           { name: "அனுஸ் கம்ப்யூட்டர்ஸ், தேனி", phone: "+919786340963", address: "பழைய பஸ்நிலையம், தேனி - 625531" },
           { name: "தேவா இ சேவை மையம், தேனி", phone: "+919095254443", address: "பழைய டி வி எஸ் ரோடு,எடமால் தெரு கார்னர், தேனி - 625531" },
-		  { name: "கிருத்திக் இ பொது சேவை மையம், தேனி", phone: "+919944530003", address: "போஸ்ட் ஆபீஸ் ஓடை தெரு,ஆனந்த் மஹால் அருகில், தேனி - 625531" },
-		  { name: "வாஞ்சி இ சேவை மையம், பண்ணைப்புரம்", phone: "+919944530003", address: "பஸ்நிறுத்தம், போடி மெயின் ரோடு,பண்ணைப்புரம், தேனி - 625224" },
-		  { name: "எம் எம் ஆன்லைன் சர்வீசஸ் , உத்தமபாளையம்", phone: "+918220818281", address: "மதினா பள்ளிவாசல் காம்ப்ளக்ஸ், பைபாஸ்,உத்தமபாளையம், தேனி - 625533" },
-		  { name: "சாய் தர்ஷன் இ சேவை மையம் , கம்பம்", phone: "+919788974336", address: "பழைய பஸ்நிலையம் ரோடு,சிக்னல் அருகில், கம்பம் - 625516" },
-		  { name: "இவே கம்ப்யூட்டர்ஸ் , கம்பம்", phone: "+918667702629", address: "வேலப்பர் கோயில் தெரு,ராவுத்தர் ரெடிமேட் எதிர்புறம், கம்பம் - 625516" },
-		  { name: "கார்த்தி இ சேவை மையம்,போடிநாயக்கனூர்", phone: "+919843699681", address: "காமராஜ் பஜார்,ராயல் மென்ஸ்வேர் எதிர்புறம், போடிநாயக்கனூர்- 625513" },
+          { name: "கிருத்திக் இ பொது சேவை மையம், தேனி", phone: "+919944530003", address: "போஸ்ட் ஆபீஸ் ஓடை தெரு,ஆனந்த் மஹால் அருகில், தேனி - 625531" },
+          { name: "வாஞ்சி இ சேவை மையம், பண்ணைப்புரம்", phone: "+919688243736", address: "பஸ்நிறுத்தம், போடி மெயின் ரோடு,பண்ணைப்புரம், தேனி - 625224" },
+          { name: "எம் எம் ஆன்லைன் சர்வீசஸ் , உத்தமபாளையம்", phone: "+918220818281", address: "மதினா பள்ளிவாசல் காம்ப்ளக்ஸ், பைபாஸ்,உத்தமபாளையம், தேனி - 625533" },
+          { name: "சாய் தர்ஷன் இ சேவை மையம் , கம்பம்", phone: "+919788974336", address: "பழைய பஸ்நிலையம் ரோடு,சிக்னல் அருகில், கம்பம் - 625516" },
+          { name: "இவே கம்ப்யூட்டர்ஸ் , கம்பம்", phone: "+918667702629", address: "வேலப்பர் கோயில் தெரு,ராவுத்தர் ரெடிமேட் எதிர்புறம், கம்பம் - 625516" },
+          { name: "கார்த்தி இ சேவை மையம்,போடிநாயக்கனூர்", phone: "+919843699681", address: "காமராஜ் பஜார்,ராயல் மென்ஸ்வேர் எதிர்புறம், போடிநாயக்கனூர்- 625513" },
           { name: "ஸ்ரீ கம்ப்யூட்டர் ஜெராக்ஸ் & இ-சேவை மையம்,போடிநாயக்கனூர்", phone: "+919442388380", address: "RI ஆபிஸ் ரோடு, உதயம் பேட்டரி அருகில், போடிநாயக்கனூர்- 625513" },
-		  { name: "அன்னை ஆன்லைன்ஸ்,போடி தர்மத்துப்பட்டி", phone: "+919042783995", address: "வல்லபாய் படேல் தெரு, போடி தர்மத்துப்பட்டி- 625582" },
-		  { name: "நிஷிதா கம்ப்யூட்டர்ஸ் ஆதன் இ சேவை மையம் ,பெரியகுளம்", phone: "+918344516819", address: "காளத்தீஸ்வரன் கோயில் தெரு,தென்கரை, பெரியகுளம்- 625601" },
-		  { name: "ஐகான் ஸ்டுடியோ“ ,அரண்மனைப்புதூர்", phone: "+919003554368", address: "பஸ் நிறுத்தம் அருகில், அரண்மனைப்புதூர்- 625531" },
-		  { name: "ஈஷா கம்ப்யூட்டர்ஸ் & இ சேவை மையம் “ ,கண்டமனூர்", phone: "+919994864216", address: "ரெங்கநாதர் கோயில் தெரு, மெயின் ரோடு, கண்டமனூர்- 625517" },
-        ]
-      },
-      "   ": {
-        centers: [
-          { name: "மதுரை சான்றிதழ் சேவை மையம்", phone: "+919487033447", address: "தளவாய் தெரு, மதுரை - 625001" }
+          { name: "அன்னை ஆன்லைன்ஸ்,போடி தர்மத்துப்பட்டி", phone: "+919042783995", address: "வல்லபாய் படேல் தெரு, போடி தர்மத்துப்பட்டி- 625582" },
+          { name: "நிஷிதா கம்ப்யூட்டர்ஸ் ஆதன் இ சேவை மையம் ,பெரியகுளம்", phone: "+918344516819", address: "காளத்தீஸ்வரன் கோயில் தெரு,தென்கரை, பெரியகுளம்- 625601" },
+          { name: "ஐகான் ஸ்டுடியோ ,அரண்மனைப்புதூர்", phone: "+919003554368", address: "பஸ் நிறுத்தம் அருகில், அரண்மனைப்புதூர்- 625531" },
+          { name: "ஈஷா கம்ப்யூட்டர்ஸ் & இ சேவை மையம் ,கண்டமனூர்", phone: "+919994864216", address: "ரெங்கநாதர் கோயில் தெரு, மெயின் ரோடு, கண்டமனூர்- 625517" }
         ]
       }
     }
   },
-  "புதிய ஆதார் பதிவு செய்ய |  கைரேகை, கருவிழி, போட்டோ update செய்ய": {
+  "புதிய ஆதார் பதிவு செய்ய | கைரேகை, கருவிழி, போட்டோ update செய்ய": {
     icon: "📄",
     districts: {
       "தேனி": {
         centers: [
           { name: "ஆதார் சேவை மையம்", phone: "+918608225339", address: "இயற்கை மெஸ் தெரு,அரசு ஐ டி ஐ அருகில்,மதுரை மெயின் ரோடு, தேனி - 625531" }
-		  
         ]
       }
     }
@@ -1054,31 +1022,26 @@ function displaySelectedCenter() {
   document.getElementById("popupSelectedCenterInfo").innerHTML = infoHtml;
   document.getElementById("popupWhatsappBtn").disabled = false;
 }
-// Photo Maker Popup Functions
+
+// ========== PHOTO MAKER POPUP FUNCTIONS ==========
 function showPhotoMakerPopup() {
-  document.getElementById('photoMakerPopup').style.display = 'flex';
+  const popup = document.getElementById('photoMakerPopup');
+  if (popup) {
+    popup.style.display = 'flex';
+  }
 }
 
 function closePhotoMakerPopup() {
-  document.getElementById('photoMakerPopup').style.display = 'none';
+  const popup = document.getElementById('photoMakerPopup');
+  if (popup) {
+    popup.style.display = 'none';
+  }
 }
 
 function continueToPhotoMaker() {
   closePhotoMakerPopup();
   window.location.href = 'Photomaking.html';
 }
-
-// Override the existing Photo Maker menu click (if using menu link)
-// Method 1: Change the href dynamically
-document.addEventListener('DOMContentLoaded', function() {
-  let photoMakerLink = document.querySelector('a[href="Photomaking.html"]');
-  if (photoMakerLink) {
-    photoMakerLink.addEventListener('click', function(e) {
-      e.preventDefault();
-      showPhotoMakerPopup();
-    });
-  }
-});
 
 function sendWhatsappFromPopup() {
   if (!selectedCenterObj) {
@@ -1091,31 +1054,59 @@ function sendWhatsappFromPopup() {
     else if (rawPhone.startsWith('0')) rawPhone = '+91' + rawPhone.substring(1);
     else if (!rawPhone.startsWith('+')) rawPhone = '+91' + rawPhone;
   }
-  const msg = `🙏 *வணக்கம்*, 
-நான் *தேனி மாவட்ட பொது இ-சேவை மைய உரிமையாளர்கள் நலச்சங்கம்* வலைத்தளத்திலிருந்து தொடர்பு கொள்கிறேன்.
-
-📌 *சேவை:* ${currentSelectedService}
-
-
-🔍 *எனது விசாரணை:* 
-: இந்த சேவைக்கான கட்டணம், நேரம், ஆவணங்கள் குறித்து தெரிவிக்கவும்.
-
-🙏 நன்றி!`;
+  const msg = `🙏 *வணக்கம்*, \nநான் *தேனி மாவட்ட பொது இ-சேவை மைய உரிமையாளர்கள் நலச்சங்கம்* வலைத்தளத்திலிருந்து தொடர்பு கொள்கிறேன்.${currentSelectedService}\n\n🔍 இந்த சேவைக்கான கட்டணம், நேரம் மற்றும் ஆவணங்கள் குறித்து தெரிவிக்கவும்.\n\n🙏 நன்றி!`;
   const waUrl = `https://wa.me/${rawPhone}?text=${encodeURIComponent(msg)}`;
   window.open(waUrl, '_blank');
 }
 
-function closeServicePopup() { document.getElementById("servicePopup").style.display = "none"; selectedCenterObj = null; }
-function escapeHtml(str) { if (!str) return ''; return str.replace(/[&<>]/g, function(m) { if (m === '&') return '&amp;'; if (m === '<') return '&lt;'; if (m === '>') return '&gt;'; return m; }); }
-function showContactInfo(type) { if (type === 'free') alert("📞 இலவச ஆலோசனை எண்: 9786340963 (காலை 10 மணி முதல் மாலை 6 மணி வரை)"); else if (type === 'help') alert("📞 உதவி மையம்: +91 9786340963 | WhatsApp உதவி"); else if (type === 'suggest') alert("📧 புகார் / suggestion: tdcscesevai@gmail.com"); }
-function openMemberPopup(link) { const popup = document.getElementById("memberPopup"); document.getElementById("driveLink").href = link; popup.style.display = "flex"; }
-function closeMemberPopup() { document.getElementById("memberPopup").style.display = "none"; }
-window.openMemberPopup = openMemberPopup; window.closeMemberPopup = closeMemberPopup;
-window.loadCentersByDistrict = loadCentersByDistrict; window.displaySelectedCenter = displaySelectedCenter; window.sendWhatsappFromPopup = sendWhatsappFromPopup; window.closeServicePopup = closeServicePopup; window.showContactInfo = showContactInfo;
+function closeServicePopup() { 
+  document.getElementById("servicePopup").style.display = "none"; 
+  selectedCenterObj = null; 
+}
 
-// Visitor counter
-let count = localStorage.getItem("page_view"); count = count ? Number(count) + 1 : 1; localStorage.setItem("page_view", count); document.getElementById("visitCount").innerText = count;
-document.addEventListener("DOMContentLoaded", () => { renderServiceCards(); initHeroSlider(); });
+function escapeHtml(str) { 
+  if (!str) return ''; 
+  return str.replace(/[&<>]/g, function(m) { 
+    if (m === '&') return '&amp;'; 
+    if (m === '<') return '&lt;'; 
+    if (m === '>') return '&gt;'; 
+    return m; 
+  }); 
+}
+
+function showContactInfo(type) { 
+  if (type === 'free') alert("📞 இலவச ஆலோசனை எண்: 9786340963 (காலை 10 மணி முதல் மாலை 6 மணி வரை)"); 
+  else if (type === 'help') alert("📞 உதவி மையம்: +91 9786340963 | WhatsApp உதவி"); 
+  else if (type === 'suggest') alert("📧 புகார் / suggestion: tdcscesevai@gmail.com"); 
+}
+
+function openMemberPopup(link) { 
+  const popup = document.getElementById("memberPopup"); 
+  document.getElementById("driveLink").href = link; 
+  popup.style.display = "flex"; 
+}
+
+function closeMemberPopup() { 
+  document.getElementById("memberPopup").style.display = "none"; 
+}
+
+// Make functions globally available
+window.openMemberPopup = openMemberPopup;
+window.closeMemberPopup = closeMemberPopup;
+window.loadCentersByDistrict = loadCentersByDistrict;
+window.displaySelectedCenter = displaySelectedCenter;
+window.sendWhatsappFromPopup = sendWhatsappFromPopup;
+window.closeServicePopup = closeServicePopup;
+window.showContactInfo = showContactInfo;
+window.showPhotoMakerPopup = showPhotoMakerPopup;
+window.closePhotoMakerPopup = closePhotoMakerPopup;
+window.continueToPhotoMaker = continueToPhotoMaker;
+
+// Initialize on page load
+document.addEventListener("DOMContentLoaded", function() { 
+  renderServiceCards(); 
+  initHeroSlider(); 
+});
 </script>
 </body>
 </html>
