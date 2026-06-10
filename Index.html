@@ -18,6 +18,7 @@ body {
 }
 
 /* ===== TOP BAR ===== */
+/* ===== TOP BAR ===== */
 .topbar {
   position: sticky;
   top: 0;
@@ -25,6 +26,7 @@ body {
   background: #1b5e20;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 8px 16px;
   flex-wrap: wrap;
   box-shadow: 0 2px 8px rgba(0,0,0,0.2);
@@ -41,26 +43,77 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 8px;
+  align-items: center;
+  gap: 6px;
 }
 
 .menu a {
   color: #fff;
   text-decoration: none;
   font-size: 14px;
-  padding: 5px 8px;
-  border-radius: 20px;
-  transition: background 0.2s;
+  padding: 8px 12px;
+  border-radius: 30px;
+  transition: all 0.3s ease;
   white-space: nowrap;
+  background: rgba(255, 255, 255, 0.1);
+  display: inline-block;
 }
 
 .menu a:hover {
-  background: #2e7d32;
+  background: #ff9800;
+  color: #1b5e20;
+  transform: translateY(-2px);
+}
+
+/* Special style for Current Notification button */
+.menu a:last-child {
+  background: #ff9800;
+  color: #1b5e20;
+  font-weight: bold;
+  animation: pulse 2s infinite;
+}
+
+.menu a:last-child:hover {
+  background: #ff5722;
+  color: white;
+  transform: scale(1.05);
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(255, 152, 0, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(255, 152, 0, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 152, 0, 0); }
 }
 
 .member-links {
   display: inline-flex;
-  gap: 8px;
+  gap: 6px;
+}
+
+@media (max-width: 780px) {
+  .topbar {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .menu {
+    justify-content: center;
+  }
+  .menu a {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+}
+@media (max-width: 780px) {
+  .menu {
+    gap: 8px;
+  }
+  .menu a {
+    font-size: 11px;
+    padding: 5px 8px;
+  }
+  .member-links {
+    margin-left: 0;
+  }
 }
 
 /* ===== TOP TEXT & MARQUEE ===== */
@@ -612,6 +665,7 @@ iframe + div {
     <a href="weblink.html">Weblink</a>
     <a href="javascript:void(0);" onclick="showPhotoMakerPopup()">Photo Maker</a>
     <a href="Forms.html">Forms</a>
+    <a href="javascript:void(0);" onclick="showNotifications()">📢 Current Notification</a>
     <span class="member-links">
       <a href="#" onclick="openMemberPopup('https://drive.google.com/drive/folders/17aXIEa7m6o7rRw6clCOricOagvweGhoy?usp=drive_link')">Software</a>
       <a href="#" onclick="openMemberPopup('https://drive.google.com/drive/folders/153R8Hf_EeuLM8k2aMS73pF9dwuynD8tB?usp=drive_link')">WhatsApp Poster</a>
@@ -674,6 +728,341 @@ iframe + div {
   </div>
 </div>
 
+<!-- ==================== DYNAMIC TABLES SECTION (READ ONLY) ==================== -->
+<div class="tables-container" style="width: 94%; max-width: 1400px; margin: 30px auto;">
+
+<!-- TABLES SECTION - Initially Hidden -->
+<div id="notificationsSection" class="tables-container" style="width: 94%; max-width: 1400px; margin: 30px auto; display: none;">
+  <!-- Your Job Table and Exam Table code here -->
+</div>
+  
+  <!-- ===== TABLE 1: JOB NOTIFICATIONS / RECRUITMENT ===== -->
+  <div class="table-card" style="background: white; border-radius: 28px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); overflow: hidden; margin-bottom: 40px;">
+    <div style="background: linear-gradient(135deg, #1b5e20, #2e7d32); padding: 15px 20px; color: white;">
+      <h3 style="margin: 0; font-size: 1.4rem;">📢 வேலைவாய்ப்பு அறிவிப்புகள் / Recruitment Notifications</h3>
+      <p style="margin: 5px 0 0; opacity: 0.9; font-size: 0.9rem;">கீழே உள்ள அறிவிப்புகளைப் பார்க்கவும் / View notifications below</p>
+    </div>
+    <div style="overflow-x: auto; padding: 20px;">
+      <table id="jobTable" style="width: 100%; border-collapse: collapse; min-width: 800px;">
+        <thead>
+          <tr><th style="background: #f5f5f5; padding: 12px; border: 1px solid #ddd; text-align: center;">S.No</th>
+            <th style="background: #f5f5f5; padding: 12px; border: 1px solid #ddd; text-align: center;">Services / பணி</th>
+            <th style="background: #f5f5f5; padding: 12px; border: 1px solid #ddd; text-align: center;">Qualification / தகுதி</th>
+            <th style="background: #f5f5f5; padding: 12px; border: 1px solid #ddd; text-align: center;">No of Post / காலிப்பணியிடம்</th>
+            <th style="background: #f5f5f5; padding: 12px; border: 1px solid #ddd; text-align: center;">Opening Date</th>
+            <th style="background: #f5f5f5; padding: 12px; border: 1px solid #ddd; text-align: center;">Closing Date</th>
+            <th style="background: #f5f5f5; padding: 12px; border: 1px solid #ddd; text-align: center;">Details (PDF/Link)</th>
+            <th style="background: #f5f5f5; padding: 12px; border: 1px solid #ddd; text-align: center;">Apply Link</th>
+          </tr>
+        </thead>
+        <tbody id="jobTableBody">
+          <!-- Dynamic rows will appear here -->
+        </tbody>
+       </table>
+    </div>
+  </div>
+ 
+  <!-- ===== TABLE 2: EXAM DATES & HALL TICKET ===== -->
+  <div class="table-card" style="background: white; border-radius: 28px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); overflow: hidden;">
+    <div style="background: linear-gradient(135deg, #bf360c, #e65100); padding: 15px 20px; color: white;">
+      <h3 style="margin: 0; font-size: 1.4rem;">📅 தேர்வு கால அட்டவணை / Exam Schedule & Hall Ticket</h3>
+      <p style="margin: 5px 0 0; opacity: 0.9; font-size: 0.9rem;">தேர்வு தேதிகள் மற்றும் ஹால் டிக்கெட் இணைப்பு</p>
+    </div>
+    <div style="overflow-x: auto; padding: 20px;">
+      <table id="examTable" style="width: 100%; border-collapse: collapse; min-width: 500px;">
+        <thead>
+          <tr><th style="background: #f5f5f5; padding: 12px; border: 1px solid #ddd; text-align: center;">S.No</th>
+            <th style="background: #f5f5f5; padding: 12px; border: 1px solid #ddd; text-align: center;">Services / தேர்வு பெயர்</th>
+            <th style="background: #f5f5f5; padding: 12px; border: 1px solid #ddd; text-align: center;">Exam Date / தேர்வு தேதி</th>
+            <th style="background: #f5f5f5; padding: 12px; border: 1px solid #ddd; text-align: center;">Hall Ticket Download Link</th>
+          </tr>
+        </thead>
+        <tbody id="examTableBody">
+          <!-- Dynamic rows will appear here -->
+        </tbody>
+       </table>
+    </div>
+  </div>
+</div>
+<!-- ===== TABLE: COURSES / ADMISSION NOTIFICATIONS WITH DETAILS ===== -->
+<div class="table-card" style="background: white; border-radius: 28px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); overflow: hidden; margin-bottom: 40px;">
+  <div style="background: linear-gradient(135deg, #6a1b9a, #8e24aa); padding: 15px 20px; color: white;">
+    <h3 style="margin: 0; font-size: 1.4rem;">🎓 கல்லூரி மற்றும் பல்கலைக்கழகம் விண்ணப்பங்களுக்கான அறிவிப்புகள்</h3>
+    <p style="margin: 5px 0 0; opacity: 0.9; font-size: 0.9rem;">EDUCATION APPLICATION NOTIFICATIONS</p>
+  </div>
+  <div style="overflow-x: auto; padding: 20px;">
+    <table id="coursesTable" style="width: 100%; border-collapse: collapse; min-width: 750px;">
+      <thead>
+        <tr>
+          <th style="background: #f5f5f5; padding: 12px; border: 1px solid #ddd;">S.No</th>
+          <th style="background: #f5f5f5; padding: 12px; border: 1px solid #ddd;">Institution Name</th>
+          <th style="background: #f5f5f5; padding: 12px; border: 1px solid #ddd;">Courses</th>
+          <th style="background: #f5f5f5; padding: 12px; border: 1px solid #ddd;">Start Date</th>
+          <th style="background: #f5f5f5; padding: 12px; border: 1px solid #ddd;">End Date</th>
+          <th style="background: #f5f5f5; padding: 12px; border: 1px solid #ddd;">Details (Notification)</th>
+          <th style="background: #f5f5f5; padding: 12px; border: 1px solid #ddd;">Apply Link</th>
+        </tr>
+      </thead>
+      <tbody id="coursesTableBody"></tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+// ===== COURSES TABLE DATA WITH DETAILS LINK =====
+let coursesData = [
+  {
+    sno: 1,
+    name: "TNJFU FISHERIES",
+    courses: "B.F.Sc / B.Tech (Fisheries Engineering)",
+    startDate: "15-05-2026",
+    endDate: "14-06-2026",
+    detailsLink: "https://drive.google.com/file/d/1x-CB1rZ0h814mOdr2zjXQD1UjPJUsTRP/view?usp=drive_link",  // ✅ Google Drive Link
+    applyLink: "https://www.tnjfu.ac.in/"
+  },
+  {
+    sno: 2,
+    name: "TNEA B.ARCH",
+    courses: "B.Arch (Architecture)",
+    startDate: "03-05-2026",
+    endDate: "20-06-2026",
+    detailsLink: "https://drive.google.com/file/d/1J6ZA0T7VRfRZiR_aC8K2bRWmygXLonhp/view?usp=drive_link",
+    applyLink: "https://www.tneaonline.org"
+  },
+  {
+    sno: 3,
+    name: "POLYTECHNIC COLLEGES",
+    courses: "DIPLOMA",
+    startDate: "01-06-2026",
+    endDate: "30-06-2026",
+    detailsLink: "https://drive.google.com/file/d/13qwFuBpwtZqlBCEXRfhkhtAjWK5Utgi2/view?usp=drive_link",
+    applyLink: "https://www.tnpoly.in"
+  },
+  {
+    sno: 4,
+    name: "Tamilnadu Lateral Entry Direct Second Year B.E/B.Tech.,",
+    courses: "B.E/B.Tech.,",
+    startDate: "07-06-2026",
+    endDate: "07-07-2026",
+    detailsLink: "https://drive.google.com/file/d/1UNalFWIQZ7fmIj8yTLCP5m-uQwo1cELo/view?usp=drive_link",
+    applyLink: "https://www.tnlea.com/"
+  },
+ ];
+
+// Escape HTML function (if not already defined)
+function escapeHtml(str) {
+  if (!str) return '';
+  return str.replace(/[&<>]/g, function(m) {
+    if (m === '&') return '&amp;';
+    if (m === '<') return '&lt;';
+    if (m === '>') return '&gt;';
+    return m;
+  });
+}
+
+// Function to render Courses Table
+function renderCoursesTable() {
+  const tbody = document.getElementById('coursesTableBody');
+  if (!tbody) return;
+  tbody.innerHTML = '';
+  coursesData.forEach((row) => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">${row.sno}</td>
+      <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">${escapeHtml(row.name)}</td>
+      <td style="padding: 10px; border: 1px solid #ddd;">${escapeHtml(row.courses)}</td>
+      <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">${escapeHtml(row.startDate)}</td>
+      <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">${escapeHtml(row.endDate)}</td>
+      <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">
+        ${row.detailsLink ? `<a href="${escapeHtml(row.detailsLink)}" target="_blank" style="color: #1565c0; background: #e3f2fd; padding: 5px 12px; border-radius: 20px; text-decoration: none; display: inline-block; font-weight: bold;">📄 Notification</a>` : '—'}
+       </td>
+      <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">
+        <a href="${escapeHtml(row.applyLink)}" target="_blank" style="color: white; background: #6a1b9a; padding: 6px 14px; border-radius: 25px; text-decoration: none; display: inline-block; font-weight: bold;">📝 Apply Now</a>
+       </td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', function() {
+  renderCoursesTable();
+});
+</script>
+
+
+<script>
+// ===== TRAINING TABLE DATA =====
+let trainingData = [
+  {
+    sno: 1,
+    name: "TNJFU FISHERIES",
+    courses: "B.F.Sc / B.Tech ( Fisheries Engineering)",
+	details: "https://www.tnjfu.ac.in/",
+    startDate: "01-07-2026",
+    endDate: "14-06-2026",
+    registerLink: "https://www.tnjfu.ac.in/"
+  }
+  ];
+  
+ 
+
+// Function to render Training Table
+function renderTrainingTable() {
+  const tbody = document.getElementById('trainingTableBody');
+  if (!tbody) return;
+  tbody.innerHTML = '';
+  trainingData.forEach((row) => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">${row.sno}</td>
+      <td style="padding: 10px; border: 1px solid #ddd;">${escapeHtml(row.name)}</td>
+      <td style="padding: 10px; border: 1px solid #ddd;">${escapeHtml(row.courses)}</td>
+	  <td style="padding: 10px; border: 1px solid #ddd;">${escapeHtml(row.details)}</td>
+      <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">${escapeHtml(row.startDate)}</td>
+      <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">${escapeHtml(row.endDate)}</td>
+      <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">
+        <a href="${escapeHtml(row.registerLink)}" target="_blank" style="color: white; background: #6a1b9a; padding: 5px 12px; border-radius: 20px; text-decoration: none; display: inline-block;">📝 Register Now</a>
+      </td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+// Add to DOMContentLoaded
+document.addEventListener('DOMContentLoaded', function() {
+  renderJobTable();
+  renderExamTable();
+  renderTrainingTable();  // New table
+});
+</script>
+<script>
+// Show/Hide Notifications Section
+function showNotifications() {
+  const section = document.getElementById('notificationsSection');
+  if (section) {
+    section.style.display = 'block';
+    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+// ==================== JOB TABLE DATA (READ ONLY) ====================
+let jobData = [
+  {
+    sno: 1,
+    service: " ",
+    Cources: " ",
+    posts: " ",
+    openingDate: " ",
+    closingDate: " ",
+    detailsLink: " ",
+    applyLink: " "
+  },
+  {
+    sno: 2,
+    service: " ",
+    qualification: " ",
+    posts: " ",
+    openingDate: " ",
+    closingDate: " ",
+    detailsLink: " ",
+    applyLink: " "
+  },
+  {
+    sno: 3,
+    service: " ",
+    qualification: " ",
+    posts: " ",
+    openingDate: " ",
+    closingDate: " ",
+    detailsLink: " ",
+    applyLink: " "
+  }
+  ];
+
+// ==================== EXAM TABLE DATA (READ ONLY) ====================
+let examData = [
+  {
+    sno: 1,
+    service: " ",
+    examDate: " ",
+    hallTicketLink: " "
+  },
+  {
+    sno: 2,
+    service: " ",
+    examDate: " ",
+    hallTicketLink: " "
+  },
+  {
+    sno: 3,
+    service: " ",
+    examDate: " ",
+    hallTicketLink: " "
+  }
+];
+
+// Function to render Job Table (Read Only with Clickable Links)
+function renderJobTable() {
+  const tbody = document.getElementById('jobTableBody');
+  if (!tbody) return;
+  tbody.innerHTML = '';
+  jobData.forEach((row) => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">${row.sno}</td>
+      <td style="padding: 10px; border: 1px solid #ddd;">${escapeHtml(row.service)}</td>
+      <td style="padding: 10px; border: 1px solid #ddd;">${escapeHtml(row.qualification)}</td>
+      <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">${escapeHtml(row.posts)}</td>
+      <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">${escapeHtml(row.openingDate)}</td>
+      <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">${escapeHtml(row.closingDate)}</td>
+      <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">
+        <a href="${escapeHtml(row.detailsLink)}" target="_blank" style="color: #1b5e20; text-decoration: none; font-weight: bold; background: #e8f5e9; padding: 5px 12px; border-radius: 20px; display: inline-block;">📄 View Details</a>
+      </td>
+      <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">
+        <a href="${escapeHtml(row.applyLink)}" target="_blank" style="color: white; text-decoration: none; font-weight: bold; background: #ff9800; padding: 5px 12px; border-radius: 20px; display: inline-block;">📝 Apply Now</a>
+      </td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+// Function to render Exam Table (Read Only with Clickable Links)
+function renderExamTable() {
+  const tbody = document.getElementById('examTableBody');
+  if (!tbody) return;
+  tbody.innerHTML = '';
+  examData.forEach((row) => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">${row.sno}</td>
+      <td style="padding: 10px; border: 1px solid #ddd;">${escapeHtml(row.service)}</td>
+      <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">${escapeHtml(row.examDate)}</td>
+      <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">
+        <a href="${escapeHtml(row.hallTicketLink)}" target="_blank" style="color: #1565c0; text-decoration: none; font-weight: bold; background: #e3f2fd; padding: 5px 12px; border-radius: 20px; display: inline-block;">🎫 Download Hall Ticket</a>
+      </td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+// Escape HTML function
+function escapeHtml(str) {
+  if (!str) return '';
+  return str.replace(/[&<>]/g, function(m) {
+    if (m === '&') return '&amp;';
+    if (m === '<') return '&lt;';
+    if (m === '>') return '&gt;';
+    return m;
+  });
+}
+
+// Initialize tables on page load
+document.addEventListener('DOMContentLoaded', function() {
+  renderJobTable();
+  renderExamTable();
+});
+</script>
+
 <div class="links-section">
   <a onclick="showContactInfo('free')">🔹 இலவச ஆலோசனை: 97863 40963</a>
   <a onclick="showContactInfo('help')">📞 உதவி மையம்: 82208 18281</a>
@@ -712,6 +1101,16 @@ iframe + div {
       <button class="close-popup" onclick="closePhotoMakerPopup()">&times;</button>
     </div>
     <div class="popup-body" style="text-align: left; font-size: 15px; line-height: 1.6;">
+      
+      <!-- ✅ YOUTUBE VIDEO LINK - FIRST LINE -->
+      <div style="background: #e3f2fd; padding: 12px 16px; border-radius: 16px; margin-bottom: 20px; text-align: center; border-left: 4px solid #ff9800;">
+        <a href="https://youtu.be/xyqAAI7a8Nk?si=X3i7IN3wP7qAeJrr" target="_blank" style="color: #1565c0; font-weight: bold; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; font-size: 16px;">
+          <span style="font-size: 24px;">📺</span>
+          <span style="border-bottom: 2px dotted #1565c0;">Photo Maker பயன்பாட்டு வீடியோவை இங்கே கிளிக் செய்க</span>
+          <span style="font-size: 18px;">▶️</span>
+        </a>
+      </div>
+      
       <ul style="padding-left: 20px;">
         <li>✅ Choose File - புகைப்படத்தை தேர்வு செய்க</li>
         <li>✅ Crop Photo (3.5cm x 4.5cm) - புகைப்படத்தை கிராப் செய்க</li>
