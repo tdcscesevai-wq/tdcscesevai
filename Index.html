@@ -4,6 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>TDCSCESEVAI - Full Width Slider | Service Center Selector</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C9L89FF6FE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-C9L89FF6FE');
+ </script>
+
 <style>
 * {
   margin: 0;
@@ -649,6 +659,7 @@ iframe + div {
 .marquee-container:hover .marquee-content {
   animation-play-state: paused;
 }
+
 </style>
 </head>
 <body>
@@ -711,6 +722,26 @@ iframe + div {
       <img id="slideImg" src="images/events/1.jpg" alt="Event Gallery" onerror="this.src='https://placehold.co/900x500?text=Event+Photo'">
     </div>
     <div style="text-align:center; margin-top:12px; font-size:13px; color:#2e7d32;">📸 எங்கள் சேவை நிகழ்வுகள்</div>
+	<!-- ==================== COMPLAINT BUTTON SECTION ==================== -->
+<div style="width: 94%; max-width: 1400px; margin: 20px auto; text-align: center;">
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSeFyQXlH5OdU_X_iv2a-zhxeAkOSygsgYwQaotVZWT2UPGk8A/viewform?usp=sharing&ouid=116161362803705979312" 
+     target="_blank" 
+     style="display: inline-flex; align-items: center; gap: 12px; background: linear-gradient(135deg, #c62828, #d32f2f); color: white; text-decoration: none; padding: 15px 35px; border-radius: 50px; font-size: 18px; font-weight: bold; box-shadow: 0 4px 15px rgba(198, 40, 40, 0.4); transition: transform 0.2s, box-shadow 0.2s;">
+    <span style="font-size: 24px;">📝</span>
+    <span>புகார் / கருத்து / பரிந்துரை அளிக்க</span>
+    <span style="font-size: 20px;">➡️</span>
+  </a>
+  <p style="margin-top: 12px; font-size: 13px; color: #666;">
+    ✨ உங்கள் புகார்கள் மற்றும் பரிந்துரைகளை பதிவு செய்ய கிளிக் செய்யவும்
+  </p>
+</div>
+
+<style>
+  .complaint-btn:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 20px rgba(198, 40, 40, 0.5);
+  }
+</style>
   </div>
 
   <div class="service-panel">
@@ -1063,12 +1094,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-<div class="links-section">
-  <a onclick="showContactInfo('free')">🔹 இலவச ஆலோசனை: 97863 40963</a>
-  <a onclick="showContactInfo('help')">📞 உதவி மையம்: 82208 18281</a>
-  <a onclick="showContactInfo('suggest')">📧 புகார் / suggestion: tdcscesevai@gmail.com</a>
-</div>
-
 <!-- MEMBER POPUP -->
 <div class="popup-bg" id="memberPopup">
   <div class="popup">
@@ -1149,6 +1174,25 @@ document.addEventListener('DOMContentLoaded', function() {
     <img src="https://counter11.optistats.ovh/private/freecounterstat.php?c=l1sf6qddg1n2neh63zwmxmdsx247ulp6" border="0" alt="visitor counter">
   </noscript>
 </div>
+
+<script>
+// Page Views - Increases on every load
+let pageViews = localStorage.getItem("pageViews") || 0;
+pageViews = Number(pageViews) + 1;
+localStorage.setItem("pageViews", pageViews);
+document.getElementById("pageViewCount").innerText = pageViews;
+
+// Unique Visitors - Increases only for new visitors
+let uniqueVisitors = localStorage.getItem("uniqueVisitors") || 0;
+let hasVisited = sessionStorage.getItem("hasVisited");
+
+if (!hasVisited) {
+  uniqueVisitors = Number(uniqueVisitors) + 1;
+  localStorage.setItem("uniqueVisitors", uniqueVisitors);
+  sessionStorage.setItem("hasVisited", "true");
+}
+document.getElementById("uniqueVisitorCount").innerText = uniqueVisitors;
+</script>
 
 <footer class="footer">
   © 2026 TDCSCESEVAI | தேனி மாவட்ட பொது இ-சேவை மைய உரிமையாளர்கள் நலச்சங்கம் <br>
@@ -1276,7 +1320,7 @@ const serviceCentersDatabase = {
           { name: "இவே கம்ப்யூட்டர்ஸ் , கம்பம்", phone: "+918667702629", address: "வேலப்பர் கோயில் தெரு,ராவுத்தர் ரெடிமேட் எதிர்புறம், கம்பம் - 625516" },
           { name: "கார்த்தி இ சேவை மையம்,போடிநாயக்கனூர்", phone: "+919843699681", address: "காமராஜ் பஜார்,ராயல் மென்ஸ்வேர் எதிர்புறம், போடிநாயக்கனூர்- 625513" },
           { name: "ஸ்ரீ கம்ப்யூட்டர் ஜெராக்ஸ் & இ-சேவை மையம்,போடிநாயக்கனூர்", phone: "+919442388380", address: "RI ஆபிஸ் ரோடு, உதயம் பேட்டரி அருகில், போடிநாயக்கனூர்- 625513" },
-          { name: "அன்னை ஆன்லைன்ஸ்,போடி தர்மத்துப்பட்டி", phone: "+919042783995", address: "வல்லபாய் படேல் தெரு, போடி தர்மத்துப்பட்டி- 625582" },
+          { name: "அன்னை ஆன்லைன்ஸ்,போடி தர்மத்துப்பட்டி", phone: "+919944867776", address: "வல்லபாய் படேல் தெரு, போடி தர்மத்துப்பட்டி- 625582" },
           { name: "நிஷிதா கம்ப்யூட்டர்ஸ் ஆதன் இ சேவை மையம் ,பெரியகுளம்", phone: "+918344516819", address: "காளத்தீஸ்வரன் கோயில் தெரு,தென்கரை, பெரியகுளம்- 625601" },
           { name: "ஐகான் ஸ்டுடியோ ,அரண்மனைப்புதூர்", phone: "+919003554368", address: "பஸ் நிறுத்தம் அருகில், அரண்மனைப்புதூர்- 625531" },
           { name: "ஈஷா கம்ப்யூட்டர்ஸ் & இ சேவை மையம் ,கண்டமனூர்", phone: "+919994864216", address: "ரெங்கநாதர் கோயில் தெரு, மெயின் ரோடு, கண்டமனூர்- 625517" }
@@ -1298,7 +1342,7 @@ const serviceCentersDatabase = {
           { name: "இவே கம்ப்யூட்டர்ஸ் , கம்பம்", phone: "+918667702629", address: "வேலப்பர் கோயில் தெரு,ராவுத்தர் ரெடிமேட் எதிர்புறம், கம்பம் - 625516" },
           { name: "கார்த்தி இ சேவை மையம்,போடிநாயக்கனூர்", phone: "+919843699681", address: "காமராஜ் பஜார்,ராயல் மென்ஸ்வேர் எதிர்புறம், போடிநாயக்கனூர்- 625513" },
           { name: "ஸ்ரீ கம்ப்யூட்டர் ஜெராக்ஸ் & இ-சேவை மையம்,போடிநாயக்கனூர்", phone: "+919442388380", address: "RI ஆபிஸ் ரோடு, உதயம் பேட்டரி அருகில், போடிநாயக்கனூர்- 625513" },
-          { name: "அன்னை ஆன்லைன்ஸ்,போடி தர்மத்துப்பட்டி", phone: "+919042783995", address: "வல்லபாய் படேல் தெரு, போடி தர்மத்துப்பட்டி- 625582" },
+          { name: "அன்னை ஆன்லைன்ஸ்,போடி தர்மத்துப்பட்டி", phone: "+919944867776", address: "வல்லபாய் படேல் தெரு, போடி தர்மத்துப்பட்டி- 625582" },
           { name: "நிஷிதா கம்ப்யூட்டர்ஸ் ஆதன் இ சேவை மையம் ,பெரியகுளம்", phone: "+918344516819", address: "காளத்தீஸ்வரன் கோயில் தெரு,தென்கரை, பெரியகுளம்- 625601" },
           { name: "ஐகான் ஸ்டுடியோ ,அரண்மனைப்புதூர்", phone: "+919003554368", address: "பஸ் நிறுத்தம் அருகில், அரண்மனைப்புதூர்- 625531" },
           { name: "ஈஷா கம்ப்யூட்டர்ஸ் & இ சேவை மையம் ,கண்டமனூர்", phone: "+919994864216", address: "ரெங்கநாதர் கோயில் தெரு, மெயின் ரோடு, கண்டமனூர்- 625517" }
