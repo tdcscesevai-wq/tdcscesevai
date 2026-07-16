@@ -9,38 +9,38 @@
     <meta name="description" content="தேனி மாவட்ட பொது இ-சேவை மைய உரிமையாளர்கள் நலச்சங்கத்தின் அதிகாரப்பூர்வ இணையதளம். அரசு சேவைகள், உறுப்பினர் தகவல்கள், படிவங்கள், செய்திகள் மற்றும் பயனுள்ள வழிகாட்டுதல்கள் ஒரே இடத்தில்.">
 
     <meta name="keywords" content="Theni E-Sevai, CSC, TNeGA, E-Sevai Centre, அரசு சேவைகள், தேனி மாவட்டம், TDCSC">
-	
-	<meta name="author" content="தேனி மாவட்ட பொது இ-சேவை மைய உரிமையாளர்கள் நலச்சங்கம்">
-	
-	<meta name="robots" content="index, follow">
-	
-	<link rel="canonical" href="https://tdcommonesevai.in/">
 
-	<meta property="og:type" content="website">
+    <meta name="author" content="தேனி மாவட்ட பொது இ-சேவை மைய உரிமையாளர்கள் நலச்சங்கம்">
 
-	<meta property="og:site_name" content="TDCSC E-Sevai">
+    <meta name="robots" content="index, follow">
 
-	<meta property="og:image" content="https://tdcommonesevai.in/images/logo.png">
-	
-	<meta property="og:title" content="தேனி மாவட்ட பொது இ-சேவை மைய உரிமையாளர்கள் நலச்சங்கம் | TDCSC E-Sevai">
+    <link rel="canonical" href="https://tdcommonesevai.in/">
 
-	<meta property="og:description" content="தேனி மாவட்ட பொது இ-சேவை மைய உரிமையாளர்கள் நலச்சங்கத்தின் அதிகாரப்பூர்வ இணையதளம்.">
+    <meta property="og:type" content="website">
 
-	<meta property="og:url" content="https://tdcommonesevai.in/">
+    <meta property="og:site_name" content="TDCSC E-Sevai">
 
-	<meta property="og:locale" content="ta_IN">
+    <meta property="og:image" content="https://tdcommonesevai.in/images/logo.png">
 
-	<meta name="twitter:card" content="summary_large_image">
+    <meta property="og:title" content="தேனி மாவட்ட பொது இ-சேவை மைய உரிமையாளர்கள் நலச்சங்கம் | TDCSC E-Sevai">
 
-	<meta name="twitter:image" content="https://tdcommonesevai.in/images/logo.png">
-	
-	<meta name="twitter:title" content="தேனி மாவட்ட பொது இ-சேவை மைய உரிமையாளர்கள் நலச்சங்கம்">
+    <meta property="og:description" content="தேனி மாவட்ட பொது இ-சேவை மைய உரிமையாளர்கள் நலச்சங்கத்தின் அதிகாரப்பூர்வ இணையதளம்.">
 
-	<meta name="twitter:description" content="அரசு சேவைகள், உறுப்பினர் தகவல்கள் மற்றும் பயனுள்ள வழிகாட்டுதல்கள்.">
-	
-	<link rel="icon" href="images/favicon.png" type="image/png">
-	
-	<script type="application/ld+json">
+    <meta property="og:url" content="https://tdcommonesevai.in/">
+
+    <meta property="og:locale" content="ta_IN">
+
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta name="twitter:image" content="https://tdcommonesevai.in/images/logo.png">
+
+    <meta name="twitter:title" content="தேனி மாவட்ட பொது இ-சேவை மைய உரிமையாளர்கள் நலச்சங்கம்">
+
+    <meta name="twitter:description" content="அரசு சேவைகள், உறுப்பினர் தகவல்கள் மற்றும் பயனுள்ள வழிகாட்டுதல்கள்.">
+
+    <link rel="icon" href="images/favicon.png" type="image/png">
+
+    <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Organization",
@@ -64,7 +64,7 @@
   ]
 }
 </script>
-	
+
 </head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-C9L89FF6FE"></script>
@@ -569,7 +569,32 @@ marquee {
 .dot-ads:hover {
     background: rgba(255, 255, 255, 0.6);
 }
+/* ===== Ad Image Style - FIXED ===== */
+.ad-image {
+    width: 100%;
+    margin-bottom: 12px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #1a1a2e;
+    position: relative;
+    padding-bottom: 55%;  /* Height based on width (16:9 ratio) */
+}
 
+.ad-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;  /* Image cut ஆகாமல் full cover */
+    display: block;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+}
+
+.ad-image img:hover {
+    transform: scale(1.03);
+}
 /* ===== POPUP MODAL ===== */
 .popup-overlay {
   display: none;
@@ -848,22 +873,435 @@ iframe + div {
   animation-play-state: paused;
 }
 
+/* ===== MOBILE RESPONSIVE IMPROVEMENTS ===== */
+@media (max-width: 768px) {
+  .top-text {
+    font-size: 14px;
+    padding: 6px 10px;
+    margin: 8px 5px 4px;
+  }
+
+  .marquee-box {
+    font-size: 14px;
+    padding: 6px 8px;
+    margin: 4px 0;
+  }
+
+  .service-showcase {
+    width: 98%;
+    margin: 15px auto;
+    gap: 15px;
+  }
+
+  .slider-container {
+    padding: 8px;
+    min-width: unset;
+  }
+
+  .slider img {
+    max-height: 250px;
+    border-radius: 16px;
+  }
+
+  .service-panel {
+    min-width: unset;
+    padding: 1rem;
+    border-left-width: 4px;
+  }
+
+  .service-header {
+    gap: 8px;
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+  }
+
+  .service-header span {
+    font-size: 28px;
+  }
+
+  .service-header h2 {
+    font-size: 1.2rem;
+  }
+
+  .service-header h2 span {
+    font-size: 0.7rem;
+    display: block;
+  }
+
+  .service-highlight {
+    font-size: 0.8rem;
+    padding: 8px 12px;
+    margin-bottom: 12px;
+  }
+
+  .service-card-clickable {
+    padding: 12px 14px;
+    margin-bottom: 10px;
+    gap: 10px;
+  }
+
+  .service-icon {
+    font-size: 1.6rem;
+  }
+
+  .service-info h3 {
+    font-size: 1rem;
+  }
+
+  .service-info p {
+    font-size: 0.7rem;
+  }
+
+  .click-hint {
+    font-size: 0.65rem;
+  }
+
+  .slider-wrapper-ads {
+    margin: 10px auto 0;
+    border-radius: 12px;
+  }
+
+  .ad-visiting-card {
+    padding: 16px 12px 14px 12px;
+  }
+
+  .ad-buttons .btn-ad {
+    padding: 5px 12px;
+    font-size: 11px;
+  }
+
+  .popup-container {
+    width: 95%;
+    max-height: 90vh;
+  }
+
+  .popup-header {
+    padding: 14px 18px;
+  }
+
+  .popup-header h3 {
+    font-size: 1.1rem;
+  }
+
+  .popup-body {
+    padding: 16px;
+  }
+
+  .form-field select {
+    padding: 10px 12px;
+    font-size: 0.85rem;
+  }
+
+  .center-result-card {
+    padding: 12px;
+    margin: 12px 0;
+  }
+
+  .center-name-large {
+    font-size: 1rem;
+  }
+
+  .whatsapp-popup-btn {
+    padding: 12px;
+    font-size: 0.95rem;
+  }
+
+  .marquee-content {
+    font-size: 14px;
+    animation-duration: 60s;
+  }
+
+  .marquee-container {
+    padding: 8px 0;
+  }
+
+  .marquee-content a {
+    padding: 3px 8px;
+    font-size: 13px;
+  }
+
+  .visitor-counter {
+    font-size: 14px;
+    padding: 8px 15px;
+    max-width: 90%;
+    margin: 15px auto 10px;
+  }
+
+  .footer {
+    font-size: 12px;
+    padding: 14px 8px;
+    margin-top: 20px;
+  }
+
+  /* About Us Mobile */
+  #about {
+    padding: 20px 16px;
+    margin: 20px auto;
+  }
+
+  #about h2 {
+    font-size: 1.5rem;
+  }
+
+  #about h3 {
+    font-size: 1.2rem;
+  }
+
+  #about p {
+    font-size: 0.9rem;
+  }
+
+  #about .flex-1 {
+    min-width: unset;
+  }
+
+  /* Contact Us Mobile */
+  #contact {
+    padding: 20px 16px;
+    margin: 20px auto;
+  }
+
+  #contact h2 {
+    font-size: 1.5rem;
+  }
+
+  #contact .flex-1 {
+    min-width: unset;
+    max-width: 100% !important;
+  }
+
+  /* Table Responsive */
+  .table-card {
+    border-radius: 16px;
+    margin-bottom: 25px !important;
+  }
+
+  .table-card h3 {
+    font-size: 1rem !important;
+  }
+
+  .table-card p {
+    font-size: 0.8rem !important;
+  }
+
+  .table-card table {
+    min-width: 600px !important;
+    font-size: 12px;
+  }
+
+  .table-card th,
+  .table-card td {
+    padding: 8px 6px !important;
+    font-size: 11px !important;
+  }
+
+  .table-card a {
+    padding: 3px 8px !important;
+    font-size: 10px !important;
+    white-space: nowrap;
+  }
+
+  .tables-container {
+    width: 98% !important;
+  }
+
+  #notificationsSection .tables-container {
+    width: 98% !important;
+  }
+}
+
+/* Extra small phones */
+@media (max-width: 480px) {
+  .topbar img {
+    height: 36px;
+    margin-right: 8px;
+  }
+
+  .menu a {
+    font-size: 10px;
+    padding: 4px 7px;
+    border-radius: 20px;
+  }
+
+  .menu {
+    gap: 4px;
+  }
+
+  .member-links a {
+    font-size: 9px !important;
+    padding: 3px 6px !important;
+  }
+
+  .top-text {
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+
+  .marquee-box {
+    font-size: 12px;
+    padding: 4px 6px;
+  }
+
+  .slider img {
+    max-height: 180px;
+  }
+
+  .service-header h2 {
+    font-size: 1rem;
+  }
+
+  .service-header span {
+    font-size: 22px;
+  }
+
+  .service-card-clickable {
+    padding: 10px 12px;
+    gap: 8px;
+  }
+
+  .service-icon {
+    font-size: 1.3rem;
+  }
+
+  .service-info h3 {
+    font-size: 0.85rem;
+  }
+
+  .ad-visiting-card {
+    padding: 12px 8px 10px 8px;
+  }
+
+  .ad-image {
+    padding-bottom: 45%;
+  }
+
+  .btn-ad {
+    font-size: 10px;
+    padding: 4px 10px;
+  }
+
+  .marquee-content {
+    font-size: 12px;
+    animation-duration: 50s;
+  }
+
+  .slider-arrow {
+    width: 28px;
+    height: 28px;
+    font-size: 16px;
+  }
+
+  .prev-arrow {
+    left: 8px;
+  }
+
+  .next-arrow {
+    right: 8px;
+  }
+
+  .slide-caption {
+    font-size: 0.6rem;
+    padding: 4px 12px;
+    bottom: 12%;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .dot.active {
+    width: 18px;
+  }
+
+  .popup-container {
+    border-radius: 24px;
+  }
+
+  .popup-header h3 {
+    font-size: 0.95rem;
+  }
+
+  .popup-body {
+    padding: 12px;
+  }
+
+  .form-field label {
+    font-size: 0.8rem;
+  }
+
+  .form-field select {
+    padding: 8px 10px;
+    font-size: 0.8rem;
+  }
+
+  .center-result-card {
+    padding: 10px;
+  }
+
+  .center-name-large {
+    font-size: 0.9rem;
+  }
+
+  .center-detail-row {
+    font-size: 0.75rem;
+  }
+
+  .whatsapp-popup-btn {
+    padding: 10px;
+    font-size: 0.85rem;
+  }
+
+  .close-popup {
+    width: 28px;
+    height: 28px;
+    font-size: 18px;
+    right: 12px;
+    top: 12px;
+  }
+  /* Mobile view for AD Contact */
+@media (max-width: 480px) {
+    .ad-contact-box {
+        padding: 10px 12px !important;
+    }
+    .ad-contact-box a[href^="tel:"] {
+        font-size: 16px !important;
+    }
+    .ad-contact-box .wa-btn {
+        font-size: 12px !important;
+        padding: 6px 14px !important;
+    }
+	/* Mobile view for AD Contact */
+@media (max-width: 480px) {
+    .ad-contact-box {
+        padding: 10px 12px !important;
+    }
+    .ad-contact-box a[href^="tel:"] {
+        font-size: 16px !important;
+    }
+    .ad-contact-box .wa-btn {
+        font-size: 12px !important;
+        padding: 6px 14px !important;
+    }
+}
 </style>
 </head>
 <body>
 
-<!-- TOP BAR -->
+<!-- TOP BAR - Updated Menu -->
 <div class="topbar">
   <img src="images/logo.png" alt="Logo" onerror="this.src='https://placehold.co/44x44?text=TDC'">
   <div class="menu">
-    <a href="index.html">Home</a>
+    <a href="#" onclick="scrollToTop(); return false;">Home</a>
+    <a href="#about" onclick="smoothScrollTo('about'); return false;">About Us</a>
     <a href="board.html">Board Members</a>
     <a href="executive.html">Executive Members</a>
     <a href="members.html">Members</a>
-    <a href="services.html">Services</a>
+	<a href="#services" onclick="smoothScrollTo('services'); return false;">services</a>
     <a href="weblink.html">Weblink</a>
     <a href="javascript:void(0);" onclick="showPhotoMakerPopup()">Photo Maker</a>
     <a href="Forms.html">Forms</a>
+    <a href="#contact" onclick="smoothScrollTo('contact'); return false;">Contact Us</a>
     <a href="javascript:void(0);" onclick="showNotifications()">📢 Current Notification</a>
     <span class="member-links">
       <a href="#" onclick="openMemberPopup('https://drive.google.com/drive/folders/17aXIEa7m6o7rRw6clCOricOagvweGhoy?usp=drive_link')">Software</a>
@@ -871,7 +1309,6 @@ iframe + div {
     </span>
   </div>
 </div>
-
 <div class="top-text">
   ✨ பொதுமக்களுக்கு நாங்கள் சேவை அளிப்பதில் பெருமிதம் கொள்கிறோம் | சேவையின் மேல் (Services) கிளிக் செய்து உங்களின் சேவைகளை பெற்றிடுங்கள் ✨
 </div>
@@ -930,70 +1367,59 @@ iframe + div {
     <div class="slider-wrapper-ads">
 
         <div class="slider-container-ads" id="sliderAds">
+		
 
-            <!-- Ad 1 -->
-            <div class="ad-visiting-card ad-1">
-                <div class="ad-brand">
-                    <span class="logo-icon">🚀</span>
-                    <span class="brand-name">JJ AARI WORK</span>
-                </div>
-                <p class="ad-tagline">✨ Digital Solutions</p>
-                <div class="ad-divider"></div>
-                <p class="ad-description">Web Dev &amp; Marketing</p>
-                <div class="ad-contact">📞 +91 9786340963</div>
-                <div class="ad-buttons">
-                    <a href="https://wa.me/919786340963" target="_blank" class="btn-ad btn-ad-whatsapp">💬 WhatsApp</a>
-                    <a href="https://esevaianus.in/aari" target="_blank" class="btn-ad btn-ad-web">🌐 Visit</a>
-                </div>
-            </div>
+            <!-- Ad 1 - With Image -->
+<div class="ad-visiting-card ad-1">
+    <!-- Image -->
+    <div class="ad-image">
+        <img src="images/advt/ad1.png" alt="TechPro" onerror="this.style.display='none'">
+    </div>
+    <!-- WhatsApp & Web Buttons -->
+    <div class="ad-buttons">
+        <a href="https://wa.me/919786340963?text=🙏%20*வணக்கம்*,%20தேனி%20மாவட்ட%20பொது%20இ-சேவை%20மைய%20உரிமையாளர்கள்%20நலச்சங்கம்%20வலைதளத்திலிருந்து%20தொடர்புகொள்கிறேன்." target="_blank" class="btn-ad btn-ad-whatsapp">💬 WhatsApp</a>
+        <a href="https://esevaianus.in/aari" target="_blank" class="btn-ad btn-ad-web">🌐 Visit</a>
+    </div>
+</div>
 
-            <!-- Ad 2 -->
-            <div class="ad-visiting-card ad-2">
-                <div class="ad-brand">
-                    <span class="logo-icon">🏪</span>
-                    <span class="brand-name">ShopEasy</span>
-                </div>
-                <p class="ad-tagline">🛒 Best Offers</p>
-                <div class="ad-divider"></div>
-                <p class="ad-description">Daily Deals &amp; Discounts</p>
-                <div class="ad-contact">📞 +91 87654 32109</div>
-                <div class="ad-buttons">
-                    <a href="https://wa.me/918765432109" target="_blank" class="btn-ad btn-ad-whatsapp">💬 WhatsApp</a>
-                    <a href="https://shopeasy.com" target="_blank" class="btn-ad btn-ad-web">🌐 Visit</a>
-                </div>
-            </div>
+<!-- Ad 2 - With Image -->
+<div class="ad-visiting-card ad-2">
+    <!-- Image -->
+    <div class="ad-image">
+        <img src="images/advt/ad2.png" alt="ShopEasy" onerror="this.style.display='none'">
+    </div>
+    <!-- WhatsApp & Web Buttons -->
+    <div class="ad-buttons">
+        <a href="https://wa.me/9884900931?text=🙏%20*வணக்கம்*,%20தேனி%20மாவட்ட%20பொது%20இ-சேவை%20மைய%20உரிமையாளர்கள்%20நலச்சங்கம்%20வலைதளத்திலிருந்து%20தொடர்புகொள்கிறேன்." target="_blank" class="btn-ad btn-ad-whatsapp">💬 WhatsApp</a>
+        <a href="https://yuvanalavariyam.in/" target="_blank" class="btn-ad btn-ad-web">🌐 Visit</a>
+    </div>
+</div>
 
-            <!-- Ad 3 -->
-            <div class="ad-visiting-card ad-3">
-                <div class="ad-brand">
-                    <span class="logo-icon">📚</span>
-                    <span class="brand-name">EduSmart</span>
-                </div>
-                <p class="ad-tagline">🎓 Learn Online</p>
-                <div class="ad-divider"></div>
-                <p class="ad-description">Courses &amp; Training</p>
-                <div class="ad-contact">📞 +91 76543 21098</div>
-                <div class="ad-buttons">
-                    <a href="https://wa.me/917654321098" target="_blank" class="btn-ad btn-ad-whatsapp">💬 WhatsApp</a>
-                    <a href="https://edusmart.com" target="_blank" class="btn-ad btn-ad-web">🌐 Visit</a>
-                </div>
-            </div>
+<!-- Ad 3 - With Image -->
+<div class="ad-visiting-card ad-3">
+    <!-- Image -->
+    <div class="ad-image">
+        <img src="images/advt/ad3.png" alt="EduSmart" onerror="this.style.display='none'">
+    </div>
+    <!-- WhatsApp & Web Buttons -->
+    <div class="ad-buttons">
+        <a href="https://wa.me/919366708352?text=🙏%20*வணக்கம்*,%20தேனி%20மாவட்ட%20பொது%20இ-சேவை%20மைய%20உரிமையாளர்கள்%20நலச்சங்கம்%20வலைதளத்திலிருந்து%20தொடர்புகொள்கிறேன்." target="_blank" class="btn-ad btn-ad-whatsapp">💬 WhatsApp</a>
+        <a href="https://tncoolilabour.com/index.php" target="_blank" class="btn-ad btn-ad-web">🌐 Visit</a>
+    </div>
+</div>
 
-            <!-- Ad 4 -->
-            <div class="ad-visiting-card ad-4">
-                <div class="ad-brand">
-                    <span class="logo-icon">🏥</span>
-                    <span class="brand-name">HealthPlus</span>
-                </div>
-                <p class="ad-tagline">💪 Stay Healthy</p>
-                <div class="ad-divider"></div>
-                <p class="ad-description">Wellness &amp; Fitness</p>
-                <div class="ad-contact">📞 +91 65432 10987</div>
-                <div class="ad-buttons">
-                    <a href="https://wa.me/916543210987" target="_blank" class="btn-ad btn-ad-whatsapp">💬 WhatsApp</a>
-                    <a href="https://healthplus.com" target="_blank" class="btn-ad btn-ad-web">🌐 Visit</a>
-                </div>
-            </div>
+<!-- Ad 4 - With Image -->
+<div class="ad-visiting-card ad-4">
+    <!-- Image -->
+    <div class="ad-image">
+        <img src="images/ads/ad4.jpg" alt="HealthPlus" onerror="this.style.display='none'">
+    </div>
+    <!-- WhatsApp & Web Buttons -->
+    <div class="ad-buttons">
+        <a href="https://wa.me/916543210987" target="_blank" class="btn-ad btn-ad-whatsapp">💬 WhatsApp</a>
+        <a href="https://healthplus.com" target="_blank" class="btn-ad btn-ad-web">🌐 Visit</a>
+    </div>
+</div>
 
         </div>
 
@@ -1009,7 +1435,25 @@ iframe + div {
     <!-- ======================================== -->
     <!-- END OF SLIDING ADS                       -->
     <!-- ======================================== -->
-
+<!-- ======================================== -->
+<!-- AD CONTACT INFORMATION - BELOW ADS SLIDER -->
+<!-- ======================================== -->
+<div style="width: 100%; margin: 10px auto 0 auto; text-align: center; background: linear-gradient(135deg, #fff8e1, #ffecb3); padding: 12px 15px; border-radius: 16px; border: 2px solid #ff9800; box-shadow: 0 2px 10px rgba(255, 152, 0, 0.2);">
+    <div style="display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap;">
+        <span style="font-size: 28px;">📢</span>
+        <div style="text-align: left;">
+            <span style="font-size: 14px; font-weight: bold; color: #bf360c; display: block;">விளம்பரத்தொடர்புக்கு / For Advertisement Enquiry:</span>
+            <a href="tel:+919786340963" style="font-size: 20px; font-weight: bold; color: #1b5e20; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
+                📞 <span style="border-bottom: 2px dotted #ff9800;">+91 9786340963</span>
+            </a>
+        </div>
+        <a href="https://wa.me/919786340963?text=🙏%20*வணக்கம்*,%20விளம்பரம்%20குறித்து%20தொடர்பு%20கொள்கிறேன்.%20தேனி%20மாவட்ட%20பொது%20இ-சேவை%20மைய%20உரிமையாளர்கள்%20நலச்சங்கம்%20வலைதளம்%20மூலம்."
+           target="_blank"
+           style="background: #25D366; color: white; padding: 8px 18px; border-radius: 30px; text-decoration: none; font-weight: bold; font-size: 14px; display: inline-flex; align-items: center; gap: 6px;">
+            💬 WhatsApp
+        </a>
+    </div>
+</div>
   </div>
 
   <div class="service-panel">
@@ -1791,6 +2235,17 @@ iframe + div {
         </div>
       </div>
     </div>
+	
+	<div class="col-12 col-sm-6 col-lg-3 d-flex" data-category="state">
+      <div class="card shadow-sm mb-3 flex-fill service-box">
+        <div class="card-body text-center d-flex flex-column">
+          <h6 class="card-title">DNC WELFARE BOARD (சீர்மரபினர் நல வாரியம்)</h6>
+          <div class="mt-auto">
+            <button class="btn btn-sm details-btn" data-bs-toggle="modal" data-bs-target="#s63">View Details</button>
+          </div>
+        </div>
+      </div>
+    </div>
     
   </div>
 </section>
@@ -2560,13 +3015,19 @@ iframe + div {
       <div class="modal-body">
         <p class="mb-1 fw-semibold">தேவையான ஆவணங்கள்:</p>
         <ul class="mb-0">
-          <li>10-ஆம் வகுப்பு மார்க்சீட்</li>
-          <li>ஆதர்அட்டை</li>
-          <li>கூடுதல் முகவரி சான்றாக ஆதரில் உள்ளபடி</li>
-          <li>Bank Pass Book (or)Voter ID</li>
-          <li>மைனராக இருந்தால்</li>
-          <li>பிறப்பு சான்று</li>
-          <li>அப்பா அம்மா இருவரின் பாஸ்போர்ட் தேவை</li>
+		<p class="mb-1 fw-semibold">பிறந்த தேதிக்கான ஆவணங்கள்:</p>
+          <li>A) 10-ஆம் வகுப்பு அல்லது 12-ஆம் வகுப்பு மார்க்சீட்</li>
+		  <li>B) பிறப்புச் சான்றிதழ் (சிறியவர்களுக்கு / மைனர்களுக்கு)</li>
+		  <li>விண்ணப்பதாரர் 10ஆம் வகுப்பு தேர்ச்சி பெறவில்லை என்றால் அல்லது வயது 50-க்கு மேல் இருந்தால் - பான்கார்டு, ஓட்டுநர் உரிமம், வாக்காளர் அட்டை தேவை</li>
+		  <li>C) ECNR பாஸ்போர்ட்டிற்கு 10 அல்லது 12-ஆம் வகுப்பு மார்க்சீட் அல்லது 3வருட டிப்ளமோ சான்றிதழ் / பட்டபடிப்பு சான்றிதழ் மற்றும் 
+		  Consolidated மதிப்பெண் சான்றிதழ் (ஏதேனும் ஒன்று)</li>
+		  <p class="mb-1 fw-semibold">முகவரி சான்று(ஒரே முகவரியுடன் கூடிய ஏதேனும் இரண்டு):</p>
+		  <li>A) ஆதர்அட்டை - (E Aadhaar with Green Tick)</li>
+		  <li>B) வாக்காளர் அட்டை - வார்டு எண் / கதவு எண் கட்டாயம்</li>
+		  <li>C) ஓட்டுநர் உரிமம்</li>
+		  <li>D) பயன்பாட்டில் உள்ள வங்கி கணக்கு புத்தகம் (சமீபத்திய பதிவுடன்)</li>
+          <li>5 வயதிற்குட்பட்ட மைனராக இருந்தால்(White Background Passport Photo)தேவை</li>
+          <li>கணவரின் பெயரை (Surname Name) மாற்ற விரும்பும் பெண் விண்ணப்பதாரர்கள் திருமணச்சான்றிதழ் அல்லது உறுதிமொழிப்படிவத்தை சமர்ப்பிக்க வேண்டும்</li>
         </ul>
       </div>
       <div class="modal-footer">
@@ -3380,6 +3841,34 @@ iframe + div {
   </div>
 </div>
 
+<!-- s63 -->
+<div class="modal fade" id="s63" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title">DNC WELFARE BOARD (சீர்மரபினர் நல வாரியம்)</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p class="mb-1 fw-semibold">தேவையான ஆவணங்கள்:</p>
+        <ul class="mb-0">
+          <li>ஆதார் அட்டை</li>
+		  <li>குடும்ப உறுப்பினர்களின் ஆதார் அட்டை</li>
+		  <li>சாதி சான்றிதழ்</li>
+		  <li>வயது சான்றிதழ் (Any Government - issued ID Proof)</li>
+          <li>Smart Cart - குடும்ப அட்டை</li>
+		  <li>Bank Pass Book First Page - வங்கி கணக்கு புத்தகம் முதல் பக்கம்</li>
+		  <li>Bank Pass Book Last Page - வங்கி கணக்கு பரிவர்த்தனை</li>
+		  <li>கையொப்பம்</li>
+		  <li>Live Photo</li>
+          </ul>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-warning" onclick="openMemberSelector('TN POLICE / LDR')">📱 Enquiry</button>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- ===== MODAL FOR MEMBER SELECTOR (Services Enquiry) ===== -->
 <div class="modal fade" id="memberSelector" tabindex="-1">
   <div class="modal-dialog">
@@ -3644,39 +4133,39 @@ document.querySelectorAll('.btn-category').forEach(btn => {
 let coursesData = [
   {
     sno: 1,
-    name: "TNJFU FISHERIES",
-    courses: "B.F.Sc / B.Tech (Fisheries Engineering)",
-    startDate: "15-05-2026",
-    endDate: "14-06-2026",
-    detailsLink: "https://drive.google.com/file/d/1x-CB1rZ0h814mOdr2zjXQD1UjPJUsTRP/view?usp=drive_link",
-    applyLink: "https://www.tnjfu.ac.in/"
+    name: "MEDICAL EDUCATION ",
+    courses: "MBBS / BDS",
+    startDate: "29/06/2026 ",
+    endDate: "Will be intimated later ",
+    detailsLink: "https://drive.google.com/file/d/1WDPaIsXV7J4h6kpUOiEii6RYTcH4Rc5i/view?usp=sharing ",
+    applyLink: "https://regug.tnmedicalonline.co.in/MBBSBDS26/ "
   },
   {
     sno: 2,
-    name: "TNEA B.ARCH",
-    courses: "B.Arch (Architecture)",
-    startDate: "03-05-2026",
-    endDate: "20-06-2026",
-    detailsLink: "https://drive.google.com/file/d/1J6ZA0T7VRfRZiR_aC8K2bRWmygXLonhp/view?usp=drive_link",
-    applyLink: "https://www.tneaonline.org"
+    name: "MEDICAL EDUCATION ",
+    courses: "UG - AYURVEDHA, HOMEOPATHY,SIDDHA,UNANI",
+    startDate: "13/07/2026",
+    endDate: "31/07/2026",
+    detailsLink: "https://drive.google.com/file/d/13J5N-i7G0h-QUADh0Y6YH1V9jFKtu4dL/view?usp=sharing ",
+    applyLink: "https://tnayushonline.co.in/2026/REG/UGAYUSH/ "
   },
   {
     sno: 3,
-    name: "POLYTECHNIC COLLEGES",
-    courses: "DIPLOMA",
-    startDate: "01-06-2026",
-    endDate: "30-06-2026",
-    detailsLink: "https://drive.google.com/file/d/13qwFuBpwtZqlBCEXRfhkhtAjWK5Utgi2/view?usp=drive_link",
-    applyLink: "https://www.tnpoly.in"
+    name: " ",
+    courses: "",
+    startDate: "",
+    endDate: "",
+    detailsLink: "",
+    applyLink: ""
   },
   {
     sno: 4,
-    name: "Tamilnadu Lateral Entry Direct Second Year B.E/B.Tech.,",
-    courses: "B.E/B.Tech.,",
-    startDate: "07-06-2026",
-    endDate: "07-07-2026",
-    detailsLink: "https://drive.google.com/file/d/1UNalFWIQZ7fmIj8yTLCP5m-uQwo1cELo/view?usp=drive_link",
-    applyLink: "https://www.tnlea.com/"
+    name: " ",
+    courses: " ",
+    startDate: "",
+    endDate: "",
+    detailsLink: "",
+    applyLink: ""
   }
 ];
 
@@ -3717,12 +4206,12 @@ function renderCoursesTable() {
 let trainingData = [
   {
     sno: 1,
-    name: "TNJFU FISHERIES",
-    courses: "B.F.Sc / B.Tech ( Fisheries Engineering)",
-    details: "https://www.tnjfu.ac.in/",
-    startDate: "01-07-2026",
-    endDate: "14-06-2026",
-    registerLink: "https://www.tnjfu.ac.in/"
+    name: " ",
+    courses: " ",
+    details: " ",
+    startDate: " ",
+    endDate: " ",
+    registerLink: " "
   }
 ];
 
@@ -3770,37 +4259,37 @@ let jobData = [
   },
   {
     sno: 2,
-    service: "RRB ",
+    service: "RRB Technician",
+    qualification: "ITI, Diploma, B.E/B.Tech, B.Sc",
+    posts: "6565",
+    openingDate: "30/06/2026",
+    closingDate: "29/07/2026",
+    detailsLink: "https://drive.google.com/file/d/1WKhiqrw1BPi3yU5E92nLVrs33zRPhPRC/view?usp=sharing ",
+    applyLink: "https://www.rrbapply.gov.in/#/auth/landing "
+  },
+  {
+    sno: 3,
+    service: "TNPSC Combined Technical Services Examination (Diploma / ITI Level)  ",
+    qualification: "ITI,DIPLOMA,BE/B.TECH",
+    posts: "839",
+    openingDate: "17/07/2026",
+    closingDate: "15/08/2026",
+    detailsLink: "https://drive.google.com/file/d/1Ua399DASWc-y6ntRRLDOM4Kwr6PjsyrK/view?usp=sharing ",
+    applyLink: "https://apply.tnpscexams.in/apply-now?app_id=UElZMDAwMDAwMQ== "
+  },
+  {
+    sno: 3,
+    service: " ",
     qualification: " ",
-    posts: " ",
+    posts: "",
     openingDate: " ",
-    closingDate: " ",
+    closingDate: "",
     detailsLink: " ",
     applyLink: " "
   },
   {
     sno: 3,
-    service: "SSC ",
-    qualification: " ",
-    posts: " ",
-    openingDate: " ",
-    closingDate: " ",
-    detailsLink: " ",
-    applyLink: " "
-  },
-  {
-    sno: 3,
-    service: "UPSC ",
-    qualification: " ",
-    posts: " ",
-    openingDate: " ",
-    closingDate: " ",
-    detailsLink: " ",
-    applyLink: " "
-  },
-  {
-    sno: 3,
-    service: "IBPS ",
+    service: " ",
     qualification: " ",
     posts: " ",
     openingDate: " ",
@@ -3950,7 +4439,134 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
   </div>
 </div>
+<!-- ======================================== -->
+<!-- ABOUT US SECTION                         -->
+<!-- ======================================== -->
+<section id="about" style="width: 94%; max-width: 1400px; margin: 40px auto; padding: 30px; background: #ffffff; border-radius: 28px; box-shadow: 0 10px 30px rgba(0,0,0,0.08);">
+    <div style="text-align: center; margin-bottom: 25px;">
+        <span style="font-size: 40px;">🏛️</span>
+        <h2 style="color: #1b5e20; font-size: 2rem; margin-top: 10px;">எங்களை பற்றி / About Us</h2>
+        <div style="width: 80px; height: 4px; background: #ff9800; margin: 10px auto; border-radius: 4px;"></div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; gap: 30px; align-items: center;">
+        <div style="flex: 1; min-width: 280px;">
+            <img src="images/about.jpg" alt="About Us" style="width: 100%; border-radius: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.1);" onerror="this.src='https://placehold.co/600x400/1b5e20/white?text=TDCSC+About+Us'">
+        </div>
+        <div style="flex: 1.5; min-width: 280px;">
+            <h3 style="color: #1b5e20; font-size: 1.5rem;">தேனி மாவட்ட பொது இ-சேவை மைய உரிமையாளர்கள் நலச்சங்கம்</h3>
+            <p style="color: #555; line-height: 1.8; margin: 15px 0;">
+                <strong>தேனி மாவட்ட பொது இ-சேவை மைய உரிமையாளர்கள் நலச்சங்கம்</strong> தேனி மாவட்டத்தில்
+                செயல்பட்டு வரும் பொது சேவை மற்றும் இ-சேவை மைய உரிமையாளர்களின் நலன், முன்னேற்றம் மற்றும் உரிமைகளை பாதுகாப்பதற்காக உருவாக்கப்பட்ட ஒரு அமைப்பாகும்.
+            </p>
+			<p style="color: #555; line-height: 1.8;">
+                2024 ஆம் ஆண்டு சங்கம் தொடங்கப்பட்ட நாள் முதல் உறுப்பினர்களின் நலனைக் கருத்தில் கொண்டு, அரசு கொள்கைகள் மற்றும் புதிய திட்டங்கள் குறித்து வழிகாட்டுதல் வழங்கி, பொது இ -சேவை மையங்களின் வளர்ச்சிக்காக தொடர்ந்து செயல்பட்டு வருகிறது.
+            </p>
+            <p style="color: #555; line-height: 1.8;">
+                எங்கள் நோக்கம் பொதுமக்களுக்கு சிறந்த சேவைகளை வழங்குவதும், பொது இ-சேவை மைய உரிமையாளர்களுக்கு 
+                தேவையான ஆதரவு மற்றும் வழிகாட்டுதல்களை வழங்குவதுமாகும்.
+            </p>
+            <div style="display: flex; gap: 20px; margin-top: 20px; flex-wrap: wrap;">
+                <div style="background: #e8f5e9; padding: 15px 25px; border-radius: 16px; text-align: center; flex: 1; min-width: 120px;">
+                    <span style="font-size: 30px;">📌</span>
+                    <p style="font-weight: bold; margin-top: 5px; color: #1b5e20;">மாவட்டம்</p>
+                    <p style="color: #555;">தேனி</p>
+                </div>
+                <div style="background: #e3f2fd; padding: 15px 25px; border-radius: 16px; text-align: center; flex: 1; min-width: 120px;">
+                    <span style="font-size: 30px;">🏢</span>
+                    <p style="font-weight: bold; margin-top: 5px; color: #1b5e20;">சேவை மையங்கள்</p>
+                    <p style="color: #555;">40+</p>
+                </div>
+                <div style="background: #fff3e0; padding: 15px 25px; border-radius: 16px; text-align: center; flex: 1; min-width: 120px;">
+                    <span style="font-size: 30px;">👥</span>
+                    <p style="font-weight: bold; margin-top: 5px; color: #1b5e20;">உறுப்பினர்கள்</p>
+                    <p style="color: #555;">200+</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
+<!-- CONTACT US SECTION - UPDATED             -->
+<!-- ======================================== -->
+<section id="contact" style="width: 94%; max-width: 1400px; margin: 30px auto; padding: 30px; background: #ffffff; border-radius: 28px; box-shadow: 0 10px 30px rgba(0,0,0,0.08);">
+    <div style="text-align: center; margin-bottom: 25px;">
+        <span style="font-size: 40px;">📞</span>
+        <h2 style="color: #1b5e20; font-size: 2rem; margin-top: 10px;">தொடர்புக்கு / Contact Us</h2>
+        <div style="width: 80px; height: 4px; background: #ff9800; margin: 10px auto; border-radius: 4px;"></div>
+        <p style="color: #666; font-size: 1rem;">எங்களை தொடர்பு கொள்ள கீழே உள்ள விவரங்களை பயன்படுத்தவும்</p>
+    </div>
+
+    <!-- Contact Cards - 3 Persons -->
+    <div style="display: flex; flex-wrap: wrap; gap: 25px; justify-content: center;">
+
+        <!-- ===== தலைவர் / President ===== -->
+        <div style="flex: 1; min-width: 250px; max-width: 350px; background: linear-gradient(135deg, #1b5e20, #2e7d32); padding: 25px; border-radius: 20px; text-align: center; color: white; box-shadow: 0 8px 25px rgba(27, 94, 32, 0.3); transition: transform 0.3s ease;">
+            <div style="background: rgba(255,255,255,0.15); width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; font-size: 35px;">👨‍💼</div>
+            <h3 style="color: #fff; font-size: 1.2rem; margin-bottom: 3px;">தலைவர் / President</h3>
+            <p style="color: #ffd54f; font-weight: bold; font-size: 1.1rem; margin-bottom: 12px;">சீ.வெங்கடாசலம்.B.A.,</p>
+            <div style="background: rgba(255,255,255,0.1); padding: 10px; border-radius: 12px; margin-bottom: 8px;">
+                <span style="font-size: 14px; opacity: 0.8;">📞 Phone</span>
+                <p style="font-size: 18px; font-weight: bold; margin: 3px 0;">
+                    <a href="tel:+919442388380" style="color: #fff; text-decoration: none;">+91 9442388380</a>
+                </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.1); padding: 10px; border-radius: 12px; margin-bottom: 12px;">
+                <span style="font-size: 14px; opacity: 0.8;">💬 WhatsApp</span>
+                <p style="font-size: 18px; font-weight: bold; margin: 3px 0;">
+                    <a href="https://wa.me/919442388380" target="_blank" style="color: #25D366; text-decoration: none;">+91 9442388380</a>
+                </p>
+            </div>
+            <a href="https://wa.me/919442388380?text=🙏%20*வணக்கம்*,%20தேனி%20மாவட்ட%20பொது%20இ-சேவை%20மைய%20உரிமையாளர்கள்%20நலச்சங்கம்%20வலைதளதிலிருந்து%20தாங்களை%20தொடர்புகொள்கிறேன்." target="_blank" style="display: inline-block; background: #25D366; color: #fff; padding: 10px 25px; border-radius: 30px; text-decoration: none; font-weight: bold; font-size: 14px; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                💬 WhatsApp
+            </a>
+        </div>
+
+        <!-- ===== செயலாளர் / Secretary ===== -->
+        <div style="flex: 1; min-width: 250px; max-width: 350px; background: linear-gradient(135deg, #0d47a1, #1565c0); padding: 25px; border-radius: 20px; text-align: center; color: white; box-shadow: 0 8px 25px rgba(13, 71, 161, 0.3); transition: transform 0.3s ease;">
+            <div style="background: rgba(255,255,255,0.15); width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; font-size: 35px;">📝</div>
+            <h3 style="color: #fff; font-size: 1.2rem; margin-bottom: 3px;">செயலாளர் / Secretary</h3>
+            <p style="color: #90caf9; font-weight: bold; font-size: 1.1rem; margin-bottom: 12px;">அ.முக்தார் மிர்சா.M.C.A.,</p>
+            <div style="background: rgba(255,255,255,0.1); padding: 10px; border-radius: 12px; margin-bottom: 8px;">
+                <span style="font-size: 14px; opacity: 0.8;">📞 Phone</span>
+                <p style="font-size: 18px; font-weight: bold; margin: 3px 0;">
+                    <a href="tel:+918220818281" style="color: #fff; text-decoration: none;">+91 8220818281</a>
+                </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.1); padding: 10px; border-radius: 12px; margin-bottom: 12px;">
+                <span style="font-size: 14px; opacity: 0.8;">💬 WhatsApp</span>
+                <p style="font-size: 18px; font-weight: bold; margin: 3px 0;">
+                    <a href="https://wa.me/918220818281" target="_blank" style="color: #25D366; text-decoration: none;">+91 8220818281</a>
+                </p>
+            </div>
+            <a href="https://wa.me/918220818281text=🙏%20*வணக்கம்*,%20தேனி%20மாவட்ட%20பொது%20இ-சேவை%20மைய%20உரிமையாளர்கள்%20நலச்சங்கம்%20வலைதளதிலிருந்து%20தாங்களை%20தொடர்புகொள்கிறேன்." target="_blank" style="display: inline-block; background: #25D366; color: #fff; padding: 10px 25px; border-radius: 30px; text-decoration: none; font-weight: bold; font-size: 14px; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                💬 WhatsApp
+            </a>
+        </div>
+
+        <!-- ===== பொருளாளர் / Treasurer ===== -->
+        <div style="flex: 1; min-width: 250px; max-width: 350px; background: linear-gradient(135deg, #bf360c, #e65100); padding: 25px; border-radius: 20px; text-align: center; color: white; box-shadow: 0 8px 25px rgba(191, 54, 12, 0.3); transition: transform 0.3s ease;">
+            <div style="background: rgba(255,255,255,0.15); width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; font-size: 35px;">💰</div>
+            <h3 style="color: #fff; font-size: 1.2rem; margin-bottom: 3px;">பொருளாளர் / Treasurer</h3>
+            <p style="color: #ffcc80; font-weight: bold; font-size: 1.1rem; margin-bottom: 12px;">த.ஜெயப்பிரகாஷ்</p>
+            <div style="background: rgba(255,255,255,0.1); padding: 10px; border-radius: 12px; margin-bottom: 8px;">
+                <span style="font-size: 14px; opacity: 0.8;">📞 Phone</span>
+                <p style="font-size: 18px; font-weight: bold; margin: 3px 0;">
+                    <a href="tel:+919786340963" style="color: #fff; text-decoration: none;">+91 9786340963</a>
+                </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.1); padding: 10px; border-radius: 12px; margin-bottom: 12px;">
+                <span style="font-size: 14px; opacity: 0.8;">💬 WhatsApp</span>
+                <p style="font-size: 18px; font-weight: bold; margin: 3px 0;">
+                    <a href="https://wa.me/919786340963" target="_blank" style="color: #25D366; text-decoration: none;">+91 9786340963</a>
+                </p>
+            </div>
+            <a href="https://wa.me/919786340963?text=🙏%20*வணக்கம்*,%20தேனி%20மாவட்ட%20பொது%20இ-சேவை%20மைய%20உரிமையாளர்கள்%20நலச்சங்கம்%20வலைதளதிலிருந்து%20தாங்களை%20தொடர்புகொள்கிறேன்." target="_blank" style="display: inline-block; background: #25D366; color: #fff; padding: 10px 25px; border-radius: 30px; text-decoration: none; font-weight: bold; font-size: 14px; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                💬 WhatsApp
+            </a>
+        </div>
+
+    </div></section>
+</section>
 <!-- GLOBAL VISITOR COUNTER -->
 <div class="visitor-counter">
   🌍 மொத்த பார்வையாளர்கள் / Total Visitors: 
@@ -4343,7 +4959,7 @@ window.sendWhatsApp = sendWhatsApp;
     }
 
     function startAutoSlide() {
-        autoSlideInterval = setInterval(nextSlide, 3000);
+        autoSlideInterval = setInterval(nextSlide, 6000);
     }
 
     startAutoSlide();

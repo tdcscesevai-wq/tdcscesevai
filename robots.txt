@@ -1,4 +1,5 @@
 User-agent: *
+
 Allow: /
 
-Sitemap: https://tdcscesevai.in/sitemap.xml
+Sitemap: https://tdcommonesevai.in/sitemap.xml
