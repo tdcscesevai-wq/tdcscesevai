@@ -2247,6 +2247,17 @@ iframe + div {
         </div>
       </div>
     </div>
+	
+	<div class="col-12 col-sm-6 col-lg-3 d-flex" data-category="state">
+      <div class="card shadow-sm mb-3 flex-fill service-box">
+        <div class="card-body text-center d-flex flex-column">
+          <h6 class="card-title">வாரிசு சான்று / LEGAL HEIR CERTIFICATE / இரண்டு மனைவிகள் உள்ள நபர் இறந்திருந்தால்</h6>
+          <div class="mt-auto">
+            <button class="btn btn-sm details-btn" data-bs-toggle="modal" data-bs-target="#s64">View Details</button>
+          </div>
+        </div>
+      </div>
+    </div>
     
   </div>
 </section>
@@ -3867,11 +3878,46 @@ iframe + div {
           </ul>
       </div>
       <div class="modal-footer">
-        <button class="btn btn-warning" onclick="openMemberSelector('TN POLICE / LDR')">📱 Enquiry</button>
+        <button class="btn btn-warning" onclick="openMemberSelector('DNC WELFARE BOARD (சீர்மரபினர் நல வாரியம்)')">📱 Enquiry</button>
       </div>
     </div>
   </div>
 </div>
+
+<!-- s64 -->
+<div class="modal fade" id="s64" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title">வாரிசு சான்று / LEGAL HEIR CERTIFICATE / இரண்டு மனைவிகள் உள்ள நபர் இறந்திருந்தால்</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p class="mb-1 fw-semibold">வாரிசுதாரர்களின் விபரம்:</p>
+        <ul class="mb-0">
+          <p class="mb-1 fw-semibold">இறந்தவருக்கு இரண்டு மனைவிகள் இருந்தால்:</p>
+          <p class="mb-1 fw-semibold">வாரிசுதாரர்கள்:</p>
+          <li>1)இறந்தவரின் தந்தை,2)இறந்தவரின் தாய், 3)இறந்தவரின் இரண்டு மனைவிகள், 4) இரண்டு மனைவிகளின் குழந்தைகள்</li>
+		  <p class="mb-1 fw-semibold">தேவையான ஆவணங்கள்:</p>
+          <li>இறந்தவரின் இறப்பு சான்று</li>
+          <li>இறந்தவரின் முகவரி சான்று (ஆதார்(அல்)வாக்காளர் அட்டை</li>
+          <li>உயிருடன் இருக்கும் வாரிசுதாரர்களுக்கு ஆதார் அட்டை</li>
+          <li>இறந்த வாரிசுதாரர்களுக்கு இறப்பு சான்று (அல்) அபிடவிட்</li>
+		  <li>இரண்டாவது திருமணத்திற்கான ஆதாரம்( ஆவணம் தேவை)</li>
+		  <p class="mb-1 fw-semibold">மேலும் தேவையான விபரங்கள்:</p>
+		  <li>முதல் திருமண நாள்</li>
+		  <li>இரண்டாவது திருமண நாள்</li>
+		  <li>முதல் மனைவி இறப்பு சான்று விபரம்</li>
+		  <li>Divorce ஆகியிருந்தால் Divorce நாள் மற்றும் Divorce Order Number தேவை</li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-warning" onclick="openMemberSelector('வாரிசு சான்று / LEGAL HEIR CERTIFICATE / இரண்டு மனைவிகள் உள்ள நபர் இறந்திருந்தால்')">📱 Enquiry</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ===== MODAL FOR MEMBER SELECTOR (Services Enquiry) ===== -->
 <div class="modal fade" id="memberSelector" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered">
@@ -3946,7 +3992,9 @@ const members = [
   { name: "யுவா நலவாரியம் ", district: "தேனி", taluk: "தேனி", village: "அல்லிநகரம்", pincode: "625531", phone: "9884900931" },
   { name: "ஐகான் ஸ்டுடியோ ", district: "தேனி", taluk: "தேனி", village: "அரண்மனைபுதூர்", pincode: "625531", phone: "9003554368" },
   { name: "வாகிணி இ சேவை ", district: "தேனி", taluk: "போடிநாயக்கனூர்", village: "சில்லமரத்துப்பட்டி", pincode: "625528", phone: "9894863735" },
-  { name: "தாரா டிஜிட்டல் ஆன்லைன் சர்வீஸ் ", district: "தேனி", taluk: "தேனி", village: "கோவிந்தநகரம்", pincode: "625520", phone: "8608944627" }
+  { name: "தாரா டிஜிட்டல் ஆன்லைன் சர்வீஸ் ", district: "தேனி", taluk: "தேனி", village: "கோவிந்தநகரம்", pincode: "625520", phone: "8608944627" },
+  { name: "மனோஜ் இ சேவை மையம் ", district: "தேனி", taluk: "உத்தமபாளையம்", village: "தே சிந்தலைச்சேரி", pincode: "625530", phone: "8589878190" },
+  { name: "கேசிபிரபா பொது சேவை மையம் ", district: "தேனி", taluk: "உத்தமபாளையம்", village: "கம்பம்", pincode: "625516", phone: "9952172666" }
 ];
 
 let selectedService = "";
@@ -4136,11 +4184,11 @@ document.querySelectorAll('.btn-category').forEach(btn => {
 let coursesData = [
   {
     sno: 1,
-    name: "MEDICAL EDUCATION ",
-    courses: "UG - AYURVEDHA, HOMEOPATHY,SIDDHA,UNANI",
-    startDate: "13/07/2026",
-    endDate: "31/07/2026",
-    detailsLink: "https://drive.google.com/file/d/13J5N-i7G0h-QUADh0Y6YH1V9jFKtu4dL/view?usp=sharing ",
+    name: " ",
+    courses: "",
+    startDate: "",
+    endDate: "",
+    detailsLink: " ",
     applyLink: "https://tnayushonline.co.in/2026/REG/UGAYUSH/ "
   },
   {
@@ -4252,33 +4300,33 @@ function showNotifications() {
 let jobData = [
   {
     sno: 1,
-    service: "TNPSC ",
-    qualification: "Any Degree ",
-    posts: "26 ",
-    openingDate: "30/06/2026 ",
-    closingDate: "29/07/2026 ",
-    detailsLink: "https://drive.google.com/file/d/1YaQW3WCVY7_QGzPOXuWxIEdLqrdloytI/view?usp=sharing ",
+    service: "TNPSC Combined Civil Services Examination-II (Grop II and IIA Services)  ",
+    qualification: "Any Degree",
+    posts: "821 ",
+    openingDate: "11/08/2026 ",
+    closingDate: "09/09/2026 ",
+    detailsLink: "https://drive.google.com/file/d/1-ZMZApZvqAdyM3FEoM0WDb2gjWkvHuol/view?usp=sharing ",
     applyLink: "https://apply.tnpscexams.in/apply-now?app_id=UElZMDAwMDAwMQ== "
   },
   {
     sno: 2,
-    service: "RRB Technician",
-    qualification: "ITI, Diploma, B.E/B.Tech, B.Sc",
-    posts: "6565",
-    openingDate: "30/06/2026",
-    closingDate: "29/07/2026",
-    detailsLink: "https://drive.google.com/file/d/1WKhiqrw1BPi3yU5E92nLVrs33zRPhPRC/view?usp=sharing ",
-    applyLink: "https://www.rrbapply.gov.in/#/auth/landing "
+    service: "SBI Clerk",
+    qualification: "Any Degree",
+    posts: "1538",
+    openingDate: "07/08/2026",
+    closingDate: "27/08/2026",
+    detailsLink: "https://drive.google.com/file/d/1GGoM9bhgY7bBIeAclmJ-_fpvjUYymO5f/view?usp=sharing ",
+    applyLink: "https://ibpsreg.ibps.in/sbijasrdjl26/"
   },
   {
     sno: 3,
-    service: "TNPSC Combined Technical Services Examination (Diploma / ITI Level)  ",
-    qualification: "ITI,DIPLOMA,BE/B.TECH",
-    posts: "839",
-    openingDate: "17/07/2026",
-    closingDate: "15/08/2026",
-    detailsLink: "https://drive.google.com/file/d/1Ua399DASWc-y6ntRRLDOM4Kwr6PjsyrK/view?usp=sharing ",
-    applyLink: "https://apply.tnpscexams.in/apply-now?app_id=UElZMDAwMDAwMQ== "
+    service: "IBPS -Customer Service Associates (Clerk) Posts ",
+    qualification: "Any Degree ",
+    posts: "11,403",
+    openingDate: "01/08/2026",
+    closingDate: "21/08/2026",
+    detailsLink: "https://drive.google.com/file/d/1IEg-qulT2cE1YZ6djhFC4BDYq4EUkTfB/view?usp=sharing",
+    applyLink: "https://ibpsreg.ibps.in/csaxvijul26/"
   },
   {
     sno: 3,
@@ -4306,13 +4354,13 @@ let jobData = [
 let examData = [
   {
     sno: 1,
-    service: " ",
-    examDate: " ",
-    hallTicketLink: " "
+    service: "RRB Group D 2026",
+    examDate: "03/08/2026 to 25/08/2026 ",
+    hallTicketLink: "https://rrb.digialm.com/EForms/configuredHtml/33128/101714/login.html"
   },
   {
     sno: 2,
-    service: " ",
+    service: "",
     examDate: " ",
     hallTicketLink: " "
   },
