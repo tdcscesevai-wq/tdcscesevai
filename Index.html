@@ -1285,6 +1285,44 @@ iframe + div {
         padding: 6px 14px !important;
     }
 }
+/* =========================================
+   CURRENT NOTIFICATION - TABLE SPACING
+========================================= */
+
+.job-notification-area,
+.exam-schedule-area,
+.education-notification-area {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* IFRAME WIDTH */
+.job-notification-area iframe,
+.exam-schedule-area iframe,
+.education-notification-area iframe {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    border: 0 !important;
+    margin: 0 !important;
+}
+
+/* TABLE 2 */
+.exam-schedule-area {
+    margin-top: 8px !important;
+}
+
+/* TABLE 3 */
+.education-notification-area {
+    margin-top: 8px !important;
+}
+
+/* About Us / next section */
+.education-notification-area + * {
+    margin-top: 10px !important;
+}
 </style>
 </head>
 <body>
@@ -1299,19 +1337,26 @@ iframe + div {
     <a href="executive.html">Executive Members</a>
     <a href="members.html">Members</a>
 	<a href="#services" onclick="smoothScrollTo('services'); return false;">services</a>
-    <a href="weblink.html">Weblink</a>
+	<a href="weblink.html">Weblink</a>
     <a href="javascript:void(0);" onclick="showPhotoMakerPopup()">Photo Maker</a>
     <a href="Forms.html">Forms</a>
     <a href="#contact" onclick="smoothScrollTo('contact'); return false;">Contact Us</a>
-    <a href="javascript:void(0);" onclick="showNotifications()">📢 Current Notification</a>
+    <a href="#current-notifications">Current Notification</a>
     <span class="member-links">
       <a href="#" onclick="openMemberPopup('https://drive.google.com/drive/folders/17aXIEa7m6o7rRw6clCOricOagvweGhoy?usp=drive_link')">Software</a>
       <a href="#" onclick="openMemberPopup('https://drive.google.com/drive/folders/153R8Hf_EeuLM8k2aMS73pF9dwuynD8tB?usp=drive_link')">WhatsApp Poster</a>
     </span>
   </div>
 </div>
+  
+
 <div class="top-text">
   ✨ பொதுமக்களுக்கு நாங்கள் சேவை அளிப்பதில் பெருமிதம் கொள்கிறோம் | சேவையின் மேல் (Services) கிளிக் செய்து உங்களின் சேவைகளை பெற்றிடுங்கள் ✨
+  <div class="update-footer">
+        🕒 கடைசியாக புதுப்பிக்கப்பட்டது :
+        <span id="lastUpdate"></span>
+    </div>
+</div>
 </div>
 
 <div class="marquee-box">
@@ -3918,6 +3963,7 @@ iframe + div {
   </div>
 </div>
 
+
 <!-- ===== MODAL FOR MEMBER SELECTOR (Services Enquiry) ===== -->
 <div class="modal fade" id="memberSelector" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered">
@@ -4096,129 +4142,58 @@ document.querySelectorAll('.btn-category').forEach(btn => {
 </script>
 <!-- END: Services merged section -->
 
+<div id="current-notifications">
 
+    <div class="job-notification-area">
+        <!-- Table 1 iframe -->
+    </div>
 
-<!-- ===== DYNAMIC TABLES SECTION (READ ONLY) ===== -->
-<div class="tables-container" style="width: 94%; max-width: 1400px; margin: 30px auto;">
+    <div class="exam-schedule-area">
+        <!-- Table 2 iframe -->
+    </div>
 
-<!-- TABLES SECTION - Initially Hidden -->
-<div id="notificationsSection" class="tables-container" style="width: 94%; max-width: 1400px; margin: 30px auto; display: none;">
-  <!-- Your Job Table and Exam Table code here -->
+    <div class="education-notification-area">
+        <!-- Table 3 iframe -->
+    </div>
+
 </div>
-  
-  <!-- TABLE 1: JOB NOTIFICATIONS -->
-  <div class="table-card" style="background: white; border-radius: 28px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); overflow: hidden; margin-bottom: 40px;">
-    <div style="background: linear-gradient(135deg, #1b5e20, #2e7d32); padding: 15px 20px; color: white;">
-      <h3 style="margin: 0; font-size: 1.4rem;">📢 வேலைவாய்ப்பு அறிவிப்புகள் / Recruitment Notifications</h3>
-      <p style="margin: 5px 0 0; opacity: 0.9; font-size: 0.9rem;">கீழே உள்ள அறிவிப்புகளைப் பார்க்கவும் / View notifications below</p>
-    </div>
-    <div style="overflow-x: auto; padding: 20px;">
-      <table id="jobTable" style="width: 100%; border-collapse: collapse; min-width: 800px;">
-        <thead>
-          <tr><th style="background: #f5f5f5; padding: 12px; border: 1px solid #ddd; text-align: center;">S.No</th>
-            <th style="background: #f5f5f5; padding: 12px; border: 1px solid #ddd; text-align: center;">Services / பணி</th>
-            <th style="background: #f5f5f5; padding: 12px; border: 1px solid #ddd; text-align: center;">Qualification / தகுதி</th>
-            <th style="background: #f5f5f5; padding: 12px; border: 1px solid #ddd; text-align: center;">No of Post / காலிப்பணியிடம்</th>
-            <th style="background: #f5f5f5; padding: 12px; border: 1px solid #ddd; text-align: center;">Opening Date</th>
-            <th style="background: #f5f5f5; padding: 12px; border: 1px solid #ddd; text-align: center;">Closing Date</th>
-            <th style="background: #f5f5f5; padding: 12px; border: 1px solid #ddd; text-align: center;">Details (PDF/Link)</th>
-            <th style="background: #f5f5f5; padding: 12px; border: 1px solid #ddd; text-align: center;">Apply Link</th>
-          </tr>
-        </thead>
-        <tbody id="jobTableBody">
-          <!-- Dynamic rows will appear here -->
-        </tbody>
-       </table>
-    </div>
-  </div>
+
+<iframe
+    src="https://script.google.com/a/*/macros/s/AKfycbykdYCN-U5GLyultrEh6So-_0A-Dw2D7jbx8SbDzsK9DCjz-ilpW3Hnr79OjO-xVYtl/exec"
+    style="width:100%; border:0; min-height:650px;"
+    loading="lazy">
+</iframe>
+
+
+    <iframe
+        src="https://script.google.com/a/*/macros/s/AKfycbxjoYSvkgEZd2v_0oZcx2X-6eMUEDfECp-abY6qzenty00JOs_qKZqr2D2tOuWPQBn3/exec"
+        width="100%"
+        height="350"
+        frameborder="0"
+        allow="fullscreen"
+        style="
+            display:block;
+            width:100%;
+            height:350px;
+            border:none;">
+    </iframe>
+
+
+    <iframe
+        src="https://script.google.com/a/*/macros/s/AKfycby9sk4cfP-MeIdJMiretOtKO6pdhQHxkzw101gx4-r1oVadHBmS9pTdfqn4ofcYc8yY/exec"
+        width="100%"
+        height="200"
+        frameborder="0"
+        allow="fullscreen"
+        style="
+            display:block;
+            width:100%;
+            height:200px;
+            border:none;">
+    </iframe>
  
-  <!-- TABLE 2: EXAM DATES & HALL TICKET -->
-  <div class="table-card" style="background: white; border-radius: 28px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); overflow: hidden;">
-    <div style="background: linear-gradient(135deg, #bf360c, #e65100); padding: 15px 20px; color: white;">
-      <h3 style="margin: 0; font-size: 1.4rem;">📅 தேர்வு கால அட்டவணை / Exam Schedule & Hall Ticket</h3>
-      <p style="margin: 5px 0 0; opacity: 0.9; font-size: 0.9rem;">தேர்வு தேதிகள் மற்றும் ஹால் டிக்கெட் இணைப்பு</p>
-    </div>
-    <div style="overflow-x: auto; padding: 20px;">
-      <table id="examTable" style="width: 100%; border-collapse: collapse; min-width: 500px;">
-        <thead>
-          <tr><th style="background: #f5f5f5; padding: 12px; border: 1px solid #ddd; text-align: center;">S.No</th>
-            <th style="background: #f5f5f5; padding: 12px; border: 1px solid #ddd; text-align: center;">Services / தேர்வு பெயர்</th>
-            <th style="background: #f5f5f5; padding: 12px; border: 1px solid #ddd; text-align: center;">Exam Date / தேர்வு தேதி</th>
-            <th style="background: #f5f5f5; padding: 12px; border: 1px solid #ddd; text-align: center;">Hall Ticket Download Link</th>
-          </tr>
-        </thead>
-        <tbody id="examTableBody">
-          <!-- Dynamic rows will appear here -->
-        </tbody>
-       </table>
-    </div>
-  </div>
-</div>
-
-<!-- TABLE: COURSES / ADMISSION NOTIFICATIONS -->
-<div class="table-card" style="background: white; border-radius: 28px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); overflow: hidden; margin-bottom: 40px;">
-  <div style="background: linear-gradient(135deg, #6a1b9a, #8e24aa); padding: 15px 20px; color: white;">
-    <h3 style="margin: 0; font-size: 1.4rem;">🎓 கல்லூரி மற்றும் பல்கலைக்கழகம் விண்ணப்பங்களுக்கான அறிவிப்புகள்</h3>
-    <p style="margin: 5px 0 0; opacity: 0.9; font-size: 0.9rem;">EDUCATION APPLICATION NOTIFICATIONS</p>
-  </div>
-  <div style="overflow-x: auto; padding: 20px;">
-    <table id="coursesTable" style="width: 100%; border-collapse: collapse; min-width: 750px;">
-      <thead>
-        <tr>
-          <th style="background: #f5f5f5; padding: 12px; border: 1px solid #ddd;">S.No</th>
-          <th style="background: #f5f5f5; padding: 12px; border: 1px solid #ddd;">Institution Name</th>
-          <th style="background: #f5f5f5; padding: 12px; border: 1px solid #ddd;">Courses</th>
-          <th style="background: #f5f5f5; padding: 12px; border: 1px solid #ddd;">Start Date</th>
-          <th style="background: #f5f5f5; padding: 12px; border: 1px solid #ddd;">End Date</th>
-          <th style="background: #f5f5f5; padding: 12px; border: 1px solid #ddd;">Details (Notification)</th>
-          <th style="background: #f5f5f5; padding: 12px; border: 1px solid #ddd;">Apply Link</th>
-        </tr>
-      </thead>
-      <tbody id="coursesTableBody"></tbody>
-    </table>
-  </div>
-</div>
-
 <script>
-// ===== COURSES TABLE DATA =====
-let coursesData = [
-  {
-    sno: 1,
-    name: " ",
-    courses: "",
-    startDate: "",
-    endDate: "",
-    detailsLink: " ",
-    applyLink: "https://tnayushonline.co.in/2026/REG/UGAYUSH/ "
-  },
-  {
-    sno: 2,
-    name: " ",
-    courses: "",
-    startDate: "",
-    endDate: "",
-    detailsLink: " ",
-    applyLink: "https://tnayushonline.co.in/2026/REG/UGAYUSH/ "
-  },
-  {
-    sno: 3,
-    name: " ",
-    courses: "",
-    startDate: "",
-    endDate: "",
-    detailsLink: "",
-    applyLink: ""
-  },
-  {
-    sno: 4,
-    name: " ",
-    courses: " ",
-    startDate: "",
-    endDate: "",
-    detailsLink: "",
-    applyLink: ""
-  }
-];
+
 
 function escapeHtml(str) {
   if (!str) return '';
@@ -4230,197 +4205,6 @@ function escapeHtml(str) {
   });
 }
 
-function renderCoursesTable() {
-  const tbody = document.getElementById('coursesTableBody');
-  if (!tbody) return;
-  tbody.innerHTML = '';
-  coursesData.forEach((row) => {
-    const tr = document.createElement('tr');
-    tr.innerHTML = `
-      <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">${row.sno}</td>
-      <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">${escapeHtml(row.name)}</td>
-      <td style="padding: 10px; border: 1px solid #ddd;">${escapeHtml(row.courses)}</td>
-      <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">${escapeHtml(row.startDate)}</td>
-      <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">${escapeHtml(row.endDate)}</td>
-      <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">
-        ${row.detailsLink ? `<a href="${escapeHtml(row.detailsLink)}" target="_blank" style="color: #1565c0; background: #e3f2fd; padding: 5px 12px; border-radius: 20px; text-decoration: none; display: inline-block; font-weight: bold;">📄 Notification</a>` : '—'}
-      </td>
-      <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">
-        <a href="${escapeHtml(row.applyLink)}" target="_blank" style="color: white; background: #6a1b9a; padding: 6px 14px; border-radius: 25px; text-decoration: none; display: inline-block; font-weight: bold;">📝 Apply Now</a>
-      </td>
-    `;
-    tbody.appendChild(tr);
-  });
-}
-
-// ===== TRAINING TABLE DATA =====
-let trainingData = [
-  {
-    sno: 1,
-    name: " ",
-    courses: " ",
-    details: " ",
-    startDate: " ",
-    endDate: " ",
-    registerLink: " "
-  }
-];
-
-function renderTrainingTable() {
-  const tbody = document.getElementById('trainingTableBody');
-  if (!tbody) return;
-  tbody.innerHTML = '';
-  trainingData.forEach((row) => {
-    const tr = document.createElement('tr');
-    tr.innerHTML = `
-      <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">${row.sno}</td>
-      <td style="padding: 10px; border: 1px solid #ddd;">${escapeHtml(row.name)}</td>
-      <td style="padding: 10px; border: 1px solid #ddd;">${escapeHtml(row.courses)}</td>
-      <td style="padding: 10px; border: 1px solid #ddd;">${escapeHtml(row.details)}</td>
-      <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">${escapeHtml(row.startDate)}</td>
-      <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">${escapeHtml(row.endDate)}</td>
-      <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">
-        <a href="${escapeHtml(row.registerLink)}" target="_blank" style="color: white; background: #6a1b9a; padding: 5px 12px; border-radius: 20px; text-decoration: none; display: inline-block;">📝 Register Now</a>
-      </td>
-    `;
-    tbody.appendChild(tr);
-  });
-}
-
-// Show/Hide Notifications Section
-function showNotifications() {
-  const section = document.getElementById('notificationsSection');
-  if (section) {
-    section.style.display = 'block';
-    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-}
-
-// ==================== JOB TABLE DATA ====================
-let jobData = [
-  {
-    sno: 1,
-    service: "TNPSC Combined Civil Services Examination-II (Grop II and IIA Services)  ",
-    qualification: "Any Degree",
-    posts: "821 ",
-    openingDate: "11/08/2026 ",
-    closingDate: "09/09/2026 ",
-    detailsLink: "https://drive.google.com/file/d/1-ZMZApZvqAdyM3FEoM0WDb2gjWkvHuol/view?usp=sharing ",
-    applyLink: "https://apply.tnpscexams.in/apply-now?app_id=UElZMDAwMDAwMQ== "
-  },
-  {
-    sno: 2,
-    service: "SBI Clerk",
-    qualification: "Any Degree",
-    posts: "1538",
-    openingDate: "07/08/2026",
-    closingDate: "27/08/2026",
-    detailsLink: "https://drive.google.com/file/d/1GGoM9bhgY7bBIeAclmJ-_fpvjUYymO5f/view?usp=sharing ",
-    applyLink: "https://ibpsreg.ibps.in/sbijasrdjl26/"
-  },
-  {
-    sno: 3,
-    service: "IBPS -Customer Service Associates (Clerk) Posts ",
-    qualification: "Any Degree ",
-    posts: "11,403",
-    openingDate: "01/08/2026",
-    closingDate: "21/08/2026",
-    detailsLink: "https://drive.google.com/file/d/1IEg-qulT2cE1YZ6djhFC4BDYq4EUkTfB/view?usp=sharing",
-    applyLink: "https://ibpsreg.ibps.in/csaxvijul26/"
-  },
-  {
-    sno: 3,
-    service: " ",
-    qualification: " ",
-    posts: "",
-    openingDate: " ",
-    closingDate: "",
-    detailsLink: " ",
-    applyLink: " "
-  },
-  {
-    sno: 3,
-    service: " ",
-    qualification: " ",
-    posts: " ",
-    openingDate: " ",
-    closingDate: " ",
-    detailsLink: " ",
-    applyLink: " "
-  }
-];
-
-// ==================== EXAM TABLE DATA ====================
-let examData = [
-  {
-    sno: 1,
-    service: "RRB Group D 2026",
-    examDate: "03/08/2026 to 25/08/2026 ",
-    hallTicketLink: "https://rrb.digialm.com/EForms/configuredHtml/33128/101714/login.html"
-  },
-  {
-    sno: 2,
-    service: "",
-    examDate: " ",
-    hallTicketLink: " "
-  },
-  {
-    sno: 3,
-    service: " ",
-    examDate: " ",
-    hallTicketLink: " "
-  }
-];
-
-function renderJobTable() {
-  const tbody = document.getElementById('jobTableBody');
-  if (!tbody) return;
-  tbody.innerHTML = '';
-  jobData.forEach((row) => {
-    const tr = document.createElement('tr');
-    tr.innerHTML = `
-      <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">${row.sno}</td>
-      <td style="padding: 10px; border: 1px solid #ddd;">${escapeHtml(row.service)}</td>
-      <td style="padding: 10px; border: 1px solid #ddd;">${escapeHtml(row.qualification)}</td>
-      <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">${escapeHtml(row.posts)}</td>
-      <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">${escapeHtml(row.openingDate)}</td>
-      <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">${escapeHtml(row.closingDate)}</td>
-      <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">
-        <a href="${escapeHtml(row.detailsLink)}" target="_blank" style="color: #1b5e20; text-decoration: none; font-weight: bold; background: #e8f5e9; padding: 5px 12px; border-radius: 20px; display: inline-block;">📄 View Details</a>
-      </td>
-      <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">
-        <a href="${escapeHtml(row.applyLink)}" target="_blank" style="color: white; text-decoration: none; font-weight: bold; background: #ff9800; padding: 5px 12px; border-radius: 20px; display: inline-block;">📝 Apply Now</a>
-      </td>
-    `;
-    tbody.appendChild(tr);
-  });
-}
-
-function renderExamTable() {
-  const tbody = document.getElementById('examTableBody');
-  if (!tbody) return;
-  tbody.innerHTML = '';
-  examData.forEach((row) => {
-    const tr = document.createElement('tr');
-    tr.innerHTML = `
-      <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">${row.sno}</td>
-      <td style="padding: 10px; border: 1px solid #ddd;">${escapeHtml(row.service)}</td>
-      <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">${escapeHtml(row.examDate)}</td>
-      <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">
-        <a href="${escapeHtml(row.hallTicketLink)}" target="_blank" style="color: #1565c0; text-decoration: none; font-weight: bold; background: #e3f2fd; padding: 5px 12px; border-radius: 20px; display: inline-block;">🎫 Download Hall Ticket</a>
-      </td>
-    `;
-    tbody.appendChild(tr);
-  });
-}
-
-// Initialize tables on page load
-document.addEventListener('DOMContentLoaded', function() {
-  renderJobTable();
-  renderExamTable();
-  renderCoursesTable();
-  renderTrainingTable();
-});
 </script>
 
 <!-- MEMBER POPUP -->
@@ -5031,6 +4815,16 @@ document.addEventListener("DOMContentLoaded", function() {
   renderServiceCards(); 
   initHeroSlider(); 
 });
+</script>
+<script>
+
+const now=new Date();
+
+document.getElementById("lastUpdate").innerHTML=
+now.toLocaleDateString('en-GB')+
+" | "+
+now.toLocaleTimeString();
+
 </script>
 </body>
 </html>
